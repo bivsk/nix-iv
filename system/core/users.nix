@@ -20,5 +20,5 @@
   users.groups.four = {};
 
   # Only allow declarative users
-  users.mutableUsers = false;
+  #users.mutableUsers = false;
 }
