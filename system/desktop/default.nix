@@ -2,6 +2,7 @@
   imports = [
     ./crypto.nix
     ./gaming.nix
+    ./libvirt.nix
   ];
 
   # Enable the GNOME Desktop Environment.
