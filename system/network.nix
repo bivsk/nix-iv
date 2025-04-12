@@ -1,0 +1,17 @@
+{ config, pkgs, ... }:
+
+{
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
+  # Enable the OpenSSH daemon.
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      #PasswordAuthentication = false;
+    };
+  };
+}
