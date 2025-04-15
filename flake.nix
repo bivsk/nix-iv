@@ -51,6 +51,14 @@
 
     # misc
     ghostty.url = "github:ghostty-org/ghostty";
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     yazi.url = "github:sxyazi/yazi";
     zed-editor = {
       url = "github:zed-industries/zed";
@@ -79,5 +87,19 @@
         ];
       };
     };
+	#    devShells.default = pkgs.mkShell {
+	#      packages = [
+	#        pkgs.alejandra
+	# pkgs.git
+	# pkgs.nodePackages.prettier
+	#      ];
+	#      name = "dotfiles";
+	#      DIRENV_LOG_FORMAT = "";
+	#      # shellHook = ''
+	#      #   ${config.pre-commit.installationScript}
+	#      # '';
+	#    };
+	#
+	#    formatter = pkgs.alejandra;
   };
 }
