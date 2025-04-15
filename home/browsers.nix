@@ -2,8 +2,7 @@
 {
   home.packages = [
     inputs.zen-browser.packages.${pkgs.system}.default
-
-    brave
+    pkgs.brave
   ];
 
   programs.chromium = {
