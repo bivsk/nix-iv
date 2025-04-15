@@ -10,8 +10,10 @@ in
     ./users.nix
   ];
 
+  documentation.dev.enable = true;
+
   # Set your time zone.
-  time.timeZone = tz;
+  time.timeZone = lib.mkDefault tz;
 
   # Select internationalisation properties.
   i18n.defaultLocale = locale;
