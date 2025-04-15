@@ -14,8 +14,22 @@
     clang
     clang-tools
 
-    vscode
+    # rust
+    rustc
+    cargo
+    rust-analyzer
+    rustfmt
+    #rustup
+
+    # slop
+    typescript
   ];
+
+  programs.vscode = {
+    enable = true;
+    #package = pkgs.vscodium;
+    mutableExtensionsDir = true;
+  };
 
   programs.cava = {
     enable = true;
