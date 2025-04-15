@@ -29,8 +29,6 @@
 
     # utils
     ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    yq-go # yaml processor https://github.com/mikefarah/yq
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
 
@@ -75,12 +73,6 @@
     pciutils # lspci
     usbutils # lsusb
   ];
-
-  programs.git = {
-    enable = true;
-    userName = "bivsk";
-    userEmail = "bivsk@tutanota.com";
-  };
 
   programs.starship = {
     enable = true;
@@ -132,23 +124,6 @@
     shell = "${pkgs.bashInteractive}/bin/bash";
     shortcut = "a";
   };
-
-  programs.zed-editor = {
-    enable = true;
-    #package = inputs.zed-editor.packages.${pkgs.system}.default;
-    extensions = []; # https://github.com/zed-industries/extensions/tree/main/extensions
-    userSettings = {
-      features = {
-        copilot = false;
-      };
-      telemetry = {
-        diagnostics = false;
-        metrics = false;
-      };
-      vim_mode = true;
-    };
-  };
-
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

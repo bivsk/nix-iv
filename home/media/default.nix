@@ -12,7 +12,6 @@
 
     # audio
     amberol
-    ncmpcpp
     spotify
 
     # image
@@ -39,8 +38,6 @@
       mpris
     ];
   };
-
-  programs.ncmpcpp.enable = true;
 
   programs.newsboat = {
     enable = true;

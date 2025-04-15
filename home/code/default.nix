@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
-
-  # imports = [
-  #   ./mpv.nix
-  # ];
+  imports = [
+    ./editors.nix
+  ];
 
   home.packages = with pkgs; [
     # D
@@ -24,29 +23,14 @@
     # slop
     nodejs
     typescript
+
+    # misc
+    jq
   ];
 
-  programs.neovim = {
+  programs.git = {
     enable = true;
-    defaultEditor = true;
-  };
-
-  programs.vscode = {
-    enable = true;
-    #package = pkgs.vscodium;
-    mutableExtensionsDir = true;
-  };
-
-  programs.cava = {
-    enable = true;
-    #settings = {};
-  };
-
-  #programs.ncmpcpp.enable = true;
-
-  programs.newsboat = {
-    enable = true;
-    autoReload = true;
-    reloadThreads = 8;
+    userName = "bivsk";
+    userEmail = "bivsk@tutanota.com";
   };
 }
