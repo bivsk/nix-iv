@@ -1,6 +1,7 @@
 {
   imports = [
     ./crypto.nix
+    ./fonts.nix
     ./gaming.nix
     ./libvirt.nix
   ];
