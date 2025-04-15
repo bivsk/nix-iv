@@ -9,5 +9,4 @@
 
   # Enable networking
   networking.hostName = "robin"; # TODO: use var
-  networking.networkmanager.enable = true;
 }

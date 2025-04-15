@@ -8,7 +8,7 @@
   imports = [
     ./core
     ./desktop
-    ./network.nix
+    ./network
   ];
 
   # Allow unfree packages
