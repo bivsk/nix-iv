@@ -9,7 +9,6 @@
     ./core
     ./desktop
     ./network.nix
-    ./virt.nix
   ];
 
   # Allow unfree packages
