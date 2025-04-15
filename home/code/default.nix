@@ -25,6 +25,11 @@
     typescript
   ];
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+
   programs.vscode = {
     enable = true;
     #package = pkgs.vscodium;
