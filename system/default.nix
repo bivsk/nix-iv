@@ -27,6 +27,5 @@
   # Set default editor
   environment.variables.EDITOR = "vim";
 
-  boot.supportedFilesystems = [ "zfs" ];
   networking.hostId = "9b6d17a4";
 }

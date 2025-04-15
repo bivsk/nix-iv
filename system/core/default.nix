@@ -6,6 +6,7 @@ in
 {
 
   imports = [
+    ./boot.nix
     ./users.nix
   ];
 

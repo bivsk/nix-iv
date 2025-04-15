@@ -7,17 +7,7 @@
       ../../system
     ];
 
-  # Bootloader.
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      #efiSysMountPoint = "/boot/efi";
-    };
-    systemd-boot.enable = true;
-  };
-
   # Enable networking
-  networking.hostName = "robin"; # Define your hostname.
+  networking.hostName = "robin"; # TODO: use var
   networking.networkmanager.enable = true;
-
 }
