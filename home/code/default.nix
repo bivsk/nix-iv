@@ -22,6 +22,7 @@
     #rustup
 
     # slop
+    nodejs
     typescript
   ];
 
