@@ -5,6 +5,10 @@
   ];
 
   home.packages = with pkgs; [
+    # nix
+    nixd
+    alejandra
+
     # D
     dmd
     ldc

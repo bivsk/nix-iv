@@ -14,6 +14,9 @@
     amberol
     spotify
 
+    # social
+    vesktop
+
     # image
     imv
 

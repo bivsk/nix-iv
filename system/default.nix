@@ -24,6 +24,14 @@
     vim
     wget
   ];
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/four/nix/config";
+  };
+
   # Set default editor
   environment.variables.EDITOR = "vim";
 
