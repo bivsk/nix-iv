@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./browsers
+    ./terminal.nix
     # inputs.nix-index-db.hmModules.nix-index
   ];
 
