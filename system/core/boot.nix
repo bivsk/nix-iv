@@ -1,9 +1,10 @@
 { pkgs, config, ... }:
 {
   boot = {
+    bootspec.enable = true;
+
     initrd = {
       systemd.enable = true;
-      
     };
 
     consoleLogLevel = 3;
@@ -21,7 +22,7 @@
 
     plymouth.enable = true;
 
-    # TODO: move out of boot?
-    supportedFilesystems = [ "zfs" ];
+    # # TODO: move out of boot?
+    # supportedFilesystems = [ "zfs" ];
   }; 
 }

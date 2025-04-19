@@ -5,7 +5,6 @@
     shell = pkgs.bash;
     extraGroups = [
       "input"
-      "libvirtd"
       "networkmanager"
       "users"
       "video"
