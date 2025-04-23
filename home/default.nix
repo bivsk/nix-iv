@@ -4,8 +4,9 @@
   ...
 }: {
   imports = [
-    ./browsers
-    ./terminal.nix
+    ./gui/www
+    ./gui/terminal.nix
+    ./gui/media.nix
     # inputs.nix-index-db.hmModules.nix-index
   ];
 
