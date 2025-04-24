@@ -21,6 +21,7 @@
 
 	{
 	  home-manager = {
+	    users.four.imports = ["${self}/home"];
 	    extraSpecialArgs = specialArgs;
 	    backupFileExtension = ".hm-backup";
 	  };
