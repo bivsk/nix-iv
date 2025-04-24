@@ -6,8 +6,10 @@ in
 {
 
   imports = [
-    ./boot.nix
+    ./security.nix
     ./users.nix
+    ./virt.nix
+    ../nix
   ];
 
   documentation.dev.enable = true;

@@ -4,9 +4,13 @@
   inputs = {
     # NixOS official package source, using the nixos-24.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager = {
+    hm = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     # hypr
@@ -70,36 +74,31 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
-    nixosConfigurations = {
-      robin = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/robin
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-	    home-manager.extraSpecialArgs = { inherit inputs; };
+      imports = [
+        ./hosts
+      ];
 
-            home-manager.users.four = import ./home;
-          }
-        ];
+      perSystem = {
+        config,
+	pkgs,
+	...
+      }: {
+        devShells.default = pkgs.mkShell {
+	  packages = [
+	    pkgs.alejandra
+	    pkgs.git
+	    pkgs.nodePackages.prettier
+	  ];
+	  name = "dotfiles";
+	  DIRENV_LOG_FORMAT = "";
+	  #shell-hook = ''''
+	};
+
+	formatter = pkgs.alejandra;
       };
     };
-	#    devShells.default = pkgs.mkShell {
-	#      packages = [
-	#        pkgs.alejandra
-	# pkgs.git
-	# pkgs.nodePackages.prettier
-	#      ];
-	#      name = "dotfiles";
-	#      DIRENV_LOG_FORMAT = "";
-	#      # shellHook = ''
-	#      #   ${config.pre-commit.installationScript}
-	#      # '';
-	#    };
-	#
-	#    formatter = pkgs.alejandra;
-  };
 }
