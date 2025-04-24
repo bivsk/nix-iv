@@ -80,6 +80,7 @@
 
       imports = [
         ./hosts
+        ./pkgs
       ];
 
       perSystem = {

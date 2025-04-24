@@ -1,8 +1,6 @@
 {
-  inputs,
-  ...
-}: {
   imports = [
+    ./crypto
     ./media
     ./www
     ./code.nix
