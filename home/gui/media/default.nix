@@ -14,6 +14,7 @@
     # streaming
     ani-cli
     spotify
+    yt-dlp
 
     # graphics
     gimp
