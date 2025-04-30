@@ -8,7 +8,7 @@
       font-family = "ComicShannsMono Nerd Font Mono";
       theme = "Solarized Dark - Patched";
       background-opacity = 0.93;
-      window-decoration = false;
+      # window-decoration = false;
       window-padding-x = 6;
       window-padding-y = 6;
       confirm-close-surface = false;

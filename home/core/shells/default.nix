@@ -53,9 +53,9 @@
     bash = {
       enable = true;
       enableCompletion = true;
-      bashrcExtra = ''
-        export PATH="$HOME/.local/bin:$PATH"
-      '';
+      # bashrcExtra = ''
+      #   export PATH="$HOME/.local/bin:$PATH"
+      # '';
     };
 
     starship = {

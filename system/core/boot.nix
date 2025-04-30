@@ -23,6 +23,7 @@
     plymouth.enable = true;
 
     # # TODO: move out of boot?
-    # supportedFilesystems = [ "zfs" ];
+    supportedFilesystems = [ "zfs" ];
   }; 
+  networking.hostId = "00bab10c";
 }

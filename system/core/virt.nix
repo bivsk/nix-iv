@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   virtualisation = {
+    docker.enable = true;
     libvirtd = {
       enable = true;
       qemu.runAsRoot = false;
@@ -11,5 +12,5 @@
   programs.virt-manager.enable = true;
 
   users.groups.libvirtd.members = ["four"];
-  users.users.four.extraGroups = ["libvirtd"];
+  users.users.four.extraGroups = ["docker" "libvirtd"];
 }
