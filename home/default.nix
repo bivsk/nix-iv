@@ -1,8 +1,4 @@
 {
-  self,
-  inputs,
-  ...
-}: {
   imports = [
     ./core
     ./gui

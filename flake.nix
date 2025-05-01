@@ -20,12 +20,12 @@
     # ];
 
     # accept-flake-config = true;
-    builders-use-substitutes = true;
-    flake-registry = "";
-    http-connections = 50;
-    show-trace = true;
-    use-cgroups = true;
-    warn-dirty = false;
+    # builders-use-substitutes = true;
+    # flake-registry = "";
+    # http-connections = 50;
+    # show-trace = true;
+    # use-cgroups = true;
+    # warn-dirty = false;
   };
 
   inputs = {
