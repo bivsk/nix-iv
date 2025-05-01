@@ -12,20 +12,20 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
 
-    # experimental-features = [
-    #   "cgroups"
-    #   "flakes"
-    #   "nix-command"
-    #   "pipe-operators"
-    # ];
+    experimental-features = [
+      "cgroups"
+      "flakes"
+      "nix-command"
+      "pipe-operators"
+    ];
 
-    # accept-flake-config = true;
-    # builders-use-substitutes = true;
-    # flake-registry = "";
-    # http-connections = 50;
-    # show-trace = true;
+    accept-flake-config = true;
+    builders-use-substitutes = true;
+    flake-registry = "";
+    http-connections = 50;
+    show-trace = true;
     # use-cgroups = true;
-    # warn-dirty = false;
+    warn-dirty = false;
   };
 
   inputs = {
