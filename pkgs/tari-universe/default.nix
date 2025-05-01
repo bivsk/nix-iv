@@ -3,10 +3,10 @@
   fetchurl
 }: let
   pname = "tari-universe";
-  version = "0.9.904";
+  version = "0.9.913";
   src = fetchurl {
     url = "https://github.com/tari-project/universe/releases/download/v${version}/tari_universe_${version}_amd64.AppImage";
-    sha256 = "sha256-Hk4yyWQsF+z3TgkwZjRqzVMdWlkpzsEsQvIrVlXJ5Lo=";
+    sha256 = "sha256-4f/oW12qHmNQII+MxNTGgy2JL2biNStp5diNbvVJ7q0=";
   };
   appimageContents = appimageTools.extractType2 { inherit pname version src; };
 in appimageTools.wrapType2 {
