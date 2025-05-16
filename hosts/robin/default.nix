@@ -1,11 +1,30 @@
-{ config, pkgs, ... }:
+lib: lib.nixosSystem' ({ config, lib, ... }: let
+  inherit (lib) collectNix remove;
+in {
+  imports = collectNix ./. |> remove ./default.nix;
 
-{
-  imports =
-    [ 
-      ./hardware-configuration.nix
-    ];
+  type = "desktop";
 
-  # Enable networking
-  networking.hostName = "robin"; # TODO: use var
-}
+  users.users = {
+    four = {
+      description	= "bivsk";
+      isNormalUser	= true;
+      extraGroups	= [ "wheel" ];
+    };
+  };
+
+  home-manager.users = {
+    four = {};
+  };
+
+  networking = let
+    interface = "enp69s0";
+  in {
+    hostName = "robin";
+  };
+
+  system.stateVersion = "24.11";
+  home-manager.sharedModules = [{
+    home.stateVersion = "24.11";
+  }];
+})

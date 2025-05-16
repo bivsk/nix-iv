@@ -31,6 +31,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     agenix = {
       url = "github:ryantm/agenix";
 
@@ -38,105 +43,32 @@
       inputs.home-manager.follows = "nixpkgs";
     };
 
-    hm = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-
-    # hypr
-    hyprland.url = "github:hyprwm/hyprland";
-
-    hypridle = {
-      url = "github:hyprwm/hypridle";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-	systems.follows = "hyprland/systems";
-      };
-    };
-
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-    };
-
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs = {
-        hyprgraphics.follows = "hyprland/hyprgraphics";
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
-
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs = {
-        hyprgraphics.follows = "hyprland/hyprgraphics";
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
-
-    # misc
     fenix.url = "github:nix-community/fenix";
 
-    ghostty.url = "github:ghostty-org/ghostty";
-
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
-    yazi.url = "github:sxyazi/yazi";
-    zed-editor = {
-      url = "github:zed-industries/zed";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
+    themes.url = "github:RGBCube/ThemeNix";
   };
 
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
+  outputs = inputs @ { nixpkgs, ... }: let
+    inherit (builtins) readDir;
+    inherit (nixpkgs.lib) attrsToList const groupBy listToAttrs mapAttrs nameValuePair;
 
-      imports = [
-        ./hosts
-        ./pkgs
-      ];
+    lib = nixpkgs.lib.extend <| import ./lib inputs;
 
-      perSystem = {
-        config,
-	pkgs,
-	...
-      }: {
-        devShells.default = pkgs.mkShell {
-	  packages = [
-	    pkgs.alejandra
-	    pkgs.git
-	    pkgs.nodePackages.prettier
-	  ];
-	  name = "dotfiles";
-	  DIRENV_LOG_FORMAT = "";
-	  #shell-hook = ''''
-	};
+    hosts = readDir ./hosts
+      |> mapAttrs (name: const <| import ./hosts/${name} lib)
+      |> attrsToList
+      |> groupBy ({ name, value }:
+        if value ? class && value.class == "nixos" then
+          "nixosConfigurations"
+        else
+          "darwinConfigurations")
+      |> mapAttrs (const listToAttrs);
 
-	formatter = pkgs.alejandra;
-      };
-    };
+    hostConfigs = hosts.nixosConfigurations
+      |> attrsToList
+      |> map ({name, value}: nameValuePair name value.config)
+      |> listToAttrs;
+  in hosts // hostConfigs // {
+    inherit lib;
+  };
 }
