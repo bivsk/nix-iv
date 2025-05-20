@@ -23,6 +23,9 @@ in {
     hostName = "robin";
   };
 
+  # TODO: move this?
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
+
   system.stateVersion = "24.11";
   home-manager.sharedModules = [{
     home.stateVersion = "24.11";

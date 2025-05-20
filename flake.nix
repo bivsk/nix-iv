@@ -24,7 +24,7 @@
     flake-registry = "";
     http-connections = 50;
     show-trace = true;
-    # use-cgroups = true;
+    use-cgroups = true;
     warn-dirty = false;
   };
 
