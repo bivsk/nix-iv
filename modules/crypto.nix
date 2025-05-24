@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: let
-  inherit (lib) enabled merge mkIf;
+  inherit (lib) attrValues enabled merge mkIf;
 in merge <| mkIf config.isDesktop {
   # wallets
   services.trezord = enabled;
