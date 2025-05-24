@@ -1,27 +1,38 @@
-lib: lib.nixosSystem' ({ config, lib, ... }: let
+lib: lib.nixosSystem' ({ config, keys, lib, ... }: let
   inherit (lib) collectNix remove;
 in {
   imports = collectNix ./. |> remove ./default.nix;
 
   type = "desktop";
 
+  secrets.id.file = ./id.age;
+  services.openssh.hostKeys = [{
+    type = "ed25519";
+    path = config.secrets.id.path;
+  }];
+
+  secrets.password.file = ./password.age;
   users.users = {
+    root = {
+      openssh.authorizedKeys.keys = keys.admins;
+      hashedPasswordFile = config.secrets.password.path;
+    };
+
     four = {
-      description	= "bivsk";
+      description	= "Four";
+      openssh.authorizedKeys.keys = keys.admins;
+      hashedPasswordFile = config.secrets.password.path;
       isNormalUser	= true;
       extraGroups	= [ "wheel" ];
     };
   };
 
   home-manager.users = {
+    root = {};
     four = {};
   };
 
-  networking = let
-    interface = "enp69s0";
-  in {
-    hostName = "robin";
-  };
+  networking.hostName = "robin";
 
   # TODO: move this?
   hardware.enableRedistributableFirmware = lib.mkDefault true;

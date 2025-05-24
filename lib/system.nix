@@ -17,7 +17,7 @@ inputs: self: super: let
   specialArgs = inputs // {
     inherit inputs;
 
-    # keys = import ../keys.nix;
+    keys = import ../keys.nix;
     lib = self;
   };
 in {
