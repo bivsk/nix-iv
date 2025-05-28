@@ -8,12 +8,12 @@ in merge <| mkIf config.isDesktop {
   home-manager.sharedModules = [{
     home.packages = attrValues {
       inherit (pkgs)
-	# wallets
+        # wallets
         ledger-live-desktop
-	trezor-suite
+        trezor-suite
 
-	# trading
-	tradingview
+        # trading
+        tradingview
       ;
     };
   }];
