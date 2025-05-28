@@ -7,7 +7,7 @@
 in {
   nix.channel = disabled;
 
-  nix.gc = {
+  nix.gc = merge {
     automatic = true;
     options = "--delete-older-than 3d";
     dates = "weekly";
