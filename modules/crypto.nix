@@ -10,6 +10,7 @@ in merge <| mkIf config.isDesktop {
       inherit (pkgs)
         # wallets
         ledger-live-desktop
+        monero-gui
         trezor-suite
 
         # trading
