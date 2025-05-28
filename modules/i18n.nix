@@ -14,4 +14,6 @@ in merge {
     "LC_TELEPHONE"
     "LC_TIME"
   ] <| const "en_US.UTF-8";
+
+  time.timeZone = "America/New_York";
 }
