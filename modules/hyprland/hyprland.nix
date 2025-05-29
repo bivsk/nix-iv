@@ -36,11 +36,11 @@ in merge <| mkIf config.isDesktop {
   home-manager.sharedModules = [{
     wayland.windowManager.hyprland = enabled {
       systemd = enabled {
-        # enableXdgAutostart = true;
+        enableXdgAutostart = true;
       };
 
       settings = {
-        monitor = [ ", preferred, auto, 1";
+        monitor = [ ", preferred, auto, 1" ];
 
 	bindle = [
 	  ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.25"
@@ -130,7 +130,6 @@ in merge <| mkIf config.isDesktop {
 	};
 
 	decoration = {
-	  drop_shadow = false;
 	  rounding = config.theme.cornerRadius;
 
 	  blur = {
@@ -147,7 +146,7 @@ in merge <| mkIf config.isDesktop {
 	  follow_mouse = 1;
 
 	  repeat_delay = 400;
-	  repeat_rate = 100;
+	  repeat_rate = 30;
 
 	  kb_layout = "us";
 	  kb_options = "ctrl:nocaps";

@@ -5,7 +5,7 @@ in {
     cornerRadius = 4;
     borderWidth  = 2;
 
-    margin  = 0;
+    margin  = 8;
     padding = 8;
 
     font.size.normal = 12;
