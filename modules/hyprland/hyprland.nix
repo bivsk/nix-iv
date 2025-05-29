@@ -15,32 +15,31 @@ in merge <| mkIf config.isDesktop {
     configPackages = [
       pkgs.hyprland
     ];
-
-    programs.xwayland = enabled;
-
-    environment.systemPackages = attrValues {
-      inherit (pkgs)
-        brightnessctl
-	grim
-	hyprpicker
-	slurp
-	swappy
-	swaybg
-	wl-clipboard
-	wtype
-	xdg-utils
-	xwaylandvideobridge
-      ;
-    };
-
-    home-manager.sharedModules = [{
-      wayland.windowManager.hyprland = enabled {
-        systemd = enabled {
-	  # enableXdgAutostart = true;
-	};
-
-	# settings = {};
-      };
-    }];
   };
+
+  programs.xwayland = enabled;
+
+  environment.systemPackages = attrValues {
+    inherit (pkgs)
+      brightnessctl
+      grim
+      hyprpicker
+      slurp
+      swappy
+      swaybg
+      wl-clipboard
+      wtype
+      xdg-utils
+    ;
+  };
+
+  home-manager.sharedModules = [{
+    wayland.windowManager.hyprland = enabled {
+      systemd = enabled {
+        # enableXdgAutostart = true;
+      };
+
+      # settings = {};
+    };
+  }];
 }
