@@ -78,23 +78,7 @@ in {
   home-manager.sharedModules = [
     (homeArgs: let
       homeConfig = homeArgs.config;
-
-      gitUrl    = self.best.services.forgejo.settings.server.ROOT_URL;
-      gitDomain = head <| match "https://(.*)/" gitUrl;
     in {
-      programs.nushell.configFile.text = mkAfter /* nu */ ''
-        # Sets the remote origin to the specified user and repository on my git instance
-        def gsr [user_and_repo: string] {
-          let user_and_repo = if ($user_and_repo | str index-of "/") != -1 {
-            $user_and_repo
-          } else {
-            "RGBCube/" + $user_and_repo
-          }
-
-          git remote add origin ("${gitUrl}" + $user_and_repo)
-        }
-      '';
-
       programs.git = enabled {
         userName  = "bivsk";
         userEmail = "bivsk@tutanota.com";
@@ -136,7 +120,7 @@ in {
           # https://bernsteinbear.com/git
           alias.recent = "! git branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\" | head -10";
         } <| mkIf config.isDesktop {
-          core.sshCommand                                  = "ssh -i ~/.ssh/id";
+          core.sshCommand = "ssh -i ~/.ssh/id";
 
           commit.gpgSign  = true;
           tag.gpgSign     = true;
