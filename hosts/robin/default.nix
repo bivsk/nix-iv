@@ -32,9 +32,14 @@ in {
     four = {};
   };
 
-  networking.hostName = "robin";
+  networking = let
+    interface = "enp69s0";
+  in {
+    hostName = "robin";
+    ipv4.address = "192.168.0.22";
+  };
 
-  # TODO: move this?
+  # # TODO: move this?
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   system.stateVersion = "24.11";
