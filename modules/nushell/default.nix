@@ -31,10 +31,6 @@ in {
   home-manager.sharedModules = [(homeArgs: let
     homeConfig = homeArgs.config;
   in {
-    home.sessionVariables = {
-      SHELL = getExe pkgs.nushell;
-    };
-
     xdg.configFile = {
       "nushell/zoxide.nu".source = pkgs.runCommand "zoxide.nu" {} ''
         ${getExe pkgs.zoxide} init nushell --cmd cd > $out
