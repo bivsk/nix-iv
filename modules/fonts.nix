@@ -14,6 +14,7 @@ in merge
     mono = config.theme.font.mono.package;
 
     inherit (pkgs)
+      material-symbols
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-lgc-plus

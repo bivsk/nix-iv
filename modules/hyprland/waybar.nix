@@ -41,7 +41,7 @@ in merge <| mkIf config.isDesktop {
           rewrite."(.*) — nu"        = " $1";
         };
 
-        modules-right = [ "tray" "pulseaudio" "backlight" "cpu" "memory" "network" "battery" "clock" ];
+        modules-right = [ "tray" "pulseaudio" "cpu" "memory" "network" "clock" ];
 
         tray = {
           reverse-direction = true;
@@ -49,14 +49,14 @@ in merge <| mkIf config.isDesktop {
         };
 
         pulseaudio = {
-          format       = "{format_source} {icon} {volume}%";
+          format       = "{icon} {volume}%";
           format-muted = "{format_source} 󰸈";
 
-          format-bluetooth       = "{format_source} 󰋋 󰂯 {volume}%";
-          format-bluetooth-muted = "{format_source} 󰟎 󰂯";
+          format-bluetooth       = "󰋋 󰂯 {volume}%";
+          format-bluetooth-muted = "󰟎 󰂯";
 
-          format-source       = "󰍬";
-          format-source-muted = "󰍭";
+          # format-source       = "󰍬";
+          # format-source-muted = "󰍭";
 
           format-icons.default = [ "󰕿" "󰖀" "󰕾" ];
         };
@@ -66,14 +66,13 @@ in merge <| mkIf config.isDesktop {
           format-icons = [ "" "" "" "" "" "" "" "" "" ];
         };
 
-        cpu.format    = " {usage}%";
-        memory.format = "󰽘 {}%";
+        cpu.format    = " {usage}%";
+        memory.format = " {}%";
 
         network = {
-          format-disconnected = "󰤮 ";
-          format-ethernet     = "󰈀 {ipaddr}/{cidr}";
-          format-linked       = " {ifname} (No IP)";
-          format-wifi         = " {signalStrength}%";
+          format-disconnected = " ";
+          format-ethernet     = " {ipaddr}/{cidr}";
+          format-wifi         = " {signalStrength}%";
         };
 
         battery = {
@@ -94,7 +93,7 @@ in merge <| mkIf config.isDesktop {
         * {
           border: none;
           border-radius: ${toString cornerRadius}px;
-          font-family: "${font.sans.name}";
+          font-family: "${font.mono.name}";
         }
 
         .modules-right {

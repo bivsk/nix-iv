@@ -29,6 +29,7 @@ in {
     fortune = pkgs.fortune.override { withOffensive = true; };
   } // optionalAttrs config.isDesktop {
     inherit (pkgs)
+      # toolchain
       clang
       clang-tools
       gh
@@ -37,10 +38,15 @@ in {
       mold
       zig
 
-      element-desktop
+      # TODO: move to home-manager
+      # gfx
       gimp
       krita
       libreoffice
+
+      # social
+      element-desktop
+      telegram-desktop
       qbittorrent
     ;
 
