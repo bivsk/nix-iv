@@ -50,9 +50,13 @@
 
   outputs = inputs @ { nixpkgs, ... }: let
     inherit (builtins) readDir;
-    inherit (nixpkgs.lib) attrsToList const groupBy listToAttrs mapAttrs nameValuePair;
+    inherit (nixpkgs.lib) attrsToList const genAttrs groupBy listToAttrs mapAttrs nameValuePair;
 
     lib = nixpkgs.lib.extend <| import ./lib inputs;
+
+    systems = [ "x86_64-linux" ];
+    forAllSystems = genAttrs systems;
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
     hosts = readDir ./hosts
       |> mapAttrs (name: const <| import ./hosts/${name} lib)
@@ -69,6 +73,6 @@
       |> map ({name, value}: nameValuePair name value.config)
       |> listToAttrs;
   in hosts // hostConfigs // {
-    inherit lib;
+    inherit lib packages;
   };
 }

@@ -1,9 +1,7 @@
-{
-  systems = [" x86_64-linux "];
-
-  perSystem = { pkgs, ... }: {
-    packages = {
-      tari-universe = pkgs.callPackage ./tari-universe {};
-    };
-  };
+# Custom packages, that can be defined similarly to ones from nixpkgs
+# You can build them using 'nix build .#example'
+pkgs: {
+  azuki = pkgs.callPackage ./azuki { };
+  uzura = pkgs.callPackage ./uzura { };
+  tari-universe = pkgs.callPackage ./tari-universe { };
 }

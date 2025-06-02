@@ -1,5 +1,5 @@
 inputs: self: super: let
-  inherit (self) attrValues filter getAttrFromPath hasAttrByPath collectNix;
+  inherit (self) attrValues collectNix filter getAttrFromPath hasAttrByPath;
 
   modulesCommon = collectNix ../modules;
 
