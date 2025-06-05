@@ -1,4 +1,4 @@
-{ config, lib, modulesPath, ... }: let
+{ config, lib, ... }: let
   inherit (lib) enabled;
 in {
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
