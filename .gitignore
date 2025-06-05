@@ -3,6 +3,8 @@
 !.gitignore
 
 !docs/
+!.github/
+!.github/**/
 
 !hosts/
 !hosts/**/
@@ -22,3 +24,4 @@
 !*.nix
 !*.nu
 !*.txt
+!*.yml
