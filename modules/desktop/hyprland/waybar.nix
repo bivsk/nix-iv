@@ -41,7 +41,9 @@ in merge <| mkIf config.isDesktop {
           rewrite."(.*) — nu"        = " $1";
         };
 
-        modules-right = [ "tray" "pulseaudio" "cpu" "memory" "network" "clock" ];
+        modules-right = if config.isLaptop 
+	then [ "tray" "pulseaudio" "cpu" "memory" "network" "backlight" "battery" "clock" ]
+	else [ "tray" "pulseaudio" "cpu" "memory" "network" "clock" ];
 
         tray = {
           reverse-direction = true;
