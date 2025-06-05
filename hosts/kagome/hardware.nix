@@ -17,6 +17,7 @@ in {
     options = [ "noatime" ];
   };
 
+  boot.initrd.luks.devices."luks-5fd805ab-c1dd-4ab7-8e47-c029d4e30996".device = "/dev/disk/by-uuid/5fd805ab-c1dd-4ab7-8e47-c029d4e30996";
   boot.initrd.luks.devices."luks-6479d9bf-f8ed-40cd-a533-6f37bf1d5712".device = "/dev/disk/by-uuid/6479d9bf-f8ed-40cd-a533-6f37bf1d5712";
 
   fileSystems.${config.boot.loader.efi.efiSysMountPoint} = {
