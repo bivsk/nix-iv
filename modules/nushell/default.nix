@@ -16,6 +16,7 @@ in {
 
       pstree = "pstree -g 2";
       tree   = "eza --tree --git-ignore --group-directories-first";
+      fg     = "job unfreeze";
     };
 
     systemPackages = attrValues {
