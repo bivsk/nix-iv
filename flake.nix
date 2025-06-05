@@ -3,11 +3,13 @@
 
   nixConfig = {
     extra-substituters = [
+      "https://install.determinate.systems"
       "https://hyprland.cachix.org/"
       "https://nix-community.cachix.org/"
     ];
 
     extra-trusted-public-keys = [
+      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM"
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
@@ -19,11 +21,10 @@
       "pipe-operators"
     ];
 
-    accept-flake-config = true;
     builders-use-substitutes = true;
     flake-registry = "";
     http-connections = 50;
-    # lazy-trees = true; # determinate nix
+    lazy-trees = true;
     show-trace = true;
     trusted-users = [ "root" "@build" "@wheel" "@admin" ];
     use-cgroups = true;
@@ -31,7 +32,9 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*";
 
     home-manager = {
       url = "github:nix-community/home-manager";
