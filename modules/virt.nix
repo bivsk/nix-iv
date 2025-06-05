@@ -1,9 +1,13 @@
-{ lib, ... }: let
-  inherit (lib) enabled;
+{ config, lib, ... }: let
+  inherit (lib) attrNames const enabled filterAttrs getAttr;
 in {
   # TODO: restrict GUI to desktop systems
-  virtualization.libvirtd = enabled;
+  virtualisation.libvirtd = enabled;
   programs.virt-manager = enabled;
+
+  users.extraGroups.libvirtd.members = config.users.users
+    |> filterAttrs (const <| getAttr "isNormalUser")
+    |> attrNames;
 
   home-manager.sharedModules = [{
     dconf.settings = {
