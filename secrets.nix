@@ -10,5 +10,5 @@ in {
   "hosts/kagome/password.age".publicKeys = [ kagome ] ++ admins;
 
   # common
-  "modules/ssh/config.age".publicKeys = all;
+  "modules/net/ssh/config.age".publicKeys = all;
 }

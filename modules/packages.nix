@@ -13,6 +13,7 @@ in {
       hyperfine
       openssl
       p7zip
+      pciutils
       pstree
       rsync
       strace
