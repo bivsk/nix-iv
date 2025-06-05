@@ -1,0 +1,17 @@
+*
+
+!.gitignore
+
+!hosts/
+!hosts/**/
+
+!lib/
+
+!modules/
+!modules/**/
+
+!flake.lock
+
+!*.age
+!*.nix
+!*.nu
