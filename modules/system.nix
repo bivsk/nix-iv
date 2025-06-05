@@ -4,7 +4,8 @@ in {
   options = {
     type = mkValue "server";
 
-    isDesktop = mkConst <| config.type == "desktop";
+    isDesktop = mkConst <| config.type != "server";
+    isLaptop = mkConst <| config.type == "laptop";
     isServer = mkConst <| config.type == "server";
   };
 }
