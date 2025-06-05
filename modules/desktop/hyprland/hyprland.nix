@@ -108,6 +108,7 @@ in merge <| mkIf config.isDesktop {
 	  "SUPER, F, fullscreen"
 	  "SUPER+SHIFT, F, togglefloating"
 	  "SUPER+SHIFT, C, killactive"
+	  "SUPER+SHIFT, E, exit"
 
 	  "SUPER+SHIFT, RETURN, exec, ghostty"
 	  "SUPER, W, exec, firefox"
