@@ -3,7 +3,7 @@ lib: lib.nixosSystem' ({ config, keys, lib, ... }: let
 in {
   imports = collectNix ./. |> remove ./default.nix;
 
-  type = "desktop";
+  type = "laptop";
 
   secrets.id.file = ./id.age;
   services.openssh.hostKeys = [{
