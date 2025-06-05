@@ -31,7 +31,7 @@ in {
 
     programs.ssh = enabled {
       controlMaster = "auto";
-      controlPath = "${controlDir}/%r@%n:$p";
+      controlPath = "${controlDir}/%r@%n:%p";
       controlPersist = "60m";
       serverAliveCountMax = 2;
       serverAliveInterval = 60;
