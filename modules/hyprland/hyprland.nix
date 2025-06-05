@@ -45,6 +45,8 @@ in merge <| mkIf config.isDesktop {
 	bindle = [
 	  ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.25"
 	  ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+	  ",XF86MonBrightnessUp, exec, brillo -A 5"
+	  ",XF86MonBrightnessDown exec, brillo -U 5"
 	];
 
 	bindl = [
