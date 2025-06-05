@@ -23,7 +23,7 @@ in {
       openssh.authorizedKeys.keys = keys.admins;
       hashedPasswordFile = config.secrets.password.path;
       isNormalUser	= true;
-      extraGroups	= [ "wheel" ];
+      extraGroups	= [ "wheel" "video" ];
     };
   };
 
