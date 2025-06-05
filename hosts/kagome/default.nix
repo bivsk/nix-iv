@@ -33,7 +33,7 @@ in {
   };
 
   networking = {
-    hostName = "robin";
+    hostName = "kagome";
     ipv4.address = "192.168.0.29";
   };
 
