@@ -15,6 +15,7 @@
 !flake.lock
 
 !*.age
+!*.md
 !*.nix
 !*.nu
 !*.txt
