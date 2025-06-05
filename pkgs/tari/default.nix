@@ -2,17 +2,24 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "tari";
-  version = "4.0.0";
+  version = "4.3.1";
 
   src = fetchFromGitHub {
-    owner = "bivsk";
+    owner = "tari-project";
     repo = pname;
-    rev = "6de5b02bb5d5ba0b4153a42336fb3978f13a89d1";
-    hash = "sha256-Be+DkQytStNDWZLn7ONwjo+gadrt2xwLL5JzTSYHhMk=";
+    rev = "v${version}";
+    hash = "sha256-AbNhT5SG0Og3yp4716RyiBzcdpfQfQemd8vwhigQs9w=";
   };
 
   # useFetchCargoVendor = true; # ???
-  cargoHash = "sha256-BvxJG+NNEdqLVdR9tvj6FC3nNBSRpVTeZX4QnJS4ehs=";
+  # cargoHash = "sha256-do93NlMIdUrvUhom/Sv9ZmPllqIDPlacWFF16s8/1qw=";
+  cargoLock = {
+    lockFile = ./Cargo.lock;
+    outputHashes = {
+      "ledger-transport-0.11.0" = "sha256-2hUNLsJEFzABowpnDkJCtqr45dEF07iL77+ijEIBkZo=";
+      "liblmdb-sys-0.2.3" = "sha256-Y+KRHyR632gD7obckcdw1h9rh6jb9xLVv/7j2nG/yZI=";
+    };
+  };
 
   nativeBuildInputs = [ pkg-config ];
 
