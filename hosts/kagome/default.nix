@@ -5,6 +5,8 @@ in {
 
   type = "laptop";
 
+  services.fprintd.enable = true;
+
   secrets.id.file = ./id.age;
   services.openssh.hostKeys = [{
     type = "ed25519";
