@@ -12,6 +12,9 @@
 !modules/
 !modules/**/
 
+!pkgs/
+!pkgs/**/
+
 !flake.lock
 
 !*.age

@@ -4,4 +4,5 @@ pkgs: {
   azuki = pkgs.callPackage ./azuki { };
   uzura = pkgs.callPackage ./uzura { };
   tari-universe = pkgs.callPackage ./tari-universe { };
+  tari = pkgs.callPackage ./tari { };
 }
