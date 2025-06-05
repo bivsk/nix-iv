@@ -1,4 +1,4 @@
-{ lib, pkgs, themes, ... }: let
+{ config, lib, pkgs, themes, ... }: let
   inherit (lib) mkValue;
 in {
   options.theme = mkValue <| themes.custom <| themes.raw.gruvbox-dark-hard // {
@@ -8,8 +8,8 @@ in {
     margin  = 8;
     padding = 8;
 
-    font.size.normal = 12;
-    font.size.big    = 18;
+    font.size.normal = if config.isLaptop then 10 else 12;
+    font.size.big    = if config.isLaptop then 16 else 18;
 
     font.sans.name    = "Lexend";
     font.sans.package = pkgs.lexend;

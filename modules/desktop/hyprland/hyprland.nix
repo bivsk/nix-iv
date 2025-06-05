@@ -40,13 +40,13 @@ in merge <| mkIf config.isDesktop {
       };
 
       settings = {
-        monitor = [ ", preferred, auto, 1" ];
+        monitor = if config.isLaptop then [ ", preferred, auto, 2, vrr, 2" ] else [ ", preferred, auto, 1" ];
 
 	bindle = [
 	  ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.25"
 	  ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-	  ",XF86MonBrightnessUp, exec, brillo -A 5"
-	  ",XF86MonBrightnessDown exec, brillo -U 5"
+	  ", XF86MonBrightnessUp, exec, brillo -A 5"
+	  ", XF86MonBrightnessDown, exec, brillo -U 5"
 	];
 
 	bindl = [
