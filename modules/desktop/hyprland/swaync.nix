@@ -8,10 +8,10 @@ in merge <| mkIf config.isDesktop {
 
     services.swaync = with config.theme.withHashtag; enabled {
       settings = {
-        control-center-margin-top = 10;
-        control-center-margin-bottom = 10;
-        control-center-margin-right = 10;
-        control-center-margin-left = 10;
+        control-center-margin-top = margin;
+        control-center-margin-bottom = margin;
+        control-center-margin-right = margin;
+        control-center-margin-left = margin;
 	notification-icon-size = 64;
 	notification-body-image-height = 100;
 	notification-body-image-width = 200;
@@ -57,7 +57,7 @@ in merge <| mkIf config.isDesktop {
 
       style = ''
         * {
-          font-family: JetBrainsMono Nerd Font Mono;
+          font-family: ${font.sans.name};
           font-weight: bold;
         }
         .control-center .notification-row:focus,
@@ -67,7 +67,7 @@ in merge <| mkIf config.isDesktop {
         }
         .notification-row {
           outline: none;
-          margin: 10px;
+          margin: ${toString margin};
           padding: 0;
         }
         .notification {
@@ -77,24 +77,24 @@ in merge <| mkIf config.isDesktop {
         }
         .notification-content {
           background: ${base00};
-          padding: 10px;
-          border-radius: 5px;
-          border: 2px solid ${base0D};
+          padding: ${toString padding};
+          border-radius: ${toString cornerRadius};
+          border: ${toString borderWidth} solid ${base0D};
           margin: 0;
         }
         .notification-default-action {
           margin: 0;
           padding: 0;
-          border-radius: 5px;
+          border-radius: ${toString cornerRadius};
         }
         .close-button {
           background: ${base08};
           color: ${base00};
           text-shadow: none;
           padding: 0;
-          border-radius: 5px;
-          margin-top: 5px;
-          margin-right: 5px;
+          border-radius: ${toString cornerRadius};
+          margin-top: ${toString margin};
+          margin-right: ${toString margin};
         }
         .close-button:hover {
           box-shadow: none;
@@ -103,9 +103,9 @@ in merge <| mkIf config.isDesktop {
           border: none
         }
         .notification-action {
-          border: 2px solid ${base0D};
+          border: ${toString borderWidth} solid ${base0D};
           border-top: none;
-          border-radius: 5px;
+          border-radius: ${toString cornerRadius};
         }
         .notification-default-action:hover,
         .notification-action:hover {
@@ -113,60 +113,60 @@ in merge <| mkIf config.isDesktop {
           background: ${base0B}
         }
         .notification-default-action {
-          border-radius: 5px;
+          border-radius: ${toString cornerRadius};
           margin: 0px;
         }
         .notification-default-action:not(:only-child) {
-          border-bottom-left-radius: 7px;
-          border-bottom-right-radius: 7px
+          border-bottom-left-radius: ${toString cornerRadius};
+          border-bottom-right-radius: ${toString cornerRadius}
         }
         .notification-action:first-child {
-          border-bottom-left-radius: 10px;
+          border-bottom-left-radius: ${toString cornerRadius};
           background: ${base00}
         }
         .notification-action:last-child {
-          border-bottom-right-radius: 10px;
+          border-bottom-right-radius: ${toString cornerRadius};
           background: ${base00}
         }
         .inline-reply {
-          margin-top: 8px
+          margin-top: ${toString margin}
         }
         .inline-reply-entry {
           background: ${base00};
           color: ${base05};
           caret-color: ${base05};
-          border: 1px solid ${base09};
-          border-radius: 5px
+          border: ${toString (builtins.floor (borderWidth / 2))} solid ${base09};
+          border-radius: ${toString cornerRadius}
         }
         .inline-reply-button {
           margin-left: 4px;
           background: ${base00};
-          border: 1px solid ${base09};
-          border-radius: 5px;
+          border: ${toString (builtins.floor (borderWidth / 2))} solid ${base09};
+          border-radius: ${toString cornerRadius};
           color: ${base05}
         }
         .inline-reply-button:disabled {
           background: initial;
           color: ${base03};
-          border: 1px solid transparent
+          border: ${toString (builtins.floor (borderWidth / 2))} solid transparent
         }
         .inline-reply-button:hover {
           background: ${base00}
         }
         .body-image {
-          margin-top: 6px;
+          margin-top: ${toString margin};
           background-color: ${base05};
-          border-radius: 5px
+          border-radius: ${toString cornerRadius}
         }
         .summary {
-          font-size: 16px;
+          font-size: ${toString font.size.big};
           font-weight: 700;
           background: transparent;
           color: rgba(158, 206, 106, 1);
           text-shadow: none
         }
         .time {
-          font-size: 16px;
+          font-size: ${toString font.size.big};
           font-weight: 700;
           background: transparent;
           color: ${base05};
@@ -174,7 +174,7 @@ in merge <| mkIf config.isDesktop {
           margin-right: 18px
         }
         .body {
-          font-size: 15px;
+          font-size: ${toString font.size.big};
           font-weight: 400;
           background: transparent;
           color: ${base05};
@@ -182,8 +182,8 @@ in merge <| mkIf config.isDesktop {
         }
         .control-center {
           background: ${base00};
-          border: 2px solid ${base0C};
-          border-radius: 5px;
+          border: ${toString borderWidth} solid ${base0C};
+          border-radius: ${toString cornerRadius};
         }
         .control-center-list {
           background: transparent
