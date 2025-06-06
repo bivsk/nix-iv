@@ -34,6 +34,14 @@ in merge <| mkIf config.isDesktop {
   };
 
   home-manager.sharedModules = [{
+    # force wayland
+    home.sessionVariables = {
+      QT_QPA_PLATFORM = "wayland";
+      SDL_VIDEODRIVER = "wayland";
+      XDG_SESSION_TYPE = "wayland";
+      NIXOS_OZONE_WL = "1";
+    };
+
     wayland.windowManager.hyprland = enabled {
       systemd = enabled {
         enableXdgAutostart = true;
@@ -108,7 +116,7 @@ in merge <| mkIf config.isDesktop {
 	  "SUPER, F, fullscreen"
 	  "SUPER+SHIFT, F, togglefloating"
 	  "SUPER+SHIFT, C, killactive"
-	  "SUPER+SHIFT, E, exit"
+	  "SUPER+SHIFT, Q, exit"
 
 	  "SUPER+SHIFT, RETURN, exec, ghostty"
 	  "SUPER, W, exec, firefox"

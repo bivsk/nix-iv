@@ -46,6 +46,7 @@ in {
       libreoffice
 
       # social
+      element-desktop
       telegram-desktop
       qbittorrent
     ;
