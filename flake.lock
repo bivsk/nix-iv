@@ -32,10 +32,10 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1744501884,
+        "lastModified": 1749186560,
         "owner": "RGBCube",
         "repo": "crash",
-        "rev": "7849872b30482ecab7d3586246e46855522ea64d",
+        "rev": "fd77a5a50c9c49a9b18302ae305c274f04373174",
         "type": "github"
       },
       "original": {
