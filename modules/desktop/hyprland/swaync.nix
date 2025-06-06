@@ -3,7 +3,6 @@
 in merge <| mkIf config.isDesktop {
   home-manager.sharedModules = [{
     wayland.windowManager.hyprland.settings = {
-      exec = [ "swaync" ];
       bind = [ "SUPER, slash, exec, swaync-client -t -sw" ];
     };
 
