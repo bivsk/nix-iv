@@ -2,6 +2,7 @@
   inherit (lib) enabled merge mkIf;
 in merge <| mkIf config.isDesktop {
   boot = {
+    initrd.systemd = enabled;
     plymouth = enabled {
       theme = "pixels";
       themePackages = [
