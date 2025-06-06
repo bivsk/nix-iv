@@ -21,7 +21,10 @@ jobs:
           ref: "${{ (inputs.tag != null) && format('refs/tags/{0}', inputs.tag) || '' }}"
       - uses: "DeterminateSystems/determinate-nix-action@v3"
         with:
-          extra-conf: "extra-experimental-features = pipe-operators"
+          determinate: true
+          extra-conf: 
+            - "lazy-trees = true"
+            - "extra-experimental-features = pipe-operators"
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
           visibility: "public"
