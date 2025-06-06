@@ -1,4 +1,4 @@
-name: "Publish tags to FlakeHub"
+name: Publish tags to FlakeHub
 on:
   push:
     tags:
@@ -6,25 +6,28 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "The existing tag to publish to FlakeHub"
-        type: "string"
+        description: The existing tag to publish to FlakeHub
+        type: string
         required: true
 jobs:
   flakehub-publish:
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
     permissions:
-      id-token: "write"
-      contents: "read"
+      id-token: write
+      contents: read
     steps:
-      - uses: "actions/checkout@v4"
+      - uses: actions/checkout@v4
         with:
           ref: "${{ (inputs.tag != null) && format('refs/tags/{0}', inputs.tag) || '' }}"
-      - uses: "DeterminateSystems/determinate-nix-action@v3"
+      - uses: DeterminateSystems/determinate-nix-action@v3
         with:
-          extra-conf: "extra-experimental-features = pipe-operators"
-      - uses: "DeterminateSystems/flakehub-push@main"
+          extra-conf: extra-experimental-features = pipe-operators
+      - uses: DeterminateSystems/flakehub-push@main
         with:
-          visibility: "public"
-          name: "bivsk/nix-iv"
+          visibility: public
+          name: bivsk/nix-iv
           tag: "${{ inputs.tag }}"
           include-output-paths: true
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - run: nix build .#nixosConfigurations.robin.config.system.build.toplevel
+      - run: nix build .#nixosConfigurations.kagome.config.system.build.toplevel
