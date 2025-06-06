@@ -50,6 +50,11 @@
 
     fenix.url = "github:nix-community/fenix";
 
+    crash = {
+      url = "github:RGBCube/crash";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     themes.url = "github:RGBCube/ThemeNix";
   };
 
