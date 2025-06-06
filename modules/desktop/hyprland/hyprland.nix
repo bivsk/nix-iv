@@ -34,14 +34,6 @@ in merge <| mkIf config.isDesktop {
   };
 
   home-manager.sharedModules = [{
-    # force wayland
-    home.sessionVariables = {
-      QT_QPA_PLATFORM = "wayland";
-      SDL_VIDEODRIVER = "wayland";
-      XDG_SESSION_TYPE = "wayland";
-      NIXOS_OZONE_WL = "1";
-    };
-
     wayland.windowManager.hyprland = enabled {
       systemd = enabled {
         enableXdgAutostart = true;
@@ -49,6 +41,14 @@ in merge <| mkIf config.isDesktop {
 
       settings = {
         monitor = if config.isLaptop then [ ", preferred, auto, 2, vrr, 2" ] else [ ", preferred, auto, 1" ];
+
+	env = [
+	  "GDK_BACKEND,wayland,x11,*"
+	  "QT_QPA_PLATFORM,wayland;xcb"
+	  "SDL_VIDEODRIVER,wayland"
+	  "CLUTTER_BACKEND,wayland"
+	  "NIXOS_OZONE_WL,1"
+	];
 
 	bindle = [
 	  ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.25"
@@ -152,6 +152,8 @@ in merge <| mkIf config.isDesktop {
 	    special = false; # expensive
 	  };
 	};
+
+	xwayland.force_zero_scaling = true;
 
 	input = {
 	  follow_mouse = 1;
