@@ -23,6 +23,7 @@ in {
       tree
       usbutils
       uutils-coreutils-noprefix
+      wgetpaste
       yazi
       yt-dlp
     ;
