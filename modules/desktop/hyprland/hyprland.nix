@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }: let
   inherit (lib) attrValues enabled flatten merge mkIf range;
 in merge <| mkIf config.isDesktop {
-  hardware.graphics = enabled;
-
   services.logind.powerKey = "ignore";
 
   xdg.portal = enabled {
