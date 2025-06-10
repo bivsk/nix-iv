@@ -13,6 +13,6 @@ in merge <| mkIf config.isDesktop {
     nvtopPackages.amd
   ];
 
-  systemd.packages = pkgs.lact;
+  systemd.packages = [ pkgs.lact ];
   systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 }
