@@ -40,7 +40,7 @@ in merge <| mkIf config.isDesktop {
       };
 
       settings = {
-        monitor = if config.isLaptop then [ ", preferred, auto, 2, vrr, 2" ] else [ ", preferred, auto, 1" ];
+        monitor = if config.isLaptop then [ ", preferred, auto, 2, vrr, 3" ] else [ ", highrr, auto, 1, vrr, 3" ];
 
 	env = [
 	  "GDK_BACKEND,wayland,x11,*"
