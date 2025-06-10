@@ -2,7 +2,8 @@
   boot.kernelPackages = if config.isServer then
     pkgs.linuxPackages_latest
   else
-    pkgs.linuxKernel.packages.linux_zen;
+    # pkgs.linuxKernel.packages.linux_zen;
+    pkgs.linuxPackages_latest;
 
   environment.systemPackages = lib.attrValues {
     inherit (pkgs)
