@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: let
-  inherit (lib) attrValues enabled merge mkIf;
+  inherit (lib) enabled merge mkIf;
 in merge <| mkIf config.isDesktop {
   hardware = {
     graphics = enabled {
@@ -7,10 +7,12 @@ in merge <| mkIf config.isDesktop {
     };
   };
 
-  environment.systemPackages = attrValues <| {
-    inherit (pkgs)
-      clinfo
-      nvtopPackages.amd
-    ;
-  };
+  environment.systemPackages = with pkgs; [
+    clinfo
+    lact
+    nvtopPackages.amd
+  ];
+
+  systemd.packages = pkgs.lact;
+  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 }
