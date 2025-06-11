@@ -13,7 +13,7 @@ rustPlatform.buildRustPackage rec {
 
   # useFetchCargoVendor = true; # ???
   # cargoHash = "sha256-do93NlMIdUrvUhom/Sv9ZmPllqIDPlacWFF16s8/1qw=";
-  cargoLock = {
+  cargoDeps = rustPlatform.importCargoLock {
     lockFile = ./Cargo.lock;
     outputHashes = {
       "ledger-transport-0.11.0" = "sha256-2hUNLsJEFzABowpnDkJCtqr45dEF07iL77+ijEIBkZo=";
