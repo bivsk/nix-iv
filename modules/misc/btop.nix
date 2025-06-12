@@ -5,7 +5,7 @@ in {
     xdg.configFile."btop/themes/base16.theme".text = config.theme.btopTheme;
 
     programs.btop = enabled {
-      package = if config.isDesktop then pkgs.btop else pkgs.btop-rocm;
+      package = if config.isDesktop then pkgs.btop-rocm else pkgs.btop;
 
       settings.color_theme = "base16";
       settings.rounded_corners = config.theme.cornerRadius > 0;
