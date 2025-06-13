@@ -2,7 +2,7 @@
   lib, 
   pkgs,
   stdenv,
-  fetchFromGitHub, 
+  fetchurl, 
   rustPlatform,
   fetchNpmDeps,
   cargo-tauri,
@@ -18,25 +18,23 @@
   protobuf,
   randomx,
   typescript,
+  gst_all_1,
   webkitgtk_4_1,
   wrapGAppsHook4
 }:
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "tari-universe";
-  version = "1.2.8";
+  version = "1.2.9";
 
-  src = fetchFromGitHub {
-    owner = "tari-project";
-    repo = "universe";
-    tag = "v${finalAttrs.version}";
-    fetchSubmodules = true;
-    hash = "sha256-r+xVeKTZ52C0Fj01XocJR759Sp0qdRdmo85cl5nqxMs=";
+  src = fetchurl {
+    url = "https://github.com/tari-project/universe/archive/refs/tags/v${finalAttrs.version}.tar.gz";
+    hash = "sha256-GIT/In71dhAt2U0tLucJZ/qN2nmIZtBF43lGPwlaxq4=";
   };
 
   npmDeps = fetchNpmDeps {
     name = "${finalAttrs.pname}-${finalAttrs.version}-npm-deps";
     inherit (finalAttrs) src;
-    hash = "sha256-zdH/NsWHjEF1sekbm9qoI7+/K5v8YleGCR2KsAUapLU=";
+    hash = "sha256-XSFj8EANatZ0nBPq2JKQhdRoJoNM2TBNrEXXJwECxaE=";
   };
 
   nativeBuildInputs = 
@@ -45,8 +43,6 @@ rustPlatform.buildRustPackage (finalAttrs: {
       cmake
       nodejs
       npmHooks.npmConfigHook
-      gobject-introspection
-      libayatana-appindicator
       perl
       protobuf
       randomx
@@ -59,36 +55,44 @@ rustPlatform.buildRustPackage (finalAttrs: {
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
     glib-networking
+    gst_all_1.gst-plugins-good
     libayatana-appindicator
     openssl
     webkitgtk_4_1
   ];
 
-  # idk
+  # TODO: look into failing tests
   doCheck = false;
 
   cargoRoot = "src-tauri";
-  cargoHash = "sha256-g4u65lh7VP7sE6UCdLYarq/q0lBXEYThNLr8vkDUNXU=";
+  cargoHash = "sha256-y7pL6te6d8AqapKLCTauP/6uIrNZRfQru2m9r7prK1I=";
   buildAndTestSubdir = finalAttrs.cargoRoot;
   useFetchCargoVendor = true;
 
-  # don't run the tauri updater
+  env = {
+    TARI_NETWORK = "mainnet";
+    TARI_TARGET_NETWORK = "mainnet";
+    OS_BINARY_NAME = if stdenv.hostPlatform.isLinux then "tari_universe" else "Tari Universe";
+  };
+
   postPatch = ''
+    substituteInPlace $cargoDepsCopy/libappindicator-sys-*/src/lib.rs \
+      --replace-fail "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
+
+    # don't run the tauri updater
     sed -i 's/"createUpdaterArtifacts": *true/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
-    sed -i '111,117d' src-tauri/tauri.conf.json
   '';
 
+  # use randomx from nix
   RUSTFLAGS = (builtins.map (a: ''-L ${a}/lib'') [
-    pkgs.randomx
+    randomx
   ]);
-
-  LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath (finalAttrs.buildInputs ++ finalAttrs.nativeBuildInputs);
 
   meta = {
     description = "The beautifully simple mining app for mining Tari.";
     homepage = "https://www.tari.com/downloads";
     license = lib.licenses.cpal10;
     platforms = lib.platforms.linux;
-    mainProgram = "Tari Universe (Alpha)";
+    mainProgram = "tari_universe";
   };
 })
