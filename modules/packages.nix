@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let
+{ config, lib, pkgs, self, ... }: let
   inherit (lib) attrValues optionalAttrs;
 in {
   environment.systemPackages = attrValues <| {
@@ -19,6 +19,7 @@ in {
       tree
       usbutils
       uutils-coreutils-noprefix
+      wget
       wgetpaste
     ;
 
