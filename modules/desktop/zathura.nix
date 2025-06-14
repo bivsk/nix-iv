@@ -7,6 +7,7 @@ in merge <| mkIf config.isDesktop {
         default-bg = "${base00}";
         default-fg = "${base07}";
       };
+      extraConfig = config.theme.zathuraTheme;
     };
   }];
 }
