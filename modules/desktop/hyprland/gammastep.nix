@@ -10,6 +10,7 @@ in merge <| mkIf config.isDesktop {
 
   home-manager.sharedModules = [{
     services.gammastep = enabled {
+      tray = true;
       provider = "geoclue2";
       temperature.day = 5500;
       temperature.night = 1900;
