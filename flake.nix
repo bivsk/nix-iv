@@ -55,7 +55,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    themes.url = "github:RGBCube/ThemeNix";
+    themes.url = "github:bivsk/ThemeNix/zathura";
   };
 
   outputs = inputs @ { nixpkgs, ... }: let
