@@ -79,6 +79,12 @@ rustPlatform.buildRustPackage (finalAttrs: {
     substituteInPlace $cargoDepsCopy/libappindicator-sys-*/src/lib.rs \
       --replace-fail "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
 
+    # remove (Alpha) from tauri.conf
+    jq --arg name "Tari Universe" '.productName = $name' tauri.conf.json | sponge tauri.conf.json
+    jq --arg name "${OS_BINARY_NAME}" '.mainBinaryName' = $name' tauri.conf.json | sponge tauri.conf.json
+    jq --arg name "Tari Universe v${finalAttrs.version}" '.app.windows[0].title' = $name' tauri.conf.json | sponge tauri.conf.json
+    jq --arg name "com.tari.universe" '..identifier' = $name' tauri.conf.json | sponge tauri.conf.json
+
     # don't run the tauri updater
     sed -i 's/"createUpdaterArtifacts": *true/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
   '';
