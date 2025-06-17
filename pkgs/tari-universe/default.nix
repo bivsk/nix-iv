@@ -13,6 +13,7 @@
   jq,
   libayatana-appindicator,
   librsvg,
+  libsoup_3,
   moreutils,
   nodejs,
   npmHooks,
@@ -26,7 +27,7 @@
   typescript,
   gst_all_1,
   webkitgtk_4_1,
-  wrapGAppsHook3,
+  wrapGAppsHook4,
 }:
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "tari-universe";
@@ -56,7 +57,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
       protobuf
       randomx
       typescript
-      wrapGAppsHook3
+      wrapGAppsHook4
     ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       pkg-config
@@ -67,6 +68,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     gtk3
     libayatana-appindicator
     librsvg
+    libsoup_3
     glib-networking
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
@@ -77,6 +79,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
     opencl-headers
   ];
 
+  # debug for now
+  buildType = "debug";
   # TODO: look into failing tests
   doCheck = false;
 
