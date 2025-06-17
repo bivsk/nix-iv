@@ -44,6 +44,26 @@ rustPlatform.buildRustPackage (finalAttrs: {
     hash = "sha256-XSFj8EANatZ0nBPq2JKQhdRoJoNM2TBNrEXXJwECxaE=";
   };
 
+  useFetchCargoVendor = true;
+  cargoHash = "sha256-y7pL6te6d8AqapKLCTauP/6uIrNZRfQru2m9r7prK1I=";
+
+  postPatch = ''
+    substituteInPlace $cargoDepsCopy/libappindicator-sys-*/src/lib.rs \
+      --replace-fail "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
+
+    # remove (Alpha) from tauri.conf
+    jq --arg name "Tari Universe" '.productName = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+    jq --arg name "$OS_BINARY_NAME" '.mainBinaryName = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+    jq --arg name "Tari Universe v${finalAttrs.version}" '.app.windows[0].title = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+    jq --arg name "com.tari.universe" '.identifier = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+
+    # don't run the tauri updater
+    sed -i 's/"createUpdaterArtifacts": *true/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
+  '';
+
+  # debug for now
+  buildType = "debug";
+
   nativeBuildInputs = 
     [
       autoPatchelfHook
@@ -74,20 +94,19 @@ rustPlatform.buildRustPackage (finalAttrs: {
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
     gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-bad
+    gst_all_1.libav
+    gst_all_1.vaapi
     openssl
     rocmPackages.clr.icd
     opencl-headers
   ];
 
-  # debug for now
-  buildType = "debug";
+  cargoRoot = "src-tauri";
+  buildAndTestSubdir = finalAttrs.cargoRoot;
+
   # TODO: look into failing tests
   doCheck = false;
-
-  cargoRoot = "src-tauri";
-  cargoHash = "sha256-y7pL6te6d8AqapKLCTauP/6uIrNZRfQru2m9r7prK1I=";
-  buildAndTestSubdir = finalAttrs.cargoRoot;
-  useFetchCargoVendor = true;
 
   env = {
     TARI_NETWORK = "mainnet";
@@ -95,25 +114,12 @@ rustPlatform.buildRustPackage (finalAttrs: {
     OS_BINARY_NAME = if stdenv.hostPlatform.isLinux then "tari_universe" else "Tari Universe";
   };
 
-  preFixup = ''
-    gappsWrapperArgs+=(
-      --set-default WEBKIT_DISABLE_DMABUF_RENDERER 1
-    )
-  '';
+  # preFixup = ''
+  #   gappsWrapperArgs+=(
+  #     --set-default WEBKIT_DISABLE_DMABUF_RENDERER 1
+  #   )
+  # '';
 
-  postPatch = ''
-    substituteInPlace $cargoDepsCopy/libappindicator-sys-*/src/lib.rs \
-      --replace-fail "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
-
-    # remove (Alpha) from tauri.conf
-    jq --arg name "Tari Universe" '.productName = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
-    jq --arg name "$OS_BINARY_NAME" '.mainBinaryName = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
-    jq --arg name "Tari Universe v${finalAttrs.version}" '.app.windows[0].title = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
-    jq --arg name "com.tari.universe" '.identifier = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
-
-    # don't run the tauri updater
-    sed -i 's/"createUpdaterArtifacts": *true/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
-  '';
 
   # use randomx from nix
   RUSTFLAGS = (builtins.map (a: ''-L ${a}/lib'') [
