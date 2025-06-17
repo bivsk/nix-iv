@@ -2,12 +2,13 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) attrValues;
-in {
+in
+{
   environment.systemPackages = attrValues {
-    inherit
-      (pkgs)
+    inherit (pkgs)
       python314
       uv
       ;

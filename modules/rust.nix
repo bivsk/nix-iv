@@ -3,16 +3,17 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) attrValues;
-in {
+in
+{
   environment.variables = {
     CARGO_NET_GIT_FETCH_WITH_CLI = "true";
   };
 
   environment.systemPackages = attrValues {
-    inherit
-      (pkgs)
+    inherit (pkgs)
       cargo-deny
       cargo-expand
       cargo-fuzz

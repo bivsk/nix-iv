@@ -1,31 +1,44 @@
-inputs: self: super: let
-  inherit (self) attrValues collectNix filter getAttrFromPath hasAttrByPath;
+inputs: self: super:
+let
+  inherit (self)
+    attrValues
+    collectNix
+    filter
+    getAttrFromPath
+    hasAttrByPath
+    ;
 
   modulesCommon = collectNix ../modules;
 
-  collectInputs = let
-    inputs' = attrValues inputs;
-  in
-    path:
-      inputs'
-      |> filter (hasAttrByPath path)
-      |> map (getAttrFromPath path);
+  collectInputs =
+    let
+      inputs' = attrValues inputs;
+    in
+    path: inputs' |> filter (hasAttrByPath path) |> map (getAttrFromPath path);
 
-  inputModules = collectInputs ["nixosModules" "default"];
+  inputModules = collectInputs [
+    "nixosModules"
+    "default"
+  ];
 
-  inputOverlays = collectInputs ["overlays" "default"];
-  overlayModule = {nixpkgs.overlays = inputOverlays;};
+  inputOverlays = collectInputs [
+    "overlays"
+    "default"
+  ];
+  overlayModule = {
+    nixpkgs.overlays = inputOverlays;
+  };
 
-  specialArgs =
-    inputs
-    // {
-      inherit inputs;
+  specialArgs = inputs // {
+    inherit inputs;
 
-      keys = import ../keys.nix;
-      lib = self;
-    };
-in {
-  nixosSystem' = module:
+    keys = import ../keys.nix;
+    lib = self;
+  };
+in
+{
+  nixosSystem' =
+    module:
     super.nixosSystem {
       inherit specialArgs;
 

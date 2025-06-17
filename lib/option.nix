@@ -1,13 +1,17 @@
-_: _: super: let
+_: _: super:
+let
   inherit (super) mkOption;
-in {
-  mkConst = value:
+in
+{
+  mkConst =
+    value:
     mkOption {
       default = value;
       readOnly = true;
     };
 
-  mkValue = default:
+  mkValue =
+    default:
     mkOption {
       inherit default;
     };

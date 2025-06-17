@@ -26,7 +26,12 @@
     http-connections = 50;
     lazy-trees = true;
     show-trace = true;
-    trusted-users = ["root" "@build" "@wheel" "@admin"];
+    trusted-users = [
+      "root"
+      "@build"
+      "@wheel"
+      "@admin"
+    ];
     use-cgroups = true;
     warn-dirty = false;
   };
@@ -58,46 +63,58 @@
     themes.url = "github:bivsk/ThemeNix/zathura";
   };
 
-  outputs = inputs @ {nixpkgs, ...}: let
-    inherit (builtins) readDir;
-    inherit (nixpkgs.lib) attrsToList const genAttrs groupBy listToAttrs mapAttrs nameValuePair;
+  outputs =
+    inputs@{ nixpkgs, ... }:
+    let
+      inherit (builtins) readDir;
+      inherit (nixpkgs.lib)
+        attrsToList
+        const
+        genAttrs
+        groupBy
+        listToAttrs
+        mapAttrs
+        nameValuePair
+        ;
 
-    lib = nixpkgs.lib.extend <| import ./lib inputs;
+      lib = nixpkgs.lib.extend <| import ./lib inputs;
 
-    systems = ["x86_64-linux"];
-    forAllSystems = genAttrs systems;
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      systems = [ "x86_64-linux" ];
+      forAllSystems = genAttrs systems;
+      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
-    pkgsFor = system: import nixpkgs {inherit system;};
-    forEachSystem = f: genAttrs systems (system: f (pkgsFor system));
+      pkgsFor = system: import nixpkgs { inherit system; };
+      forEachSystem = f: genAttrs systems (system: f (pkgsFor system));
 
-    hosts =
-      readDir ./hosts
-      |> mapAttrs (name: const <| import ./hosts/${name} lib)
-      |> attrsToList
-      |> groupBy ({
-        name,
-        value,
-      }:
-        if value ? class && value.class == "nixos"
-        then "nixosConfigurations"
-        else "darwinConfigurations")
-      |> mapAttrs (const listToAttrs);
+      hosts =
+        readDir ./hosts
+        |> mapAttrs (name: const <| import ./hosts/${name} lib)
+        |> attrsToList
+        |> groupBy (
+          {
+            name,
+            value,
+          }:
+          if value ? class && value.class == "nixos" then "nixosConfigurations" else "darwinConfigurations"
+        )
+        |> mapAttrs (const listToAttrs);
 
-    hostConfigs =
-      hosts.nixosConfigurations
-      |> attrsToList
-      |> map ({
-        name,
-        value,
-      }:
-        nameValuePair name value.config)
-      |> listToAttrs;
-  in
+      hostConfigs =
+        hosts.nixosConfigurations
+        |> attrsToList
+        |> map (
+          {
+            name,
+            value,
+          }:
+          nameValuePair name value.config
+        )
+        |> listToAttrs;
+    in
     hosts
     // hostConfigs
     // {
       inherit lib packages;
-      formatter = forEachSystem (pkgs: pkgs.alejandra);
+      formatter = forEachSystem (pkgs: pkgs.nixfmt-tree);
     };
 }

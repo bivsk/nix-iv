@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) remove;
-in {
+in
+{
   boot.binfmt.emulatedSystems = remove config.nixpkgs.hostPlatform.system [
     "aarch64-linux"
     "riscv64-linux"

@@ -4,10 +4,19 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) attrValues head mkAfter enabled merge mkIf;
+}:
+let
+  inherit (lib)
+    attrValues
+    head
+    mkAfter
+    enabled
+    merge
+    mkIf
+    ;
   inherit (lib.strings) match;
-in {
+in
+{
   environment.shellAliases =
     merge {
       g = "git";
@@ -77,70 +86,73 @@ in {
     };
 
   environment.systemPackages = attrValues {
-    inherit
-      (pkgs)
+    inherit (pkgs)
       git-absorb
       tig
       ;
   };
 
   home-manager.sharedModules = [
-    (homeArgs: let
-      homeConfig = homeArgs.config;
-    in {
-      programs.git = enabled {
-        userName = "bivsk";
-        userEmail = "bivsk@tutanota.com";
+    (
+      homeArgs:
+      let
+        homeConfig = homeArgs.config;
+      in
+      {
+        programs.git = enabled {
+          userName = "bivsk";
+          userEmail = "bivsk@tutanota.com";
 
-        lfs = enabled;
+          lfs = enabled;
 
-        difftastic = enabled {
-          background = "dark";
-        };
-
-        extraConfig =
-          merge {
-            init.defaultBranch = "master";
-
-            commit.verbose = true;
-
-            log.date = "iso";
-            column.ui = "auto";
-
-            branch.sort = "-committerdate";
-            tag.sort = "version:refname";
-
-            diff.algorithm = "histogram";
-            diff.colorMoved = "default";
-
-            pull.rebase = true;
-            push.autoSetupRemote = true;
-
-            merge.conflictStyle = "zdiff3";
-
-            rebase.autoSquash = true;
-            rebase.autoStash = true;
-            rebase.updateRefs = true;
-            rerere.enabled = true;
-
-            fetch.fsckObjects = true;
-            receive.fsckObjects = true;
-            transfer.fsckobjects = true;
-
-            # https://bernsteinbear.com/git
-            alias.recent = "! git branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\" | head -10";
-          }
-          <| mkIf config.isDesktop {
-            core.sshCommand = "ssh -i ~/.ssh/id";
-
-            commit.gpgSign = true;
-            tag.gpgSign = true;
-
-            gpg.format = "ssh";
-            user.signingKey = "~/.ssh/id";
+          difftastic = enabled {
+            background = "dark";
           };
-      };
-    })
+
+          extraConfig =
+            merge {
+              init.defaultBranch = "master";
+
+              commit.verbose = true;
+
+              log.date = "iso";
+              column.ui = "auto";
+
+              branch.sort = "-committerdate";
+              tag.sort = "version:refname";
+
+              diff.algorithm = "histogram";
+              diff.colorMoved = "default";
+
+              pull.rebase = true;
+              push.autoSetupRemote = true;
+
+              merge.conflictStyle = "zdiff3";
+
+              rebase.autoSquash = true;
+              rebase.autoStash = true;
+              rebase.updateRefs = true;
+              rerere.enabled = true;
+
+              fetch.fsckObjects = true;
+              receive.fsckObjects = true;
+              transfer.fsckobjects = true;
+
+              # https://bernsteinbear.com/git
+              alias.recent = "! git branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\" | head -10";
+            }
+            <| mkIf config.isDesktop {
+              core.sshCommand = "ssh -i ~/.ssh/id";
+
+              commit.gpgSign = true;
+              tag.gpgSign = true;
+
+              gpg.format = "ssh";
+              user.signingKey = "~/.ssh/id";
+            };
+        };
+      }
+    )
 
     (mkIf config.isDesktop {
       programs.gh = enabled {

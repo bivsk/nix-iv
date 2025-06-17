@@ -2,10 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) enabled merge mkIf;
 in
-  merge
-  <| mkIf config.isLaptop {
-    hardware.brillo = enabled;
-  }
+merge
+<| mkIf config.isLaptop {
+  hardware.brillo = enabled;
+}

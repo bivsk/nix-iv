@@ -3,23 +3,28 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) attrValues disabled merge mkIf;
+}:
+let
+  inherit (lib)
+    attrValues
+    disabled
+    merge
+    mkIf
+    ;
 in
-  merge
+merge
   (mkIf config.isDesktop {
     console = {
       earlySetup = true;
       font = "Lat2-Terminus16";
-      packages = [pkgs.terminus_font];
+      packages = [ pkgs.terminus_font ];
     };
 
     fonts.packages = attrValues {
       sans = config.theme.font.sans.package;
       mono = config.theme.font.mono.package;
 
-      inherit
-        (pkgs)
+      inherit (pkgs)
         material-symbols
         noto-fonts
         noto-fonts-cjk-sans
@@ -28,6 +33,8 @@ in
         ;
     };
   })
-  (mkIf config.isServer {
-    fonts.fontconfig = disabled;
-  })
+  (
+    mkIf config.isServer {
+      fonts.fontconfig = disabled;
+    }
+  )

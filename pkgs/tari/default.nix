@@ -26,7 +26,7 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [pkg-config];
+  nativeBuildInputs = [ pkg-config ];
 
   meta = with lib; {
     description = "";

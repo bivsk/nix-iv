@@ -111,10 +111,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   env = {
     TARI_NETWORK = "mainnet";
     TARI_TARGET_NETWORK = "mainnet";
-    OS_BINARY_NAME =
-      if stdenv.hostPlatform.isLinux
-      then "tari_universe"
-      else "Tari Universe";
+    OS_BINARY_NAME = if stdenv.hostPlatform.isLinux then "tari_universe" else "Tari Universe";
   };
 
   # preFixup = ''

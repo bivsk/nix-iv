@@ -4,27 +4,39 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) attrNames enabled filterAttrs head mapAttrs mkIf remove;
+}:
+let
+  inherit (lib)
+    attrNames
+    enabled
+    filterAttrs
+    head
+    mapAttrs
+    mkIf
+    remove
+    ;
 
   controlDir = "~/.ssh/control";
 
   hosts =
     self.nixosConfigurations
     |> filterAttrs (_: value: value.config.services.openssh.enable)
-    |> mapAttrs (_: value: {
-      user =
-        value.config.users.users
-        |> filterAttrs (_: value: value.isNormalUser)
-        |> attrNames
-        |> remove "root"
-        |> head;
+    |> mapAttrs (
+      _: value: {
+        user =
+          value.config.users.users
+          |> filterAttrs (_: value: value.isNormalUser)
+          |> attrNames
+          |> remove "root"
+          |> head;
 
-      hostname = value.config.networking.ipv4.address;
+        hostname = value.config.networking.ipv4.address;
 
-      port = head value.config.services.openssh.ports;
-    });
-in {
+        port = head value.config.services.openssh.ports;
+      }
+    );
+in
+{
   secrets.sshConfig = {
     file = ./config.age;
     mode = "444";
@@ -33,8 +45,8 @@ in {
   home-manager.sharedModules = [
     {
       home.activation.createControlPath = {
-        after = ["writeBoundary"];
-        before = [];
+        after = [ "writeBoundary" ];
+        before = [ ];
         data = "mkdir --parents ${controlDir}";
       };
 
@@ -45,18 +57,16 @@ in {
         serverAliveCountMax = 2;
         serverAliveInterval = 60;
 
-        includes = [config.secrets.sshConfig.path];
+        includes = [ config.secrets.sshConfig.path ];
 
-        matchBlocks =
-          hosts
-          // {
-            "*" = {
-              setEnv.COLORTERM = "truecolor";
-              setEnv.TERM = "xterm-256color";
+        matchBlocks = hosts // {
+          "*" = {
+            setEnv.COLORTERM = "truecolor";
+            setEnv.TERM = "xterm-256color";
 
-              identityFile = "~/.ssh/id";
-            };
+            identityFile = "~/.ssh/id";
           };
+        };
       };
     }
   ];

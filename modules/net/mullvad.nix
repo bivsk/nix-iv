@@ -3,13 +3,16 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) enabled;
-in {
+in
+{
   services.mullvad-vpn = enabled {
     package =
-      if config.isServer
-      then pkgs.mullvad # cli
-      else pkgs.mullvad-vpn; # cli + gui
+      if config.isServer then
+        pkgs.mullvad # cli
+      else
+        pkgs.mullvad-vpn; # cli + gui
   };
 }

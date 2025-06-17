@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkConst mkValue;
-in {
+in
+{
   options = {
     type = mkValue "server";
 

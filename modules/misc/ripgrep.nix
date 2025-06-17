@@ -1,10 +1,10 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) enabled;
-in {
+in
+{
   environment.shellAliases.todo =
-    /*
-    sh
-    */
+    # sh
     ''rg "todo|fixme" --colors match:fg:yellow --colors match:style:bold'';
 
   home-manager.sharedModules = [

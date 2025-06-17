@@ -1,13 +1,15 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) enabled;
   port = 2222;
-in {
+in
+{
   programs.mosh = enabled {
     openFirewall = true;
   };
 
   services.openssh = enabled {
-    ports = [port];
+    ports = [ port ];
     settings = {
       # TODO: lock down
       KbdInteractiveAuthentication = true;

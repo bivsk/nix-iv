@@ -3,16 +3,17 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) enabled merge mkIf;
 in
-  merge
-  <| mkIf config.isDesktop {
-    services.blueman = enabled;
+merge
+<| mkIf config.isDesktop {
+  services.blueman = enabled;
 
-    hardware.bluetooth = enabled {
-      package = pkgs.bluez-experimental;
-      powerOnBoot = true;
-      settings.General.Experimental = true;
-    };
-  }
+  hardware.bluetooth = enabled {
+    package = pkgs.bluez-experimental;
+    powerOnBoot = true;
+    settings.General.Experimental = true;
+  };
+}

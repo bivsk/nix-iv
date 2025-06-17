@@ -1,5 +1,7 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) enabled;
-in {
+in
+{
   programs.nix-ld = enabled;
 }
