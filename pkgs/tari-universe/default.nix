@@ -5,22 +5,28 @@
   fetchurl, 
   rustPlatform,
   fetchNpmDeps,
+  autoPatchelfHook,
   cargo-tauri,
   cmake,
   glib-networking,
-  gobject-introspection,
+  gtk3,
+  jq,
   libayatana-appindicator,
+  librsvg,
+  moreutils,
   nodejs,
   npmHooks,
+  opencl-headers,
   openssl,
   perl,
   pkg-config,
   protobuf,
   randomx,
+  rocmPackages,
   typescript,
   gst_all_1,
   webkitgtk_4_1,
-  wrapGAppsHook4
+  wrapGAppsHook3,
 }:
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "tari-universe";
@@ -39,26 +45,36 @@ rustPlatform.buildRustPackage (finalAttrs: {
 
   nativeBuildInputs = 
     [
+      autoPatchelfHook
       cargo-tauri.hook
       cmake
+      jq
+      moreutils
       nodejs
       npmHooks.npmConfigHook
       perl
       protobuf
       randomx
       typescript
-      wrapGAppsHook4
+      wrapGAppsHook3
     ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       pkg-config
     ];
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
-    glib-networking
-    gst_all_1.gst-plugins-good
-    libayatana-appindicator
-    openssl
     webkitgtk_4_1
+    gtk3
+    libayatana-appindicator
+    librsvg
+    glib-networking
+    gst_all_1.gstreamer
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
+    openssl
+    rocmPackages.clr.icd
+    opencl-headers
   ];
 
   # TODO: look into failing tests
@@ -75,15 +91,21 @@ rustPlatform.buildRustPackage (finalAttrs: {
     OS_BINARY_NAME = if stdenv.hostPlatform.isLinux then "tari_universe" else "Tari Universe";
   };
 
+  preFixup = ''
+    gappsWrapperArgs+=(
+      --set-default WEBKIT_DISABLE_DMABUF_RENDERER 1
+    )
+  '';
+
   postPatch = ''
     substituteInPlace $cargoDepsCopy/libappindicator-sys-*/src/lib.rs \
       --replace-fail "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
 
     # remove (Alpha) from tauri.conf
-    jq --arg name "Tari Universe" '.productName = $name' tauri.conf.json | sponge tauri.conf.json
-    jq --arg name "${OS_BINARY_NAME}" '.mainBinaryName' = $name' tauri.conf.json | sponge tauri.conf.json
-    jq --arg name "Tari Universe v${finalAttrs.version}" '.app.windows[0].title' = $name' tauri.conf.json | sponge tauri.conf.json
-    jq --arg name "com.tari.universe" '..identifier' = $name' tauri.conf.json | sponge tauri.conf.json
+    jq --arg name "Tari Universe" '.productName = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+    jq --arg name "$OS_BINARY_NAME" '.mainBinaryName = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+    jq --arg name "Tari Universe v${finalAttrs.version}" '.app.windows[0].title = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+    jq --arg name "com.tari.universe" '.identifier = $name' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
 
     # don't run the tauri updater
     sed -i 's/"createUpdaterArtifacts": *true/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
