@@ -95,8 +95,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
     gst_all_1.gst-plugins-good
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-bad
-    gst_all_1.libav
-    gst_all_1.vaapi
+    gst_all_1.gst-libav
+    gst_all_1.gst-vaapi
     openssl
     rocmPackages.clr.icd
     opencl-headers
