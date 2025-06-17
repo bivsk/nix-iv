@@ -1,5 +1,10 @@
-{ lib, fetchFromGitHub, pkg-config, rustPlatform, ... }:
-
+{
+  lib,
+  fetchFromGitHub,
+  pkg-config,
+  rustPlatform,
+  ...
+}:
 rustPlatform.buildRustPackage rec {
   pname = "tari";
   version = "4.3.1";
@@ -21,7 +26,7 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [pkg-config];
 
   meta = with lib; {
     description = "";

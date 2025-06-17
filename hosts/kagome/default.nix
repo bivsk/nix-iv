@@ -1,4 +1,10 @@
-lib: lib.nixosSystem' ({ config, keys, lib, ... }: let
+lib:
+lib.nixosSystem' ({
+  config,
+  keys,
+  lib,
+  ...
+}: let
   inherit (lib) collectNix remove;
 in {
   imports = collectNix ./. |> remove ./default.nix;
@@ -8,10 +14,12 @@ in {
   services.fprintd.enable = true;
 
   secrets.id.file = ./id.age;
-  services.openssh.hostKeys = [{
-    type = "ed25519";
-    path = config.secrets.id.path;
-  }];
+  services.openssh.hostKeys = [
+    {
+      type = "ed25519";
+      path = config.secrets.id.path;
+    }
+  ];
 
   secrets.password.file = ./password.age;
   users.users = {
@@ -21,11 +29,11 @@ in {
     };
 
     four = {
-      description	= "Four";
+      description = "Four";
       openssh.authorizedKeys.keys = keys.admins;
       hashedPasswordFile = config.secrets.password.path;
-      isNormalUser	= true;
-      extraGroups	= [ "wheel" "video" ];
+      isNormalUser = true;
+      extraGroups = ["wheel" "video"];
     };
   };
 
@@ -43,7 +51,9 @@ in {
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   system.stateVersion = "24.11";
-  home-manager.sharedModules = [{
-    home.stateVersion = "24.11";
-  }];
+  home-manager.sharedModules = [
+    {
+      home.stateVersion = "24.11";
+    }
+  ];
 })

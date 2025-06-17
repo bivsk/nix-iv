@@ -1,4 +1,8 @@
-{ config, lib, ... }: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) enabled;
 in {
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "usb_storage" "uas" "sd_mod"];
@@ -14,7 +18,7 @@ in {
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/ace8816b-1ea5-444a-8d94-7a4381834abf";
     fsType = "ext4";
-    options = [ "noatime" ];
+    options = ["noatime"];
   };
 
   boot.initrd.luks.devices."luks-5fd805ab-c1dd-4ab7-8e47-c029d4e30996".device = "/dev/disk/by-uuid/5fd805ab-c1dd-4ab7-8e47-c029d4e30996";

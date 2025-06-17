@@ -1,8 +1,8 @@
-{ 
-  lib, 
+{
+  lib,
   pkgs,
   stdenv,
-  fetchurl, 
+  fetchurl,
   rustPlatform,
   fetchNpmDeps,
   autoPatchelfHook,
@@ -64,7 +64,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   # debug for now
   buildType = "debug";
 
-  nativeBuildInputs = 
+  nativeBuildInputs =
     [
       autoPatchelfHook
       cargo-tauri.hook
@@ -111,7 +111,10 @@ rustPlatform.buildRustPackage (finalAttrs: {
   env = {
     TARI_NETWORK = "mainnet";
     TARI_TARGET_NETWORK = "mainnet";
-    OS_BINARY_NAME = if stdenv.hostPlatform.isLinux then "tari_universe" else "Tari Universe";
+    OS_BINARY_NAME =
+      if stdenv.hostPlatform.isLinux
+      then "tari_universe"
+      else "Tari Universe";
   };
 
   # preFixup = ''
@@ -120,11 +123,10 @@ rustPlatform.buildRustPackage (finalAttrs: {
   #   )
   # '';
 
-
   # use randomx from nix
-  RUSTFLAGS = (builtins.map (a: ''-L ${a}/lib'') [
+  RUSTFLAGS = builtins.map (a: ''-L ${a}/lib'') [
     randomx
-  ]);
+  ];
 
   meta = {
     description = "The beautifully simple mining app for mining Tari.";

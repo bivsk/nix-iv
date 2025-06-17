@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) attrValues;
 in {
   environment.variables = {
@@ -6,16 +11,15 @@ in {
   };
 
   environment.systemPackages = attrValues {
-    inherit (pkgs)
+    inherit
+      (pkgs)
       cargo-deny
       cargo-expand
       cargo-fuzz
       cargo-nextest
-
       evcxr
-
       taplo
-    ;
+      ;
 
     fenix = pkgs.fenix.complete.withComponents [
       "cargo"

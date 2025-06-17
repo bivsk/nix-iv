@@ -1,8 +1,16 @@
-{ self, config, inputs, lib, pkgs, ... }: let
+{
+  self,
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) attrValues attrsToList concatStringsSep const disabled filter filterAttrs flip id isType mapAttrs mapAttrsToList match merge mkAfter mkDefault optionalAttrs optionals;
   inherit (lib.strings) toJSON;
 
-  registryMap = inputs
+  registryMap =
+    inputs
     |> filterAttrs (const <| isType "flake");
 in {
   nix.channel = disabled;
@@ -14,12 +22,15 @@ in {
     persistent = true;
   };
 
-  nix.nixPath = registryMap
+  nix.nixPath =
+    registryMap
     |> mapAttrsToList (name: value: "${name}=${value}")
     |> id;
 
-  nix.registry = registryMap // { default = inputs.nixpkgs; }
-    |> mapAttrs (_: flake: { inherit flake; });
+  nix.registry =
+    registryMap
+    // {default = inputs.nixpkgs;}
+    |> mapAttrs (_: flake: {inherit flake;});
 
   nix.settings = (import <| self + /flake.nix).nixConfig;
 
@@ -28,10 +39,11 @@ in {
   nixpkgs.config.allowUnfree = mkDefault true;
 
   environment.systemPackages = attrValues {
-    inherit (pkgs)
+    inherit
+      (pkgs)
       nh
       nix-index
       nix-output-monitor
-    ;
+      ;
   };
 }

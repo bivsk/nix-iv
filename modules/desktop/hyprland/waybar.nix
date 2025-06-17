@@ -1,146 +1,162 @@
-{ config, lib, ... }: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) enabled merge mkIf;
-in merge <| mkIf config.isDesktop {
-  home-manager.sharedModules = [{
-    wayland.windowManager.hyprland.settings = {
-      exec = [ "pkill --signal SIGUSR2 waybar" ];
-      bind = [ "SUPER, B, exec, pkill --signal SIGUSR1 waybar" ];
-    };
-
-    programs.waybar = with config.theme.withHashtag; enabled {
-      systemd = enabled;
-
-      settings = [{
-        layer  = "top";
-        height = 2 * cornerRadius;
-
-        margin-right = margin;
-        margin-left  = margin;
-        margin-top   = margin;
-
-        modules-left = [ "hyprland/workspaces" ];
-
-        "hyprland/workspaces" = {
-          format               = "{icon}";
-          format-icons.default = "";
-          format-icons.active  = "";
-
-          persistent-workspaces."*" = 10;
+in
+  merge
+  <| mkIf config.isDesktop {
+    home-manager.sharedModules = [
+      {
+        wayland.windowManager.hyprland.settings = {
+          exec = ["pkill --signal SIGUSR2 waybar"];
+          bind = ["SUPER, B, exec, pkill --signal SIGUSR1 waybar"];
         };
 
-        modules-center = [
-          "hyprland/window"
-        ];
+        programs.waybar = with config.theme.withHashtag;
+          enabled {
+            systemd = enabled;
 
-        "hyprland/window" = {
-          separate-outputs = true;
+            settings = [
+              {
+                layer = "top";
+                height = 2 * cornerRadius;
 
-          rewrite."(.*) - Discord"   = "󰙯 $1";
-          rewrite."(.*) — Mozilla Firefox" = "󰖟 $1";
-          rewrite."(.*) — Zen" = "󰖟 $1";
-          rewrite."(.*) — nu"        = " $1";
-        };
+                margin-right = margin;
+                margin-left = margin;
+                margin-top = margin;
 
-        modules-right = if config.isLaptop 
-	then [ "tray" "pulseaudio" "cpu" "memory" "network" "backlight" "battery" "clock" ]
-	else [ "tray" "pulseaudio" "cpu" "memory" "network" "clock" ];
+                modules-left = ["hyprland/workspaces"];
 
-        tray = {
-          reverse-direction = true;
-          spacing           = 5;
-        };
+                "hyprland/workspaces" = {
+                  format = "{icon}";
+                  format-icons.default = "";
+                  format-icons.active = "";
 
-        pulseaudio = {
-          format       = "{icon} {volume}%";
-          format-muted = "{format_source} 󰸈";
+                  persistent-workspaces."*" = 10;
+                };
 
-          format-bluetooth       = "󰋋 󰂯 {volume}%";
-          format-bluetooth-muted = "󰟎 󰂯";
+                modules-center = [
+                  "hyprland/window"
+                ];
 
-          # format-source       = "󰍬";
-          # format-source-muted = "󰍭";
+                "hyprland/window" = {
+                  separate-outputs = true;
 
-          format-icons.default = [ "󰕿" "󰖀" "󰕾" ];
-        };
+                  rewrite."(.*) - Discord" = "󰙯 $1";
+                  rewrite."(.*) — Mozilla Firefox" = "󰖟 $1";
+                  rewrite."(.*) — Zen" = "󰖟 $1";
+                  rewrite."(.*) — nu" = " $1";
+                };
 
-        backlight =  {
-          format       = "{icon} {percent}%";
-          format-icons = [ "" "" "" "" "" "" "" "" "" ];
-        };
+                modules-right =
+                  if config.isLaptop
+                  then ["tray" "pulseaudio" "cpu" "memory" "network" "backlight" "battery" "clock"]
+                  else ["tray" "pulseaudio" "cpu" "memory" "network" "clock"];
 
-        cpu.format    = " {usage}%";
-        memory.format = " {}%";
+                tray = {
+                  reverse-direction = true;
+                  spacing = 5;
+                };
 
-        network = {
-          format-disconnected = " ";
-          format-ethernet     = " {ipaddr}/{cidr}";
-          format-wifi         = " {signalStrength}%";
-        };
+                pulseaudio = {
+                  format = "{icon} {volume}%";
+                  format-muted = "{format_source} 󰸈";
 
-        battery = {
-          format          = "{icon} {capacity}%";
-          format-charging = "󰂄 {capacity}%";
-          format-plugged  = "󰂄 {capacity}%";
+                  format-bluetooth = "󰋋 󰂯 {volume}%";
+                  format-bluetooth-muted = "󰟎 󰂯";
 
-          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+                  # format-source       = "󰍬";
+                  # format-source-muted = "󰍭";
 
-          states.warning  = 30;
-          states.critical = 15;
-        };
+                  format-icons.default = ["󰕿" "󰖀" "󰕾"];
+                };
 
-        clock.tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-      }];
+                backlight = {
+                  format = "{icon} {percent}%";
+                  format-icons = ["" "" "" "" "" "" "" "" ""];
+                };
 
-      style = /* css */ ''
-        * {
-          border: none;
-          border-radius: ${toString cornerRadius}px;
-          font-family: "${font.mono.name}";
-        }
+                cpu.format = " {usage}%";
+                memory.format = " {}%";
 
-        .modules-right {
-          margin-right: ${toString padding}px;
-        }
+                network = {
+                  format-disconnected = " ";
+                  format-ethernet = " {ipaddr}/{cidr}";
+                  format-wifi = " {signalStrength}%";
+                };
 
-        #waybar {
-          background: ${base00};
-          color: ${base05};
-        }
+                battery = {
+                  format = "{icon} {capacity}%";
+                  format-charging = "󰂄 {capacity}%";
+                  format-plugged = "󰂄 {capacity}%";
 
-        #workspaces button:nth-child(1)  { color: ${base08}; }
-        #workspaces button:nth-child(2)  { color: ${base09}; }
-        #workspaces button:nth-child(3)  { color: ${base0A}; }
-        #workspaces button:nth-child(4)  { color: ${base0B}; }
-        #workspaces button:nth-child(5)  { color: ${base0C}; }
-        #workspaces button:nth-child(6)  { color: ${base0D}; }
-        #workspaces button:nth-child(7)  { color: ${base0E}; }
-        #workspaces button:nth-child(8)  { color: ${base0F}; }
-        #workspaces button:nth-child(9)  { color: ${base04}; }
-        #workspaces button:nth-child(10) { color: ${base06}; }
+                  format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
 
-        #workspaces button.empty {
-          color: ${base02};
-        }
+                  states.warning = 30;
+                  states.critical = 15;
+                };
 
-        #tray, #pulseaudio, #backlight, #cpu, #memory, #network, #battery, #clock {
-          margin-left: 20px;
-        }
+                clock.tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+              }
+            ];
 
-        @keyframes blink {
-          to {
-            color: ${base05};
-          }
-        }
+            style =
+              /*
+              css
+              */
+              ''
+                * {
+                  border: none;
+                  border-radius: ${toString cornerRadius}px;
+                  font-family: "${font.mono.name}";
+                }
 
-        #battery.critical:not(.charging) {
-          animation-direction: alternate;
-          animation-duration: 0.5s;
-          animation-iteration-count: infinite;
-          animation-name: blink;
-          animation-timing-function: linear;
-          color: ${base08};
-        }
-      '';
-    };
-  }];
-}
+                .modules-right {
+                  margin-right: ${toString padding}px;
+                }
+
+                #waybar {
+                  background: ${base00};
+                  color: ${base05};
+                }
+
+                #workspaces button:nth-child(1)  { color: ${base08}; }
+                #workspaces button:nth-child(2)  { color: ${base09}; }
+                #workspaces button:nth-child(3)  { color: ${base0A}; }
+                #workspaces button:nth-child(4)  { color: ${base0B}; }
+                #workspaces button:nth-child(5)  { color: ${base0C}; }
+                #workspaces button:nth-child(6)  { color: ${base0D}; }
+                #workspaces button:nth-child(7)  { color: ${base0E}; }
+                #workspaces button:nth-child(8)  { color: ${base0F}; }
+                #workspaces button:nth-child(9)  { color: ${base04}; }
+                #workspaces button:nth-child(10) { color: ${base06}; }
+
+                #workspaces button.empty {
+                  color: ${base02};
+                }
+
+                #tray, #pulseaudio, #backlight, #cpu, #memory, #network, #battery, #clock {
+                  margin-left: 20px;
+                }
+
+                @keyframes blink {
+                  to {
+                    color: ${base05};
+                  }
+                }
+
+                #battery.critical:not(.charging) {
+                  animation-direction: alternate;
+                  animation-duration: 0.5s;
+                  animation-iteration-count: infinite;
+                  animation-name: blink;
+                  animation-timing-function: linear;
+                  color: ${base08};
+                }
+              '';
+          };
+      }
+    ];
+  }

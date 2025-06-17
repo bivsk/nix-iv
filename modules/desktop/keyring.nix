@@ -1,9 +1,15 @@
-{ config, lib, ... }: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) enabled merge mkIf;
-in merge <| mkIf config.isDesktop {
-  programs.seahorse = enabled;
+in
+  merge
+  <| mkIf config.isDesktop {
+    programs.seahorse = enabled;
 
-  security.pam.services.login.enableGnomeKeyring = true;
+    security.pam.services.login.enableGnomeKeyring = true;
 
-  services.gnome.gnome-keyring = enabled;
-}
+    services.gnome.gnome-keyring = enabled;
+  }

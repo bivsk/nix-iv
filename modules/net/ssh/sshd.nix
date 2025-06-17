@@ -1,4 +1,4 @@
-{ lib, ...}: let
+{lib, ...}: let
   inherit (lib) enabled;
   port = 2222;
 in {
@@ -7,14 +7,13 @@ in {
   };
 
   services.openssh = enabled {
-    ports    = [ port ];
+    ports = [port];
     settings = {
       # TODO: lock down
       KbdInteractiveAuthentication = true;
-      PasswordAuthentication       = true;
+      PasswordAuthentication = true;
 
       AcceptEnv = "SHELLS COLORTERM";
     };
   };
 }
-

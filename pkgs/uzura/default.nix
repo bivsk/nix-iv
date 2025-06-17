@@ -1,8 +1,8 @@
-{ lib
-, stdenvNoCC
-, fetchzip
+{
+  lib,
+  stdenvNoCC,
+  fetchzip,
 }:
-
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "uzura";
   version = "1.00";

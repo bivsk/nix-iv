@@ -1,4 +1,4 @@
-{ lib, ... }: let
+{lib, ...}: let
   inherit (lib) disabled enabled;
 in {
   documentation = {
