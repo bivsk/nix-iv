@@ -19,6 +19,7 @@ in
           fd
           htop
           hyperfine
+	  moreutils
           openssl
           p7zip
           pciutils
