@@ -49,15 +49,6 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    sink-rotate = {
-      url = "github:mightyiam/sink-rotate";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
-
     stylix = {
       url = "github:danth/stylix";
       inputs = {
