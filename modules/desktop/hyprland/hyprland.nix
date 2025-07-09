@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.hyprland =
+  flake.modules.homeManager.gui =
     { lib, pkgs, ... }:
     {
       xdg.portal = {

@@ -1,17 +1,19 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.agenix =
-    { config, ... }:
+  flake.modules.nixos.pc =
+    { config, lib, ... }:
     {
       imports = [
+	(lib.mkAliasOptionModule [ "secrets" ] [ "age" "secrets" ])
         inputs.agenix.nixosModules.default
         inputs.agenix-rekey.nixosModules.default
       ];
 
-      age.rekey = {
-        storageMode = "local";
-        masterIdentities = [ ../../../.secrets/identity.age ];
-        localStorageDir = ../../../.secrets/${config.networking.hostName};
+      age.identityPaths = [ "/root/.ssh/id" ];
+
+      environment = {
+        shellAliases.agenix = "agenix --identity ~/.ssh/id";
+	systemPackages = [ pkgs.agenix ];
       };
     };
 }
