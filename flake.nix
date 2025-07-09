@@ -69,6 +69,11 @@
       };
     };
 
+    tinted-schemes = {
+      flake = false;
+      url = "github:tinted-theming/schemes";
+    };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
