@@ -12,6 +12,7 @@
       extraSpecialArgs.hasGlobalPkgs = true;
       # https://github.com/nix-community/home-manager/issues/6770
       #useUserPackages = true;
+      backupFileExtension = "bak";
 
       users.${config.flake.meta.owner.name}.imports = [
         (
