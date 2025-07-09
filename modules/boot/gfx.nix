@@ -3,7 +3,7 @@
     { pkgs, ... }:
     {
       # https://github.com/danth/stylix/discussions/1206
-      # stylix.targets.grub.enable = false;
+      stylix.targets.grub.enable = false;
 
       boot = {
         initrd.systemd.enable = true;
@@ -16,12 +16,12 @@
         ];
         plymouth = {
           enable = true;
-          theme = "pixels";
-          themePackages = [
-            (pkgs.adi1090x-plymouth-themes.override {
-              selected_themes = [ "pixels" ];
-            })
-          ];
+          # theme = "pixels";
+          # themePackages = [
+          #   (pkgs.adi1090x-plymouth-themes.override {
+          #     selected_themes = [ "pixels" ];
+          #   })
+          # ];
         };
       };
     };

@@ -44,6 +44,6 @@
       };
     };
 
-    # stylix.targets.firefox.profileNames = [ "primary" ];
+    stylix.targets.firefox.profileNames = [ "primary" ];
   };
 }
