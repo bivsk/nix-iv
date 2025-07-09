@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.robin = {
+  flake.modules.nixos."nixosConfigurations/robin" = {
 
     boot.initrd.availableKernelModules = [ "nvme" ];
 

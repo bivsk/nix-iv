@@ -2,46 +2,26 @@
   description = "Four's Nix configurations";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05-small";
-
-    nix.url = "https://flakehub.com/f/DeterminateSystems/nix-src/*";
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-    devshell = {
-      url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    import-tree.url = "github:vic/import-tree";
-
-    deploy-rs.url = "github:serokell/deploy-rs";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    cpu-microcodes = {
+      flake = false;
+      url = "github:platomav/CPUMicrocodes";
+    };
+
+    deploy-rs.url = "github:serokell/deploy-rs";
+
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -52,24 +32,54 @@
 
     fenix.url = "github:nix-community/fenix";
 
-    stylix = {
-      url = "github:danth/stylix";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-      };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    systems.url = "github:nix-systems/default";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    import-tree.url = "github:vic/import-tree";
+
+    make-shell = {
+      url = "github:nicknovitski/make-shell";
+    };
+
+    nix.url = "https://flakehub.com/f/DeterminateSystems/nix-src/*";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05-small";
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ucodenix = {
+      url = "github:e-tho/ucodenix";
+      inputs.cpu-microcodes.follows = "cpu-microcodes";
+    };
   };
 
   outputs =
-    { flake-parts, ... }@inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
+    { ... }@inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }

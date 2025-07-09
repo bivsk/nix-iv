@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.kagome = {
+  flake.modules.nixos."nixosConfigurations/kagome" = {
     boot.initrd.availableKernelModules = [ "nvme" ];
 
     fileSystems."/" = {
