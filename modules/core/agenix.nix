@@ -1,19 +1,19 @@
 { inputs, ... }:
 {
   flake.modules.nixos.pc =
-    { config, lib, ... }:
+    { lib, pkgs, ... }:
     {
       imports = [
 	(lib.mkAliasOptionModule [ "secrets" ] [ "age" "secrets" ])
         inputs.agenix.nixosModules.default
-        inputs.agenix-rekey.nixosModules.default
+        # inputs.agenix-rekey.nixosModules.default
       ];
 
       age.identityPaths = [ "/root/.ssh/id" ];
 
       environment = {
         shellAliases.agenix = "agenix --identity ~/.ssh/id";
-	systemPackages = [ pkgs.agenix ];
+	systemPackages = [ inputs.agenix.packages.${pkgs.system}.default ];
       };
     };
 }
