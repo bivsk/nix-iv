@@ -5,7 +5,6 @@
       desktop
       efi
       gaming
-      gnome-desktop
       kvm-amd
       laptop
     ])
