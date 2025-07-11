@@ -37,7 +37,7 @@
         };
 
         settings = {
-          monitor = [ ", highrr, auto, 1, vrr, 3" ];
+          monitor = lib.mkDefault [ ", highrr, auto, 1, vrr, 3" ];
 
           xwayland.enable = true;
 
