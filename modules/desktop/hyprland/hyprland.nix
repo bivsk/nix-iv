@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.gui =
-    { config, lib, pkgs, ... }:
+    { lib, pkgs, ... }:
     {
       xdg.portal = {
         enable = true;
@@ -134,7 +134,20 @@
           general = {
             gaps_in = 4;
             gaps_out = 8;
+	    border_size = 2;
+	    resize_on_border = true;
           };
+
+	  decoration = {
+	    blur = {
+	      enabled = true;
+	      size = 8;
+	      passes = 3;
+	      new_optimizations = true;
+	      xray = false; # dependent on above, decreases overhead
+	      special = false; # expensive
+	    };
+	  };
 
           input = {
             follow_mouse = 1;
@@ -154,6 +167,7 @@
               scroll_factor = 0.7;
             };
           };
+
           gestures.workspace_swipe = true;
 
           animations = {
