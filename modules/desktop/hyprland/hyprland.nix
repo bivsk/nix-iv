@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.gui =
-    { lib, pkgs, ... }:
+    { config, lib, pkgs, ... }:
     {
       xdg.portal = {
         enable = true;
@@ -39,7 +39,10 @@
         settings = {
           monitor = lib.mkDefault [ ", highrr, auto, 1, vrr, 3" ];
 
-          xwayland.enable = true;
+          xwayland = {
+	    enabled = true;
+	    force_zero_scaling = true;
+	  };
 
           env = [
             "GDK_BACKEND,wayland,x11,*"
