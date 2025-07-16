@@ -4,8 +4,8 @@ Four's Nix Configurations
 
 | Host       | Description           |
 | ---------- | --------------------- |
-| **robin**  | AMD 3960x Workstation |
-| **kagome** | Framework 13 7840U    |
+| **sunny**  | AMD 3960x Workstation |
+| **merry**  | Framework 13 7840U    |
 
 ## References
 
