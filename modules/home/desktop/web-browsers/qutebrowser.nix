@@ -9,8 +9,8 @@
         keyBindings.normal.e = "edit-url";
 
         extraConfig = ''
-          	  config.unbind("d")
-          	'';
+          config.unbind("d")
+        '';
 
         settings = {
           auto_save.session = true;
