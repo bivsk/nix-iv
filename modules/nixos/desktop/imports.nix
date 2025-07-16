@@ -12,5 +12,6 @@
     power-management
     printing
     sound
+    yubikey
   ];
 }
