@@ -11,14 +11,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    cpu-microcodes = {
-      flake = false;
-      url = "github:platomav/CPUMicrocodes";
-    };
-
     deploy-rs.url = "github:serokell/deploy-rs";
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     disko = {
       url = "github:nix-community/disko";
@@ -44,10 +44,6 @@
 
     import-tree.url = "github:vic/import-tree";
 
-    make-shell = {
-      url = "github:nicknovitski/make-shell";
-    };
-
     nix.url = "https://flakehub.com/f/DeterminateSystems/nix-src/*";
 
     nix-index-database = {
@@ -55,7 +51,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -68,7 +63,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-
     tinted-schemes = {
       flake = false;
       url = "github:tinted-theming/schemes";
@@ -77,11 +71,6 @@
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    ucodenix = {
-      url = "github:e-tho/ucodenix";
-      inputs.cpu-microcodes.follows = "cpu-microcodes";
     };
   };
 
