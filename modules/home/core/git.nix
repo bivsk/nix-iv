@@ -77,6 +77,8 @@
 
       gcl = "git clone";
 
+      gch = "git checkout";
+
       gd = "git diff";
       gds = "git diff --staged";
 
