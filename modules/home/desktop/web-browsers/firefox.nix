@@ -5,6 +5,9 @@
       policies = {
         AutofillAddressEnabled = false;
         AutofillCreditCardEnabled = false;
+	DefaultDownloadDirectory = "~/Downloads";
+	DisableBuiltinPDFViewer = true;
+	DisableMasterPasswordCreation = true;
         DisablePocket = true;
         DisableSetDesktopBackground = true;
         DisableTelemetry = true;
@@ -26,6 +29,13 @@
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/{d7742d87-e61d-4b78-b8a1-b469842139fa}/latest.xpi";
           };
         };
+	FirefoxHome = {
+	  SponsoredTopSites = false;
+	  Highlights = false;
+	  Pocket = false;
+	  SponsoredPocket = false;
+	  Snippets = false;
+	};
         FirefoxSuggest = {
           WebSuggestions = false;
           SponsoredSuggestions = false;
