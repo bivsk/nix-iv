@@ -11,6 +11,8 @@ topLevel@{ inputs, ... }:
       ];
 
       home-manager = {
+        backupFileExtension = "bak";
+
         useGlobalPkgs = true;
         useUserPackages = true;
 
