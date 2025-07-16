@@ -25,3 +25,6 @@
 !*.nu
 !*.txt
 !*.yml
+!*.json
+!*.toml
+!*.rs
