@@ -146,7 +146,7 @@
           };
 
           decoration = {
-	    rounding = 5;
+            rounding = 5;
             blur = {
               enabled = true;
               size = 8;

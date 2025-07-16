@@ -21,7 +21,7 @@
           availableKernelModules = [
             "xhci_pci"
             "ahci"
-	    "usbhid"
+            "usbhid"
             "usb_storage"
             "sd_mod"
           ];

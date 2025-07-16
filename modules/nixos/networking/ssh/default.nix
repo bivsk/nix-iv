@@ -1,6 +1,12 @@
 { lib, config, ... }:
 let
-  inherit (lib) attrNames filterAttrs head mapAttrs remove;
+  inherit (lib)
+    attrNames
+    filterAttrs
+    head
+    mapAttrs
+    remove
+    ;
 
   controlDir = "~/.ssh/control";
 
@@ -11,17 +17,17 @@ let
       _: value: {
         user =
           value.config.users.users
-  	|> filterAttrs (_: value: value.isNormalUser)
-  	|> attrNames
-  	|> remove "root"
-  	|> head;
-  
+          |> filterAttrs (_: value: value.isNormalUser)
+          |> attrNames
+          |> remove "root"
+          |> head;
+
         hostname = value.config.networking.ipv4.address;
-  
+
         port = head value.config.services.openssh.ports;
       }
     );
-in 
+in
 {
   flake.modules.nixos.ssh = {
     imports = with config.flake.modules.nixos; [
@@ -40,7 +46,7 @@ in
           before = [ ];
           data = "mkdir --parents ${controlDir}";
         };
-    
+
         programs.ssh = {
           enable = true;
           controlMaster = "auto";
@@ -48,16 +54,17 @@ in
           controlPersist = "60m";
           serverAliveCountMax = 2;
           serverAliveInterval = 60;
-    
+
           matchBlocks = hosts // {
             "*" = {
               setEnv.COLORTERM = "truecolor";
               setEnv.TERM = "xterm-256color";
-    
+
               identityFile = "~/.ssh/id";
             };
           };
         };
-    }];
+      }
+    ];
   };
 }

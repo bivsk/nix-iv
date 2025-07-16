@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.core = 
+  flake.modules.nixos.core =
     { pkgs, ... }:
     {
       nixpkgs.overlays = [ inputs.crash.overlays.default ];

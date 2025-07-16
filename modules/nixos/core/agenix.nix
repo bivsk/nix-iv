@@ -1,10 +1,15 @@
 { inputs, ... }:
 {
   flake.modules.nixos.agenix =
-    { config, lib, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       imports = [
-	(lib.mkAliasOptionModule [ "secrets" ] [ "age" "secrets" ])
+        (lib.mkAliasOptionModule [ "secrets" ] [ "age" "secrets" ])
         inputs.agenix.nixosModules.default
         # inputs.agenix-rekey.nixosModules.default
       ];
@@ -13,7 +18,7 @@
 
       environment = {
         shellAliases.agenix = "agenix --identity ~/.ssh/id";
-	systemPackages = [ pkgs.agenix-cli ];
+        systemPackages = [ pkgs.agenix-cli ];
       };
 
       # age.rekey = {

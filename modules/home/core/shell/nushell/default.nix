@@ -1,27 +1,32 @@
 {
   flake.modules.homeManager.nushell =
-    { config, lib, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     let
       inherit (lib)
-	getExe
-	readFile
-	;
+        getExe
+        readFile
+        ;
     in
     {
       home = {
         sessionVariables.SHELLS = getExe pkgs.nushell;
 
-	shellAliases = {
-	  cp = "cp --recursive --verbose --progress";
-	  mk = "mkdir";
-	  rm = "rm --recursive --verbose";
+        shellAliases = {
+          cp = "cp --recursive --verbose --progress";
+          mk = "mkdir";
+          rm = "rm --recursive --verbose";
 
-	  pstree = "pstree -g 2";
-	  tree = "eza --tree --git-ignore --group-directories-first";
-	  fg = "job unfreeze";
-	};
+          pstree = "pstree -g 2";
+          tree = "eza --tree --git-ignore --group-directories-first";
+          fg = "job unfreeze";
+        };
 
-	packages = [ pkgs.zoxide ];
+        packages = [ pkgs.zoxide ];
       };
 
       xdg.configFile = {
@@ -34,16 +39,16 @@
         '';
 
         "nushell/starship.nu".source = pkgs.runCommand "starship.nu" { } ''
-          ${getExe pkgs.starship} init nu > $out
-	'';
+                    ${getExe pkgs.starship} init nu > $out
+          	'';
       };
 
       programs.nushell = {
         enable = true;
-	configFile.text = readFile ./config.nu;
-	envFile.text = readFile ./environment.nu;
+        configFile.text = readFile ./config.nu;
+        envFile.text = readFile ./environment.nu;
 
-	environmentVariables =
+        environmentVariables =
           let
             environmentVariables = config.environment.variables;
 

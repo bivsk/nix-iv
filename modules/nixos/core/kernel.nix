@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.core = 
+  flake.modules.nixos.core =
     { pkgs, ... }:
     {
       environment.systemPackages = [ pkgs.linux-firmware ];

@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.efi = 
+  flake.modules.nixos.efi =
     { pkgs, ... }:
     {
       boot.loader = {
@@ -10,9 +10,10 @@
       home-manager.sharedModules = [
         {
           home.packages = [
-	    pkgs.efivar
-	    pkgs.efibootmgr
-	  ];
-        }];
+            pkgs.efivar
+            pkgs.efibootmgr
+          ];
+        }
+      ];
     };
 }

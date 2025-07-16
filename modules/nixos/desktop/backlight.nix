@@ -1,13 +1,13 @@
 {
-  flake.modules.nixos.laptop = 
+  flake.modules.nixos.laptop =
     { config, lib, ... }:
     let
       inherit (lib)
         attrNames
-	const
-	filterAttrs
-	getAttr
-	;
+        const
+        filterAttrs
+        getAttr
+        ;
     in
     {
       hardware.brillo.enable = true;

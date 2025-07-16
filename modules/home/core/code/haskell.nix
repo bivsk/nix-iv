@@ -4,7 +4,7 @@
     {
       home.packages = [
         pkgs.ghc
-	pkgs.cabal-install
+        pkgs.cabal-install
       ];
     };
 }

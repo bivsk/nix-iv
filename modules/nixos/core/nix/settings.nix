@@ -1,17 +1,17 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.nix = 
+  flake.modules.nixos.nix =
     { lib, ... }:
     let
       inherit (lib)
         const
-	filterAttrs
-	id
-	isType
-	mapAttrs
-	mapAttrsToList
-	mkDefault
-	;
+        filterAttrs
+        id
+        isType
+        mapAttrs
+        mapAttrsToList
+        mkDefault
+        ;
       registryMap = inputs |> filterAttrs (const <| isType "flake");
     in
     {
@@ -25,9 +25,8 @@
           persistent = true;
         };
 
-	nixPath = registryMap |> mapAttrsToList (name: value: "${name}=${value}") |> id;
-	registry =
-	  registryMap // { default = inputs.nixpkgs; } |> mapAttrs (_: flake: { inherit flake; });
+        nixPath = registryMap |> mapAttrsToList (name: value: "${name}=${value}") |> id;
+        registry = registryMap // { default = inputs.nixpkgs; } |> mapAttrs (_: flake: { inherit flake; });
 
         optimise.automatic = true;
 
@@ -86,5 +85,5 @@
           fallback = true;
         };
       };
-  };
+    };
 }

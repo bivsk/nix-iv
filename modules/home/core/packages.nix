@@ -6,39 +6,39 @@
         lib.attrValues
         <| {
           inherit (pkgs)
-	    fd
-	    file
+            fd
+            file
             httpie
             jq
-	    unzip
+            unzip
             ;
         };
       programs = {
-	ripgrep = {
-	  enable = true;
-	  arguments = [
-	    "--line-number"
-	    "--smart-case"
-	  ];
-	};
+        ripgrep = {
+          enable = true;
+          arguments = [
+            "--line-number"
+            "--smart-case"
+          ];
+        };
         yazi = {
-	  enable = true;
-	  settings = {
-	    mgr.show_hidden = true;
-	    open.rules = [
-	      {
-	        mime = "*";
-		use = "open";
-	      }
-	    ];
-	    opener.open = [
-	      {
-	        run = ''${lib.getExe' pkgs.xdg-utils "xdg-open"} "$@"'';
-		desc = "Open";
-	      }
-	    ];
-	  };
-	};
+          enable = true;
+          settings = {
+            mgr.show_hidden = true;
+            open.rules = [
+              {
+                mime = "*";
+                use = "open";
+              }
+            ];
+            opener.open = [
+              {
+                run = ''${lib.getExe' pkgs.xdg-utils "xdg-open"} "$@"'';
+                desc = "Open";
+              }
+            ];
+          };
+        };
       };
     };
 }

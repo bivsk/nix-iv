@@ -8,15 +8,16 @@
       home-manager.sharedModules = [
         {
           home.packages =
-	    lib.attrValues
-	    <| {
-	      inherit (pkgs)
-	        # wallets
-		ledger-live-desktop
-		monero-gui
-		trezor-suite
-		;
-	    };
-        }];
-  };
+            lib.attrValues
+            <| {
+              inherit (pkgs)
+                # wallets
+                ledger-live-desktop
+                monero-gui
+                trezor-suite
+                ;
+            };
+        }
+      ];
+    };
 }
