@@ -2,20 +2,11 @@
 
 !.gitignore
 
-!docs/
 !.github/
 !.github/**/
 
-!hosts/
-!hosts/**/
-
-!lib/
-
 !modules/
 !modules/**/
-
-!pkgs/
-!pkgs/**/
 
 !*.lock
 
