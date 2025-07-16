@@ -14,7 +14,6 @@
 
         settings = {
           auto_save.session = true;
-          tabs.tabs_are_windows = true;
         };
       };
 
