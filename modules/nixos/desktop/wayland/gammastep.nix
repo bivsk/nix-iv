@@ -2,6 +2,7 @@
   flake.modules.nixos.desktop = {
     # TODO: only use this shit on laptops
     services.geoclue2 = {
+      enable = true;
       appConfig.gammastep = {
         isAllowed = true;
         isSystem = false;
