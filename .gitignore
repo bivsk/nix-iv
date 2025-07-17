@@ -8,6 +8,9 @@
 !modules/
 !modules/**/
 
+!.secrets/
+!.secrets/**/
+
 !*.lock
 
 !*.age

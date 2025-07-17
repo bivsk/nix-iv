@@ -1,0 +1,7 @@
+#       Serial: 28837941, Slot: 1
+#         Name: nix
+#      Created: Thu, 17 Jul 2025 23:11:49 +0000
+#   PIN policy: Once   (A PIN is required once per session, if set)
+# Touch policy: Always (A physical touch is required for every decryption)
+#    Recipient: age1yubikey1qvqvj5e2ajyufy30he0a9pusxc085arjghettrl8yzwcdytkq07cud46fm8
+AGE-PLUGIN-YUBIKEY-1X5YTSQVZ4RGD8LGTF57L0
