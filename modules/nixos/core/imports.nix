@@ -8,6 +8,7 @@
     nix
     security
     users
+    virtualization
     # wireguard-client
   ];
 }
