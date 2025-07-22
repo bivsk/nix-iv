@@ -5,6 +5,7 @@
     gfx
     mpv
     spotify
+    torrent
     zathura
   ];
 }
