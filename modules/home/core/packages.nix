@@ -2,17 +2,15 @@
   flake.modules.homeManager.core =
     { lib, pkgs, ... }:
     {
-      home.packages =
-        lib.attrValues
-        <| {
-          inherit (pkgs)
-            fd
-            file
-            httpie
-            jq
-            unzip
-            ;
-        };
+      home.packages = lib.attrValues {
+        inherit (pkgs)
+          fd
+          file
+          httpie
+          jq
+          unzip
+          ;
+      };
       programs = {
         ripgrep = {
           enable = true;

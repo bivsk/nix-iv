@@ -7,16 +7,14 @@
   flake.modules.homeManager.nix =
     { lib, pkgs, ... }:
     {
-      home.packages =
-        lib.attrValues
-        <| {
-          inherit (pkgs)
-            nix-output-monitor
-            nix-fast-build
-            nix-tree
-            nvd
-            nix-diff
-            ;
-        };
+      home.packages = lib.attrValues {
+        inherit (pkgs)
+          nix-output-monitor
+          nix-fast-build
+          nix-tree
+          nvd
+          nix-diff
+          ;
+      };
     };
 }

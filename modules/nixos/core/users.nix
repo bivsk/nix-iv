@@ -6,19 +6,12 @@
       users = {
         root = {
           isSystemUser = true;
+          hashedPassword = "$6$mgch9O.t370AlCqu$fylfs6GueJ7TqP32GQKHm2PROX..wtNY4WBsowRvaOFX2vtBXXWmrPmkOSO7nHXxAZ1qESVbYFFljlLN3N8wt/";
         };
 
         four = {
           isNormalUser = true;
-          extraGroups = [
-            # Enable ‘sudo’ for the user.
-            "wheel"
-
-            # Enable user to add and edit network connections
-            # TODO: move to network-manager
-            "networkmanager"
-          ];
-
+          extraGroups = [ "wheel" ];
           hashedPassword = "$6$mgch9O.t370AlCqu$fylfs6GueJ7TqP32GQKHm2PROX..wtNY4WBsowRvaOFX2vtBXXWmrPmkOSO7nHXxAZ1qESVbYFFljlLN3N8wt/";
         };
       };
