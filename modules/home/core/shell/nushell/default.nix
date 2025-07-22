@@ -20,12 +20,13 @@
 	shell.enableNushellIntegration = true;
 
         shellAliases = {
-          cp = "cp --recursive --verbose --progress";
-          mk = "mkdir";
+	  # TODO: move nushell exclusive aliases out of `home.shellAliases`
+          # cp = "cp --recursive --progress --verbose";
+          mk = "mkdir --parents";
           rm = "rm --recursive --verbose";
 
           pstree = "pstree -g 2";
-          fg = "job unfreeze";
+          # fg = "job unfreeze";
         };
         
         # completions
