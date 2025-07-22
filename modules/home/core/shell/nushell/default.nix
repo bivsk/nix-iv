@@ -22,7 +22,7 @@
         shellAliases = {
 	  # TODO: move nushell exclusive aliases out of `home.shellAliases`
           # cp = "cp --recursive --progress --verbose";
-          mk = "mkdir --parents";
+          mk = "mkdir";
           rm = "rm --recursive --verbose";
 
           pstree = "pstree -g 2";
