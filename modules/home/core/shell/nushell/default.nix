@@ -8,6 +8,7 @@
     }:
     let
       inherit (lib)
+        attrValues
         getExe
         readFile
         ;
@@ -16,46 +17,45 @@
       home = {
         sessionVariables.SHELLS = getExe pkgs.nushell;
 
+	shell.enableNushellIntegration = true;
+
         shellAliases = {
           cp = "cp --recursive --verbose --progress";
           mk = "mkdir";
           rm = "rm --recursive --verbose";
 
           pstree = "pstree -g 2";
-          tree = "eza --tree --git-ignore --group-directories-first";
           fg = "job unfreeze";
         };
-
-        packages = [ pkgs.zoxide ];
+        
+        # completions
+        packages = attrValues { 
+          inherit (pkgs)
+            inshellisense
+            ;
+        };
       };
 
-      xdg.configFile = {
-        "nushell/zoxide.nu".source = pkgs.runCommand "zoxide.nu" { } ''
-          ${getExe pkgs.zoxide} init nushell --cmd cd > $out
-        '';
+      programs.carapace.enable = true;
 
-        "nushell/ls_colors.txt".source = pkgs.runCommand "ls_colors.txt" { } ''
-          ${getExe pkgs.vivid} generate solarized-dark > $out
-        '';
+      programs.direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+      };
 
-        "nushell/starship.nu".source = pkgs.runCommand "starship.nu" { } ''
-                    ${getExe pkgs.starship} init nu > $out
-          	'';
+      programs.starship = {
+        enable = true;
+	#settings = {};
+      };
+
+      programs.zoxide = {
+        enable = true;
+        options = [ "--cmd cd" ];
       };
 
       programs.nushell = {
         enable = true;
         configFile.text = readFile ./config.nu;
-        envFile.text = readFile ./environment.nu;
-
-        environmentVariables =
-          let
-            environmentVariables = config.environment.variables;
-
-            homeVariables = config.home.sessionVariables;
-            homeVariablesExtra = { };
-          in
-          environmentVariables // homeVariables // homeVariablesExtra;
       };
     };
 }
