@@ -8,5 +8,5 @@
       temperature.day = 5500;
       temperature.night = 1900;
     };
-  }
+  };
 }

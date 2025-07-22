@@ -211,11 +211,11 @@
             smart_resizing = true;
           };
 
-	  ecosystem = {
-	    no_update_news = true;
-	    no_donation_nag = true;
-	    enforce_permissions = false;
-	  };
+          ecosystem = {
+            no_update_news = true;
+            no_donation_nag = true;
+            enforce_permissions = false;
+          };
         };
       };
     };

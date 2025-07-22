@@ -8,12 +8,12 @@
       };
       home-manager.sharedModules = [
         {
-	  home.packages = [
+          home.packages = [
             pkgs.age-plugin-yubikey
             pkgs.yubikey-manager
             pkgs.yubioath-flutter
-	  ];
-	}
+          ];
+        }
       ];
     };
 }

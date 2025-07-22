@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.modules.nixos."nixosConfigurations/merry" = 
+  flake.modules.nixos."nixosConfigurations/merry" =
     { config, ... }:
     {
       age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILFKAmAX5DPob+pdMIW3PtyN26Sdfua2IoHGJO+QixMu";

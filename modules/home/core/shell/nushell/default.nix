@@ -17,10 +17,10 @@
       home = {
         sessionVariables.SHELLS = getExe pkgs.nushell;
 
-	shell.enableNushellIntegration = true;
+        shell.enableNushellIntegration = true;
 
         shellAliases = {
-	  # TODO: move nushell exclusive aliases out of `home.shellAliases`
+          # TODO: move nushell exclusive aliases out of `home.shellAliases`
           # cp = "cp --recursive --progress --verbose";
           mk = "mkdir";
           rm = "rm --recursive --verbose";
@@ -28,9 +28,9 @@
           pstree = "pstree -g 2";
           # fg = "job unfreeze";
         };
-        
+
         # completions
-        packages = attrValues { 
+        packages = attrValues {
           inherit (pkgs)
             inshellisense
             ;
@@ -46,7 +46,7 @@
 
       programs.starship = {
         enable = true;
-	#settings = {};
+        #settings = {};
       };
 
       programs.zoxide = {

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.torrent = 
+  flake.modules.homeManager.torrent =
     { pkgs, ... }:
     {
       home.packages = [

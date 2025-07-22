@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.brave = 
+  flake.modules.homeManager.brave =
     { pkgs, ... }:
     {
       home.packages = [ pkgs.brave ];
