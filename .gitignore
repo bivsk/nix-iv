@@ -2,18 +2,19 @@
 
 !.gitignore
 
-!.github/
-!.github/**/
-
+# main modules
 !modules/
 !modules/**/
 
+# agenix
 !.secrets/
 !.secrets/**/
 !*.pub
 
+# flake.lock
 !*.lock
 
+# misc files
 !*.age
 !*.md
 !*.nix
