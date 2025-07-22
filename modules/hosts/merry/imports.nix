@@ -8,11 +8,12 @@
     # hardware
     amdgpu
     efi
-    laptop
     kvm-amd
 
     # desktop
     desktop
     dev
+
+    laptop
   ];
 }
