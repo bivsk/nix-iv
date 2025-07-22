@@ -16,7 +16,7 @@
 
       age.rekey = {
         storageMode = "local";
-        masterIdentities = [ ../../../.secrets/age-yubikey-identity.txt ];
+        masterIdentities = [ ../../../.secrets/age-yubikey-identity.pub ];
         localStorageDir = ../../../.secrets/${config.networking.hostName};
       };
     };
