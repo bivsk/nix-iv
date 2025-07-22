@@ -22,11 +22,11 @@
 
         # users.users =
         #   let
-        #     persoKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJSonNBBb1DlhaO4EfMh3TbIIsV25phZQ9vp/qKOw9E";
+        #     myKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJn/gRAP8Tutu5gux2fdWVaMtjNXXY5m98D30Z18zd7Q bivsk@tutatnota.com";
         #   in
         #   {
-        #     four.openssh.authorizedKeys.keys = [ persoKey ];
-        #     root.openssh.authorizedKeys.keys = [ persoKey ];
+        #     four.openssh.authorizedKeys.keys = [ myKey ];
+        #     root.openssh.authorizedKeys.keys = [ myKey ];
         #   };
       };
     };

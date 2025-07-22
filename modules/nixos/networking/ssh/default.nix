@@ -34,11 +34,6 @@ in
       sshd
     ];
 
-    # secrets.sshConfig = {
-    #   file = ./config.age;
-    #   mode = "444";
-    # };
-
     home-manager.sharedModules = [
       {
         home.activation.createControlPath = {
@@ -59,8 +54,6 @@ in
             "*" = {
               setEnv.COLORTERM = "truecolor";
               setEnv.TERM = "xterm-256color";
-
-              identityFile = "~/.ssh/id";
             };
           };
         };

@@ -15,13 +15,13 @@
       extraConfig = {
         init.defaultBranch = "master";
 
-        core.sshCommand = "ssh -i ~/.ssh/id";
+        core.sshCommand = "ssh -i /run/agenix/ssh-github";
 
         commit.gpgSign = true;
         tag.gpgSign = true;
 
         gpg.format = "ssh";
-        user.signingKey = "~/.ssh/id";
+        user.signingKey = "/run/agenix/ssh-github";
 
         commit.verbose = true;
 
