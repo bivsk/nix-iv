@@ -16,5 +16,6 @@
 
     # srv
     jellyfin
+    vaultwarden
   ];
 }
