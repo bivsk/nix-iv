@@ -1,12 +1,15 @@
-{ lib, ... }:
 {
-  flake.modules.homeManager.qutebrowser = hmArgs: {
+  flake.modules.homeManager.qutebrowser = 
+    { lib, ... }:
+    {
     config = {
       programs.qutebrowser = {
         enable = true;
-        loadAutoconfig = true;
 
-        keyBindings.normal.e = "edit-url";
+        keyBindings.normal = {
+	  e = "edit-url";
+	  M = "hint links spawn mpv {hint-url}";
+	};
 
         extraConfig = ''
           config.unbind("d")
@@ -14,12 +17,24 @@
 
         settings = {
           auto_save.session = true;
+	  content.blocking.method = "both";
+	  colors.webpage.darkmode.enabled = true;
+	  editor.command = [ "ghostty" "-e" "nvim" "{file}" ];
         };
+
+	searchEngines = {
+	  DEFAULT = "https://duckduckgo.com/?q={}";
+	  aw = "https://wiki.archlinux.org/?search={}";
+	  gw = "https://wiki.gentoo.org/index.php?search={}";
+	  nw = "https://nixos.wiki/index.php?search={}";
+	  np = "https://search.nixos.org/packages?channel=unstable&query={}";
+	  no = "https://search.nixos.org/options?channel=unstable&query={}";
+	};
       };
 
       wayland.windowManager = {
         hyprland.settings.bind = [
-          "SUPER, q, exec, ${lib.getExe hmArgs.config.programs.qutebrowser.package}"
+          "SUPER, q, exec, qutebrowser"
         ];
       };
 
