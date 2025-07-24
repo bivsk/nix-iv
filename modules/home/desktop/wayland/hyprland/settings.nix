@@ -63,6 +63,10 @@
           ];
         };
 
+	layerrule = [
+	  "noanim, selection"
+	];
+
         misc = {
           animate_manual_resizes = true;
 

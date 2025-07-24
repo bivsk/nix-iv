@@ -4,6 +4,7 @@
       enable = true;
       withUWSM = true;
     };
-    # programs.uwsm.enable = true;
+    programs.uwsm.enable = true;
+    security.pam.services.hyprlock = { };
   };
 }
