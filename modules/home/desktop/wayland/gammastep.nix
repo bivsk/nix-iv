@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.wayland = {
+  flake.modules.homeManager.gammastep = {
     services.gammastep = {
       enable = true;
       provider = "manual";

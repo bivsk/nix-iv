@@ -9,6 +9,8 @@
     {
       imports = with config.flake.modules.homeManager; [
         fuzzel
+	gammastep
+	swayosd
       ];
 
       home = {

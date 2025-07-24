@@ -14,6 +14,6 @@
     desktop
     dev
 
-    laptop
+    # laptop
   ];
 }
