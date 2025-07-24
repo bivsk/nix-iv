@@ -20,7 +20,7 @@
 
         "$mod" = "SUPER";
         "$terminal" = "uwsm app -- ghostty";
-        "$browser" = "uwsm app -- chromium --new-window";
+        "$browser" = "uwsm app -- brave --new-window";
         "$webapp" = "$browser --app";
 
         bindm = [
