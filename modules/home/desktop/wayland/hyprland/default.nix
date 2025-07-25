@@ -8,8 +8,8 @@
     }:
     {
       imports = with config.flake.modules.homeManager; [
-	hypridle
-	hyprlock
+        hypridle
+        hyprlock
         waybar
         wayland
       ];
@@ -32,7 +32,7 @@
           brightnessctl
           grim
           hyprpicker
-	  playerctl
+          playerctl
           slurp
           swappy
           swaybg

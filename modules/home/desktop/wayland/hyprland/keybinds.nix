@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.hyprland = 
+  flake.modules.homeManager.hyprland =
     { lib, ... }:
     {
       wayland.windowManager.hyprland.settings = {
@@ -87,13 +87,13 @@
           "$mod, W, exec, $browser"
           "$mod, D, exec, discord"
 
-	  # web apps
-	  "$mod+CTRL, C, exec, $webapp=\"https://chatgpt.com\""
-	  "$mod+CTRL, G, exec, $webapp=\"https://grok.com\""
-	  "$mod+CTRL, X, exec, $webapp=\"https://x.com\""
-	  "$mod+CTRL, Y, exec, $webapp=\"https://youtube.com\""
-	  "$mod+CTRL, N, exec, $webapp=\"https://netflix.com\""
-	  "$mod+CTRL, M, exec, $webapp=\"https://messages.google.com/web/conversations\""
+          # web apps
+          "$mod+CTRL, C, exec, $webapp=\"https://chatgpt.com\""
+          "$mod+CTRL, G, exec, $webapp=\"https://grok.com\""
+          "$mod+CTRL, X, exec, $webapp=\"https://x.com\""
+          "$mod+CTRL, Y, exec, $webapp=\"https://youtube.com\""
+          "$mod+CTRL, N, exec, $webapp=\"https://netflix.com\""
+          "$mod+CTRL, M, exec, $webapp=\"https://messages.google.com/web/conversations\""
 
           ", PRINT, exec, pkill grim; grim -g \"$(slurp -w 0)\" - | swappy -f - -o - | wl-copy --type image/png"
           "SHIFT, PRINT, exec, pkill grim; grim - | swappy -f - -o - | wl-copy --type image/png"

@@ -3,7 +3,8 @@
     services.swayosd.enable = true;
 
     wayland.windowManager.hyprland.settings = {
-      "$osdclient" = "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"";
+      "$osdclient" =
+        "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"";
 
       bindle = [
         ", XF86AudioRaiseVolume, exec, $osdclient --output-volume raise"
