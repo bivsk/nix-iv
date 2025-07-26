@@ -73,6 +73,8 @@
       gc = "git commit";
       gca = "git commit --amend --no-edit";
       gcm = "git commit --message";
+      gcA = "git commit --all";
+      gcmA = "git commit --all --message";
       gcam = "git commit --amend --message";
 
       gcl = "git clone";
