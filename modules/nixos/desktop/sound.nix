@@ -17,6 +17,7 @@
           home.packages = [
             pkgs.pwvucontrol
             pkgs.qpwgraph
+            pkgs.wiremix
           ];
         }
       ];
