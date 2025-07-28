@@ -4,16 +4,16 @@
     {
       programs.emacs = {
         enable = true;
-	package = pkgs.emacs-pgtk;
-	extraConfig = ''
-	  (setq standard-indent 2)
-	'';
-	extraPackages = epkgs: [
-	  epkgs.magit
-	];
+        package = pkgs.emacs-pgtk;
+        extraConfig = ''
+          	  (setq standard-indent 2)
+          	'';
+        extraPackages = epkgs: [
+          epkgs.magit
+        ];
       };
 
-      # Enable the emacs daemon
+      # Enable the daemon
       services.emacs.enable = true;
     };
 }

@@ -87,8 +87,8 @@
           "$mod, W, exec, $browser"
           "$mod, D, exec, discord"
 
-	  # TODO: look into moving apps to key chords?
-	  # tui
+          # TODO: look into moving apps to key chords?
+          # tui
           "$mod, y, exec, $terminal -e yazi"
 
           # web apps
