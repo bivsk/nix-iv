@@ -4,6 +4,10 @@
     {
       services = {
         displayManager = {
+	  autoLogin = {
+	    enable = true;
+	    user = "four";
+	  };
           sddm = {
             enable = true;
             wayland.enable = true;
