@@ -16,6 +16,7 @@
           traceroute
           wget
           wgetpaste
+          wireguard-tools
           ;
       };
     };

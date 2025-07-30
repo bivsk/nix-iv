@@ -1,11 +1,11 @@
 {
   flake.modules.nixos.bootloader =
-    { pkgs, ... }:
+    { lib, ... }:
     {
       boot.loader = {
         grub = {
           enable = true;
-          device = "nodev";
+          device = lib.mkDefault "nodev";
         };
       };
     };

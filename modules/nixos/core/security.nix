@@ -4,7 +4,5 @@
       sudo-rs.enable = true;
       doas.enable = true;
     };
-
-    users.users.four.extraGroups = [ "wheel" ];
   };
 }

@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos."nixosConfigurations/merry" =
+  flake.modules.nixos."nixosConfigurations/baratie" =
     {
       config,
       lib,
@@ -10,8 +10,7 @@
     }:
     {
       imports = [
-        (modulesPath + "/installer/scan/not-detected.nix")
-        inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+        (modulesPath + "/profiles/qemu-guest.nix")
       ];
 
       boot = {
@@ -20,13 +19,13 @@
 
         initrd = {
           availableKernelModules = [
-            "xhci_pci"
-            "thunderbolt"
-            "nvme"
-            "usb_storage"
-            "sd_mod"
+            "ata_piix"
+            "uhci_hcd"
+            "virtio_pci"
+            "sr_mod"
+            "virtio_blk"
           ];
-          kernelModules = [ "dm-snapshot" ];
+          kernelModules = [ ];
         };
         kernelModules = [ "kvm-amd" ];
         extraModulePackages = [ ];
@@ -35,7 +34,6 @@
       networking.useDHCP = lib.mkDefault true;
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-      hardware.enableRedistributableFirmware = true;
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     };
 }

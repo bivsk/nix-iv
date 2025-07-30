@@ -7,13 +7,9 @@
         grub.efiSupport = true;
       };
 
-      home-manager.sharedModules = [
-        {
-          home.packages = [
-            pkgs.efivar
-            pkgs.efibootmgr
-          ];
-        }
+      environment.systemPackages = [
+        pkgs.efivar
+        pkgs.efibootmgr
       ];
     };
 }
