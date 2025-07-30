@@ -97,6 +97,7 @@
           "$mod+CTRL, X, exec, $webapp=\"https://x.com\""
           "$mod+CTRL, Y, exec, $webapp=\"https://youtube.com\""
           "$mod+CTRL, T, exec, $webapp=\"https://tv.youtube.com\""
+          "$mod+CTRL, J, exec, $webapp=\"https://jellyfin.bivsk.com\""
           "$mod+CTRL, N, exec, $webapp=\"https://netflix.com\""
           "$mod+CTRL, M, exec, $webapp=\"https://messages.google.com/web/conversations\""
 
