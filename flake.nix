@@ -6,6 +6,7 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,13 +30,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    doom-emacs = {
-      flake = false;
-      url = "github:doomemacs/doomemacs";
-    };
-
-    fenix.url = "github:nix-community/fenix";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -67,10 +61,6 @@
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
       };
-    };
-    tinted-schemes = {
-      flake = false;
-      url = "github:tinted-theming/schemes";
     };
 
     treefmt-nix = {
