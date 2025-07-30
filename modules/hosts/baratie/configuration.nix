@@ -2,7 +2,7 @@
   flake.modules.nixos."nixosConfigurations/baratie" =
     { lib, ... }:
     {
-      age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMzZPBGLeDXX6cDhFV0v6ZbzhVrxEKN8Fmsna6Xl7Lu6";
+      age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlIgTKob5ytCMJg4xt5pJJeObxJyrIPhsX+Vr1jpV+H";
 
       users.users.root.openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPgHRgDdmenFi5SH02Rrja7iICXUAQQJqdQACPLY9S/1 four@robin"
