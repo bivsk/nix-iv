@@ -14,6 +14,9 @@
 # flake.lock
 !*.lock
 
+# direnv
+!.envrc
+
 # misc files
 !*.age
 !*.md
