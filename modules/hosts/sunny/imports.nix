@@ -16,6 +16,7 @@
 
     # srv
     jellyfin
+    nixarr
     vaultwarden
   ];
 }
