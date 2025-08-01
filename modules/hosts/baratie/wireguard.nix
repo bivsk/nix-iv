@@ -1,17 +1,20 @@
 {
   flake.modules.nixos."nixosConfigurations/baratie" =
     { config, ... }:
+    let
+      port = 58440;
+    in
     {
       secrets.wireguard-private-key.rekeyFile = ./private-key.age;
 
       # Open wireguard port in firewall
-      networking.firewall.allowedUDPPorts = [ 51820 ];
+      networking.firewall.allowedUDPPorts = [ port ];
 
       # Configure wg interface
       networking.wireguard.interfaces = {
         wg0 = {
           ips = [ "10.0.0.1/24" ];
-          listenPort = 51820;
+          listenPort = port;
           privateKeyFile = config.secrets.wireguard-private-key.path;
           peers = [
             {
