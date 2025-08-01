@@ -45,6 +45,8 @@
 
     nix.url = "https://flakehub.com/f/DeterminateSystems/nix-src/*";
 
+    nixarr.url = "github:rasmus-kirk/nixarr";
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
