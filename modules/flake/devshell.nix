@@ -21,10 +21,8 @@
               echo "=> Updating flake inputs"
               nix flake update
 
-              deploy
-
               git add flake.lock
-              git commit -m "flake.lock: Update"
+              git commit -m "chore: update flake.lock"
               git push
             '';
           }
