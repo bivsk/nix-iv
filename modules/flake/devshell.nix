@@ -17,7 +17,7 @@
         commands = [
           {
             name = "fsync";
-	    help = "Update flake.lock";
+            help = "Update flake.lock";
             command = ''
               echo "=> Updating flake inputs"
               nix flake update
