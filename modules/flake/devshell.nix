@@ -16,7 +16,8 @@
         # TODO: edit to tailor my setup
         commands = [
           {
-            name = "update";
+            name = "fsync";
+	    help = "Update flake.lock";
             command = ''
               echo "=> Updating flake inputs"
               nix flake update
