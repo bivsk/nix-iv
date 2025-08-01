@@ -6,17 +6,7 @@
 
       users.extraGroups.libvirtd.members = [ "four" ];
 
-      home-manager.sharedModules = [
-        {
-          # virt-manager
-          home.packages = [ pkgs.dconf ];
-          dconf.settings = {
-            "org/virt-manager/virt-manager/connections" = {
-              autoconnect = [ "qemu:///system" ];
-              uris = [ "qemu:///system" ];
-            };
-          };
-        }
-      ];
+      # TODO: gui only
+      programs.virt-manager.enable = true;
     };
 }
