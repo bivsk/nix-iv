@@ -22,9 +22,11 @@
               echo "=> Updating flake inputs"
               nix flake update
 
+	      pushd $PRJ_ROOT
               git add flake.lock
               git commit -m "chore: update flake.lock"
               git push
+	      popd
             '';
           }
           {
