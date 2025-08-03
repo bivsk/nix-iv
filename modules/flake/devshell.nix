@@ -19,14 +19,14 @@
             name = "fsync";
             help = "Update flake.lock";
             command = ''
-              echo "=> Updating flake inputs"
-              nix flake update
+                      echo "=> Updating flake inputs"
+                      nix flake update
 
-	      pushd $PRJ_ROOT
-              git add flake.lock
-              git commit -m "chore: update flake.lock"
-              git push
-	      popd
+                    	pushd $PRJ_ROOT
+              	git add flake.lock
+                      git commit -m "chore: update flake.lock"
+                      git push
+                    	popd
             '';
           }
           {
