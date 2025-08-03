@@ -5,6 +5,7 @@
 
     agenix
     bootloader
+    network
     nix
     security
     users

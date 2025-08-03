@@ -1,6 +1,7 @@
 {
   flake.modules.nixos = {
-    core.services.mullvad-vpn.enable = true;
+    mullvad.services.mullvad-vpn.enable = true;
+    # TODO: don't really need this at all on non-desktops
     desktop =
       { lib, pkgs, ... }:
       {
