@@ -9,6 +9,7 @@
     acme
     nginx-jellyfin
     nginx-jellyseerr
+    nginx-sonarr
 
     # setup hm
     # TODO: remove home-manager dependency
