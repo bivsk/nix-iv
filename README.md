@@ -2,10 +2,11 @@
 
 Four's Nix Configurations
 
-| Host       | Description           |
-| ---------- | --------------------- |
-| **sunny**  | AMD 3960x Workstation |
-| **merry**  | Framework 13 7840U    |
+| Hostname     | Description                 |
+| ----------   | ----------------------------|
+| **sunny**    | AMD 3960x Workstation       |
+| **merry**    | Framework 13 7840U          |
+| **baratie**  | Ramnode VPS (reverse proxy) |
 
 ## References
 
