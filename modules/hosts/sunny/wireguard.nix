@@ -4,14 +4,14 @@
     let
       # TODO: add check to keep this in sync between machines
       # if one is updated, push updates to all clients
-      port = 58420;
+      port = 58440;
     in
     {
       secrets.wireguard-private-key.rekeyFile = ./private-key.age;
 
       # Configure wg interface
       networking.wireguard.interfaces = {
-        wg0 = {
+        wg-proxy = {
           ips = [ "10.0.0.2/24" ];
           listenPort = port;
           privateKeyFile = config.secrets.wireguard-private-key.path;
