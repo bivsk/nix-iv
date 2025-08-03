@@ -14,8 +14,7 @@
     desktop
     dev
 
-    # srv
-    jellyfin
+    # services
     nixarr
     vaultwarden
   ];

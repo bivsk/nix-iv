@@ -14,41 +14,29 @@
       secrets.nixarr-vpn-conf.rekeyFile = ./nixarr-vpn-conf.age;
       nixarr.vpn = {
         enable = true;
-	# nsName = "nixarr";
 	wgConf = config.secrets.nixarr-vpn-conf.path; 
+	vpnTestService.enable = true;
 	accessibleFrom = [
 	  "10.0.0.0/24"
 	];
       };
 
       # modules
-      nixarr = let
-        email = "bivsk@tutanota.com"; 
-	domain = "bivsk.com";
-      in {
-        autobrr.enable = true;
+      nixarr = {
         bazarr.enable = true;
+	prowlarr.enable = true;
         radarr.enable = true;
 	readarr.enable = true;
 	readarr-audiobook.enable = true;
         sonarr.enable = true;
+
 	jellyfin = {
 	  enable = true;
 	  openFirewall = true;
-	  # expose.https = {
-	  #   enable = true;
-	  #   acmeMail = email;
-	  #   domainName = "jellyfin.${domain}";
-	  # };
 	};
 	jellyseerr = {
 	  enable = true;
 	  openFirewall = true;
-	  # expose.https = {
-	  #   enable = true;
-	  #   acmeMail = "bivsk@tutanota.com";
-	  #   domainName = "jellyfin.${domain}";
-	  # };
 	};
 
         transmission = {
@@ -56,6 +44,11 @@
 	  vpn.enable = true;
 	  peerPort = 58420;
 	};
+      };
+
+      services.jackett = {
+        enable = true;
+	dataDir = "/data/media/.state/jackett";
       };
     };
 }
