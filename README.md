@@ -1,6 +1,6 @@
 # nix-iv
 
-Four's Nix Configurations
+Four's NixOS Configurations
 
 | Hostname     | Description                 |
 | ----------   | ----------------------------|
