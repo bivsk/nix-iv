@@ -8,6 +8,7 @@
     display-manager
     gaming
     keyring
+    mullvad
     plymouth
     power-management
     printing
