@@ -11,10 +11,10 @@
         lazy-trees = true;
       };
 
-      home-manager.sharedModules = [
-        {
-          nix.package = lib.mkForce inputs.nix.packages.${pkgs.stdenv.system}.default;
-        }
-      ];
+      # home-manager.sharedModules = [
+      #   {
+      #     nix.package = lib.mkForce inputs.nix.packages.${pkgs.stdenv.system}.default;
+      #   }
+      # ];
     };
 }
