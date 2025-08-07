@@ -3,7 +3,7 @@
     services.nginx = {
       enable = true;
       recommendedProxySettings = true;
-      virtualHosts."jellyseer.bivsk.com" = {
+      virtualHosts."jellyseerr.bivsk.com" = {
         forceSSL = true;
         enableACME = true;
 
