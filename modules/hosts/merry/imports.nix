@@ -9,11 +9,9 @@
     amdgpu
     efi
     kvm-amd
+    virtualization
 
-    # desktop
     desktop
     dev
-
-    # laptop
   ];
 }

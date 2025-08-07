@@ -14,6 +14,6 @@
     # setup hm
     # TODO: remove home-manager dependency
     # either remove use of sharedModules in nixos modules, or find a workaround/fix
-    dev
+    # dev
   ];
 }
