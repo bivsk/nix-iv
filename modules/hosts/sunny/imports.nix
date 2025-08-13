@@ -7,6 +7,7 @@
   flake.modules.nixos."nixosConfigurations/sunny".imports = with inputs.self.modules.nixos; [
     # hardware
     amdgpu
+    grub
     efi
     kvm-amd
     virtualization
