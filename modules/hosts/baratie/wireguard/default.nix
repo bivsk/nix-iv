@@ -10,6 +10,7 @@
         wg-proxy = {
           ips = [ "10.0.0.1/24" ];
           listenPort = port;
+	  generatePrivateKeyFile = true;
           privateKeyFile = "/persist/etc/wireguard/wg-proxy";
           peers = [
             {
