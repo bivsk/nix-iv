@@ -5,7 +5,7 @@
       boot.loader = {
         grub = {
           enable = true;
-          # device = lib.mkDefault "nodev";
+          device = lib.mkDefault "nodev";
 	  zfsSupport = true;
         };
       };
