@@ -14,9 +14,6 @@
       ];
 
       boot = {
-        # Use latest linux kernel
-        kernelPackages = pkgs.linuxPackages_latest;
-
         initrd = {
           availableKernelModules = [
             "ata_piix"

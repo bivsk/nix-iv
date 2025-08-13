@@ -5,15 +5,13 @@
   };
 
   flake.modules.nixos."nixosConfigurations/baratie".imports = with inputs.self.modules.nixos; [
-    # bivsk
+    grub
+    impermanence
+
+    # reverse proxies
     acme
     nginx-jellyfin
     nginx-jellyseerr
     nginx-sonarr
-
-    # setup hm
-    # TODO: remove home-manager dependency
-    # either remove use of sharedModules in nixos modules, or find a workaround/fix
-    # dev
   ];
 }
