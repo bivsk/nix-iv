@@ -5,7 +5,7 @@
   };
 
   flake.modules.nixos."nixosConfigurations/baratie" = {
-    age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFFYe9FVPVOQ3N3UtIZwuKaoSkZTIncRqkQoGfjL822+";
+    age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBUk4LEx7ecBkrfBvLv+0zkxSdsKBSmYI4P1K2A0rf3z";
 
     imports = with inputs.self.modules.nixos; [
       grub
@@ -44,11 +44,11 @@
       enable = true;
       hostKeys = [
         {
-          path = "/persist/ssh/ssh_host_ed25519_key";
+          path = "/persist/etc/ssh/ssh_host_ed25519_key";
           type = "ed25519";
         }
         {
-          path = "/persist/ssh/ssh_host_rsa_key";
+          path = "/persist/etc/ssh/ssh_host_rsa_key";
           type = "rsa";
           bits = 4096;
         }
