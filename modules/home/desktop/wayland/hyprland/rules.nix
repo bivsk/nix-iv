@@ -12,6 +12,10 @@
         "float, class:^(steam)$"
         "fullscreen, class:^(com.libretro.RetroArch)$"
 
+	# Rabby Wallet
+        "float, class:chrome-acmacodkjbdgmoleebolmdjonilkdbch-Default"
+        "center, class:chrome-acmacodkjbdgmoleebolmdjonilkdbch-Default"
+
         # Opacity
         "opacity 0.97 0.9, class:.*"
         "opacity 1 0.97, class:^(Chromium|chromium|google-chrome|firefox|qutebrowser|brave-browser|google-chrome-unstable)$"
