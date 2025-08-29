@@ -9,8 +9,8 @@
 
       services = {
         fprintd.enable = true; # fingerprint reader
-	# TODO: move to all hosts
-	logind.settings.Login.HandlePowerKey = "lock"; # default is "poweroff"
+        # TODO: move to all hosts
+        logind.settings.Login.HandlePowerKey = "lock"; # default is "poweroff"
       };
 
       boot.loader.timeout = 0;

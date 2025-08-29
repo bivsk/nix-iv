@@ -10,7 +10,7 @@
       imports = with config.flake.modules.homeManager; [
         fuzzel
         gammastep
-	swaync
+        swaync
         swayosd
       ];
 

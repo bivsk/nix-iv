@@ -40,7 +40,7 @@
 
       programs.ssh = {
         enable = true;
-	enableDefaultConfig = false;
+        enableDefaultConfig = false;
         matchBlocks = hosts // {
           "*" = {
             setEnv.COLORTERM = "truecolor";

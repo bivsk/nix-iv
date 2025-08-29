@@ -12,7 +12,7 @@
         "float, class:^(steam)$"
         "fullscreen, class:^(com.libretro.RetroArch)$"
 
-	# Rabby Wallet
+        # Rabby Wallet
         "float, class:chrome-acmacodkjbdgmoleebolmdjonilkdbch-Default"
         "center, class:chrome-acmacodkjbdgmoleebolmdjonilkdbch-Default"
 

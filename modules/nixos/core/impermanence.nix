@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.impermanence = 
+  flake.modules.nixos.impermanence =
     { pkgs, ... }:
     {
       imports = [ inputs.impermanence.nixosModules.impermanence ];
@@ -23,11 +23,11 @@
         after = [ "zfs-import-zroot.service" ];
         before = [ "sysroot.mount" ];
         path = [ pkgs.zfs ];
-	unitConfig.DefaultDependencies = "no";
-	serviceConfig.Type = "oneshot";
-	script = ''
-	  zfs rollback -r zroot/local/root@blank && echo " >> >> Rollback Complete << <<"
-	'';
+        unitConfig.DefaultDependencies = "no";
+        serviceConfig.Type = "oneshot";
+        script = ''
+          	  zfs rollback -r zroot/local/root@blank && echo " >> >> Rollback Complete << <<"
+          	'';
       };
 
       services.zfs = {
