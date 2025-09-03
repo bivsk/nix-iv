@@ -13,6 +13,7 @@
 
         settings = {
           mouse-hide-while-typing = true;
+	  confirm-close-surface = false;
 
           keybind =
             lib.mapAttrsToList (name: value: "ctrl+shift+${name}=${value}") {
