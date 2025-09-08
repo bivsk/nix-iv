@@ -6,7 +6,7 @@
         grub = {
           enable = true;
           device = lib.mkDefault "nodev";
-	  zfsSupport = true;
+          zfsSupport = true;
         };
       };
     };
