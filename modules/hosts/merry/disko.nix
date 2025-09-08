@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos."nixosConfigurations/sunny" = {
+  flake.modules.nixos."nixosConfigurations/merry" = {
     boot.supportedFilesystems = [ "zfs" ];
     networking.hostId = "af7bc4fa";
     disko.devices = {
