@@ -41,16 +41,10 @@
             value = {
               type = "disk";
               device = "/dev/${name}";
-              content = raidzContent // {
-                partitions = raidzContent.partitions // {
-                  ESP = raidzContent.partitions.ESP // {
-                    content = raidzContent.partitions.ESP.content // {
-                      mountpoint = # nvme1n1's ESP is mounted at /boot1, etc.
-                        raidzContent.partitions.ESP.content.mountpoint
-                        + (if index == 0 then "" else builtins.toString index);
-                    };
-                  };
-                };
+              content = lib.recursiveUpdate raidzContent {
+                partitions.ESP.content.mountpoint =
+                  raidzContent.partitions.ESP.content.mountpoint
+                  + (if index == 0 then "" else builtins.toString index);
               };
             };
           }) diskNames
