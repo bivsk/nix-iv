@@ -1,6 +1,6 @@
 {
   flake.modules.nixos."nixosConfigurations/sunny" =
-    { pkgs, lib, ... }:
+    { lib, ... }:
     let
       diskNames = [
         "nvme0n1"
