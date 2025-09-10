@@ -4,8 +4,8 @@
     let
       diskNames = [
         "nvme0n1"
-        "nvme1n1"
         "nvme2n1"
+        "nvme3n1"
       ];
       raidzContent = {
         type = "gpt";
