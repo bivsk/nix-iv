@@ -12,7 +12,7 @@
         enable = true;
         ports = [ port ];
 
-	# TODO: make sure impermanence is enabled
+        # TODO: make sure impermanence is enabled
         hostKeys = [
           {
             path = "/persist/etc/ssh/ssh_host_ed25519_key";
