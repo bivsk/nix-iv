@@ -2,7 +2,7 @@
   flake.modules.nixos."nixosConfigurations/merry" =
     { config, lib, ... }:
     {
-      age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILFKAmAX5DPob+pdMIW3PtyN26Sdfua2IoHGJO+QixMu";
+      age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICeIagI3z8YmGt4FDC9KYK8KCRZPLFhIhuoUIbLGQFDE";
 
       networking.hostName = "merry";
       networking.ipv4.address = "192.168.0.29";
