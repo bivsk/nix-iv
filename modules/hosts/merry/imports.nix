@@ -5,9 +5,9 @@
   };
 
   flake.modules.nixos."nixosConfigurations/merry".imports = with inputs.self.modules.nixos; [
-    impermanence
     # hardware
     amdgpu
+    fprintd
     grub
     efi
     kvm-amd
@@ -15,5 +15,6 @@
 
     desktop
     dev
+    impermanence
   ];
 }
