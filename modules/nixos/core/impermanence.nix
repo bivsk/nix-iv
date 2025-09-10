@@ -11,7 +11,9 @@
           "/var/log"
           "/var/lib/nixos"
           "/var/lib/systemd/coredump"
+          # TODO: move to modules
           "/var/lib/acme"
+          "/etc/NetworkManager/system-connections"
         ];
       };
       fileSystems."/persist".neededForBoot = true;
