@@ -16,5 +16,9 @@
         config.users.users |> filterAttrs (const <| getAttr "isNormalUser") |> attrNames;
 
       environment.shellAliases.wifi = "nmcli dev wifi show-password";
+
+      environment.persistence."/persist".directories = [
+        "/etc/NetworkManager/system-connections"
+      ];
     };
 }
