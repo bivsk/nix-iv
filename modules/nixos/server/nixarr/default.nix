@@ -6,9 +6,8 @@
 
       nixarr = {
         enable = true;
-        # cannot be under any non-root owned dir
-        mediaDir = "/data/media";
-        stateDir = "/data/media/.state/nixarr";
+        mediaDir = "/media/nixarr";
+        stateDir = "/media/nixarr/.state";
       };
 
       secrets.nixarr-vpn-conf.rekeyFile = ./nixarr-vpn-conf.age;
