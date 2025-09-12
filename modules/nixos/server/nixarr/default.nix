@@ -20,13 +20,11 @@
         ];
       };
 
-      # modules
       nixarr = {
-        bazarr.enable = true;
+        # bazarr.enable = true;
         prowlarr.enable = true;
         radarr.enable = true;
         readarr.enable = true;
-        readarr-audiobook.enable = true;
         sonarr = {
           enable = true;
           openFirewall = true;
@@ -36,6 +34,7 @@
           enable = true;
           openFirewall = true;
         };
+
         jellyseerr = {
           enable = true;
           openFirewall = true;
