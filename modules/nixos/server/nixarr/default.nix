@@ -2,7 +2,10 @@
   flake.modules.nixos.nixarr =
     { config, inputs, ... }:
     {
-      imports = [ inputs.nixarr.nixosModules.default ];
+      imports = [
+        inputs.nixarr.nixosModules.default
+        inputs.self.modules.nixos.calibre
+      ];
 
       nixarr = {
         enable = true;
