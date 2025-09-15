@@ -24,7 +24,7 @@
       };
 
       nixarr = {
-        # bazarr.enable = true;
+        bazarr.enable = true;
         prowlarr.enable = true;
         radarr.enable = true;
         readarr.enable = true;
