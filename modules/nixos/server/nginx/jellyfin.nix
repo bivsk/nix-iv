@@ -3,7 +3,7 @@
     services.nginx = {
       enable = true;
       clientMaxBodySize = "20M";
-      virtualHosts."jellyfin.bivsk.com" = {
+      virtualHosts."watch.bivsk.com" = {
         forceSSL = true;
         enableACME = true;
 
