@@ -35,20 +35,39 @@
       networking.hostId = "0ffc592e";
       disko.devices = {
         # Create mirrored partitions on all disks
-        disk = builtins.listToAttrs (
-          lib.imap0 (index: name: {
-            inherit name;
-            value = {
+        disk =
+          builtins.listToAttrs (
+            lib.imap0 (index: name: {
+              inherit name;
+              value = {
+                type = "disk";
+                device = "/dev/${name}";
+                content = lib.recursiveUpdate raidzContent {
+                  partitions.ESP.content.mountpoint =
+                    raidzContent.partitions.ESP.content.mountpoint
+                    + (if index == 0 then "" else builtins.toString index);
+                };
+              };
+            }) diskNames
+          )
+          // {
+            sda = {
               type = "disk";
-              device = "/dev/${name}";
-              content = lib.recursiveUpdate raidzContent {
-                partitions.ESP.content.mountpoint =
-                  raidzContent.partitions.ESP.content.mountpoint
-                  + (if index == 0 then "" else builtins.toString index);
+              device = "/dev/sda";
+              content = {
+                type = "gpt";
+                partitions = {
+                  zfs = {
+                    size = "100%";
+                    content = {
+                      type = "zfs";
+                      pool = "tank";
+                    };
+                  };
+                };
               };
             };
-          }) diskNames
-        );
+          };
         # Configure zpool/datasets
         zpool = {
           zroot = {
@@ -90,6 +109,21 @@
               "safe/home" = {
                 type = "zfs_fs";
                 mountpoint = "/home";
+              };
+            };
+          };
+
+          tank = {
+            type = "zpool";
+            mode = "disk";
+            datasets = {
+              "media" = {
+                type = "zfs_fs";
+                mountpoint = "/media";
+              };
+              "nixarr" = {
+                type = "zfs_fs";
+                mountpoint = "/media/nixarr";
               };
             };
           };
