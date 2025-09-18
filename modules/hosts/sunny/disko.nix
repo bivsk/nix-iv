@@ -115,7 +115,6 @@
 
           tank = {
             type = "zpool";
-            mode = "disk";
             datasets = {
               "media" = {
                 type = "zfs_fs";
