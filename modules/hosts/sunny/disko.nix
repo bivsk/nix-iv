@@ -120,7 +120,7 @@
                 type = "zfs_fs";
                 mountpoint = "/media";
               };
-              "nixarr" = {
+              "media/nixarr" = {
                 type = "zfs_fs";
                 mountpoint = "/media/nixarr";
               };
