@@ -17,47 +17,47 @@
 
           keybind =
             lib.mapAttrsToList (name: value: "ctrl+shift+${name}=${value}") {
-              c = "copy_to_clipboard";
-              v = "paste_from_clipboard";
+              KeyC = "copy_to_clipboard";
+              KeyV = "paste_from_clipboard";
 
-              z = "jump_to_prompt:-2";
-              x = "jump_to_prompt:2";
+              KeyZ = "jump_to_prompt:-2";
+              KeyX = "jump_to_prompt:2";
 
-              h = "write_scrollback_file:paste";
-              i = "inspector:toggle";
+              KeyH = "write_scrollback_file:paste";
+              KeyI = "inspector:toggle";
 
-              page_down = "scroll_page_fractional:0.33";
-              down = "scroll_page_lines:1";
-              j = "scroll_page_lines:1";
+              PageDown = "scroll_page_fractional:0.33";
+              ArrowDown = "scroll_page_lines:1";
+              KeyJ = "scroll_page_lines:1";
 
-              page_up = "scroll_page_fractional:-0.33";
-              up = "scroll_page_lines:-1";
-              k = "scroll_page_lines:-1";
+              PageUp = "scroll_page_fractional:-0.33";
+              ArrowUp = "scroll_page_lines:-1";
+              KeyK = "scroll_page_lines:-1";
 
-              home = "scroll_to_top";
-              end = "scroll_to_bottom";
+              Home = "scroll_to_top";
+              End = "scroll_to_bottom";
 
-              enter = "reset_font_size";
-              plus = "increase_font_size:1";
-              minus = "decrease_font_size:1";
+              Enter = "reset_font_size";
+              Equal = "increase_font_size:1";
+              Minus = "decrease_font_size:1";
 
-              t = "new_tab";
-              q = "close_surface";
+              KeyT = "new_tab";
+              KeyQ = "close_surface";
 
-              "physical:one" = "goto_tab:1";
-              "physical:two" = "goto_tab:2";
-              "physical:three" = "goto_tab:3";
-              "physical:four" = "goto_tab:4";
-              "physical:five" = "goto_tab:5";
-              "physical:six" = "goto_tab:6";
-              "physical:seven" = "goto_tab:7";
-              "physical:eight" = "goto_tab:8";
-              "physical:nine" = "goto_tab:9";
-              "physical:zero" = "goto_tab:10";
+              "Digit1" = "goto_tab:1";
+              "Digit2" = "goto_tab:2";
+              "Digit3" = "goto_tab:3";
+              "Digit4" = "goto_tab:4";
+              "Digit5" = "goto_tab:5";
+              "Digit6" = "goto_tab:6";
+              "Digit7" = "goto_tab:7";
+              "Digit8" = "goto_tab:8";
+              "Digit9" = "goto_tab:9";
+              "Digit0" = "goto_tab:10";
             }
             ++ lib.mapAttrsToList (name: value: "ctrl+${name}=${value}") {
-              "physical:tab" = "next_tab";
-              "shift+physical:tab" = "previous_tab";
+              "Tab" = "next_tab";
+              "shift+Tab" = "previous_tab";
             };
         };
       };
