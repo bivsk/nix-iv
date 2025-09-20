@@ -14,6 +14,8 @@
         settings = {
           mouse-hide-while-typing = true;
           confirm-close-surface = false;
+          working-directory = "home";
+          window-inherit-working-directory = false;
 
           keybind =
             lib.mapAttrsToList (name: value: "ctrl+shift+${name}=${value}") {
