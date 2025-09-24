@@ -2,11 +2,12 @@
   flake.modules.nixos.calibre =
     let
       calibreDir = "/media/nixarr/library/books/.calibre";
+      port = 4545;
     in
     {
       services.calibre-server = {
         enable = true;
-        port = 4545;
+        port = port;
         auth = {
           enable = true;
           mode = "basic";
@@ -14,5 +15,7 @@
         };
         libraries = [ calibreDir ];
       };
+
+      networking.firewall.allowedTCPPorts = [ port ];
     };
 }
