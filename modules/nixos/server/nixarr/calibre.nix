@@ -5,7 +5,7 @@
     in
     {
       services.calibre-server = {
-        enable = false;
+        enable = true;
         port = 4545;
         auth = {
           enable = true;
