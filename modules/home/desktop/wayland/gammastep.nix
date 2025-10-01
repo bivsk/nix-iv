@@ -7,6 +7,7 @@
       duskTime = "19:45-21:00";
       temperature.day = 5500;
       temperature.night = 1900;
+      tray = true;
     };
   };
 }
