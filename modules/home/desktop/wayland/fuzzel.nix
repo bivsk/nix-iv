@@ -23,8 +23,8 @@
 
         bind = [
           "SUPER, SPACE, exec, pkill fuzzel; fuzzel"
-          "SUPER, E    , exec, pkill fuzzel; cat ${./emojis.txt} | fuzzel --no-fuzzy --dmenu | cut -d ' ' -f 1 | tr -d '\\n' | wl-copy"
-          "SUPER+SHIFT, E    , exec, pkill fuzzel; cat ${./emojis.txt} | fuzzel --no-fuzzy --dmenu | cut -d ' ' -f 1 | tr -d '\\n' | wtype -"
+          "SUPER, E    , exec, pkill fuzzel; cat ${./emojis.txt} | fuzzel --match-mode exact --dmenu | cut -d ' ' -f 1 | tr -d '\\n' | wl-copy"
+          "SUPER+SHIFT, E    , exec, pkill fuzzel; cat ${./emojis.txt} | fuzzel --match-mode exact --dmenu | cut -d ' ' -f 1 | tr -d '\\n' | wtype -"
           "SUPER, V    , exec, pkill fuzzel; cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
         ];
       };
@@ -56,15 +56,6 @@
             vertical-pad = 8;
             inner-pad = 8;
           };
-
-          # colors = mapAttrs (_: color: color + "FF") {
-          #   background = base00;
-          #   text = base05;
-          #   match = base0A;
-          #   selection = base05;
-          #   selection-text = base00;
-          #   border = base0A;
-          # };
 
           border = {
             radius = 4;
