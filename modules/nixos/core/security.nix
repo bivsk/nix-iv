@@ -3,7 +3,6 @@
     { pkgs, ... }:
     {
       security = {
-        sudo.enable = false;
         doas = {
           enable = true;
           extraRules = [
@@ -15,7 +14,5 @@
           ];
         };
       };
-
-      environment.systemPackages = [ pkgs.doas-sudo-shim ];
     };
 }
