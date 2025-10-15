@@ -5,14 +5,16 @@ let
 in
 {
   flake.modules.nixos.vaultwarden = 
-    { config, ... }:
+    { config, pkgs, ... }:
     {
       networking.firewall.allowedTCPPorts = [ port ];
+
       secrets.vaultEnvironment = {
         rekeyFile = ./environment.age;
 	owner = "vaultwarden";
 	group = "vaultwarden";
       };
+
       services.vaultwarden = {
         enable = true;
 	backupDir = "/vault";
@@ -27,6 +29,11 @@ in
 
       environment.persistence."/persist".directories = [
         "/var/lib/vaultwarden"
+      ];
+
+      # vaultwarden cli
+      environment.systemPackages = [
+        pkgs.vaultwarden
       ];
     };
 
