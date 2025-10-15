@@ -1,5 +1,6 @@
 {
   flake.modules.nixos.nix = {
+    system.rebuild.enableNg = true;
     nix = {
       channel.enable = false;
 
@@ -11,7 +12,6 @@
       };
 
       optimise.automatic = true;
-      system.rebuild.enableNg = true;
 
       settings = {
         experimental-features = "nix-command flakes pipe-operators";
