@@ -4,17 +4,22 @@
       windowrule = [
         # Float and center file pickers
         "float, class:xdg-desktop-portal-gtk, title:^(Open.*Files?|Save.*Files?|All Files|Save)"
-        "center, class:xdg-desktop-portal-gtk, title:^(Open.*Files?|Save.*Files?|All Files|Save)"
+        "center, 1, class:xdg-desktop-portal-gtk, title:^(Open.*Files?|Save.*Files?|All Files|Save)"
         "float, title:^(File Upload)"
-        "center, title:^(File Upload)"
+        "center, 1, title:^(File Upload)"
 
         # Float Steam, fullscreen RetroArch
         "float, class:^(steam)$"
         "fullscreen, class:^(com.libretro.RetroArch)$"
 
+	# Float and center blueman
+        "float, title:^(Bluetooth Devices)"
+        "center, 1, title:^(Bluetooth Devices)"
+        "size, 640 640, title:^(Bluetooth Devices)"
+
         # Rabby Wallet
         "float, class:chrome-acmacodkjbdgmoleebolmdjonilkdbch-Default"
-        "center, class:chrome-acmacodkjbdgmoleebolmdjonilkdbch-Default"
+        "center, 1, class:chrome-acmacodkjbdgmoleebolmdjonilkdbch-Default"
 
         # Opacity
         "opacity 0.97 0.9, class:.*"
