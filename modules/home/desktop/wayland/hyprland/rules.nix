@@ -12,7 +12,7 @@
         "float, class:^(steam)$"
         "fullscreen, class:^(com.libretro.RetroArch)$"
 
-	# Float and center blueman
+        # Float and center blueman
         "float, title:^(Bluetooth Devices)"
         "center, 1, title:^(Bluetooth Devices)"
         "size, 640 640, title:^(Bluetooth Devices)"
