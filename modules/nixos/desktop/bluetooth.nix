@@ -2,7 +2,8 @@
   flake.modules.nixos.bluetooth =
     { pkgs, ... }:
     {
-      services.blueman.enable = true;
+      environment.systemPackages = [ pkgs.bluetui ];
+
 
       hardware.bluetooth = {
         enable = true;
