@@ -1,21 +1,16 @@
 { inputs, ... }:
 {
-  nixosHosts.baratie = {
-    unstable = true;
+  nixosHosts.yuda = {
+    unstable = false;
   };
 
-  flake.modules.nixos."nixosConfigurations/baratie" = {
-    age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBUk4LEx7ecBkrfBvLv+0zkxSdsKBSmYI4P1K2A0rf3z";
+  flake.modules.nixos."nixosConfigurations/yuda" = {
+    age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILNxpKYICqj5J6Lp4aBvrhvfG678+r/GBSfguu8fz2Pc";
 
     imports = with inputs.self.modules.nixos; [
       grub
       impermanence
-
-      # reverse proxies
-      acme
-      nginx-jellyfin
-      nginx-jellyseerr
-      nginx-sonarr
+      vaultwarden
     ];
 
     # TODO: better manage ssh keys between hosts
@@ -24,13 +19,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPgHRgDdmenFi5SH02Rrja7iICXUAQQJqdQACPLY9S/1 four@robin"
     ];
 
-    networking.hostName = "baratie";
-
-    # TODO: move to nginx
-    networking.firewall.allowedTCPPorts = [
-      80
-      443
-    ];
+    networking.hostName = "yuda";
 
     boot.loader.timeout = 0;
 
