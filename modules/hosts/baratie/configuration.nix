@@ -16,6 +16,7 @@
       nginx-jellyfin
       nginx-jellyseerr
       nginx-sonarr
+      vaultwarden-nginx
     ];
 
     # TODO: better manage ssh keys between hosts
