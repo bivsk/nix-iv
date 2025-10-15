@@ -20,6 +20,7 @@
     ];
 
     networking.hostName = "yuda";
+    networking.ipv4.address = "192.168.0.14";
 
     boot.loader.timeout = 0;
 
