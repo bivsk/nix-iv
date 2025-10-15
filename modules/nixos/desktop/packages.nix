@@ -2,13 +2,13 @@
   flake.modules.nixos.desktop =
     { pkgs, ... }:
     {
-      environment.systemPackages = with pkgs; [
+      environment.systemPackages = [
         # Multimedia
-        ffmpeg
-        ffmpegthumbnailer
-        gthumb
-        imagemagick
-        vlc
+        pkgs.ffmpeg
+        pkgs.ffmpegthumbnailer
+        pkgs.gthumb
+        pkgs.imagemagick
+        pkgs.vlc
       ];
     };
 }
