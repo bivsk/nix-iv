@@ -84,8 +84,8 @@
           "$mod+SHIFT, Q, exit"
 
           "$mod+SHIFT, RETURN, exec, $terminal"
+          "$mod+CTRL, B, exec, $terminal --title=Bluetooth -e bluetui"
           "$mod, W, exec, $browser"
-          "$mod, D, exec, discord"
 
           # TODO: look into moving apps to key chords?
           # tui
@@ -97,7 +97,7 @@
           "$mod+CTRL, X, exec, $webapp=\"https://x.com\""
           "$mod+CTRL, Y, exec, $webapp=\"https://youtube.com\""
           "$mod+CTRL, T, exec, $webapp=\"https://tv.youtube.com\""
-          "$mod+CTRL, J, exec, $webapp=\"https://watch.bivsk.com\""
+          "$mod+CTRL, W, exec, $webapp=\"https://watch.bivsk.com\""
           "$mod+CTRL, N, exec, $webapp=\"https://netflix.com\""
           "$mod+CTRL, M, exec, $webapp=\"https://messages.google.com/web/conversations\""
 
