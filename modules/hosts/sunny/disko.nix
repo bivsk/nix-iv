@@ -115,6 +115,13 @@
 
           tank = {
             type = "zpool";
+            rootFsOptions = {
+              acltype = "posixacl";
+              atime = "off";
+              compression = "zstd";
+              mountpoint = "none";
+              xattr = "sa";
+            };
             datasets = {
               "media" = {
                 type = "zfs_fs";
