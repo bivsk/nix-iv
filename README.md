@@ -7,6 +7,7 @@ Four's NixOS Configurations
 | **sunny**    | AMD 3960x Workstation       |
 | **merry**    | Framework 13 7840U          |
 | **baratie**  | Ramnode VPS (reverse proxy) |
+| **yuda**     | Dell OptiPlex               |
 
 ## References
 
