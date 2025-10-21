@@ -2,17 +2,16 @@
   flake.modules.homeManager.core = {
     programs.git = {
       enable = true;
-      userName = "bivsk";
-      userEmail = "bivsk@tutanota.com";
 
       lfs.enable = true;
 
-      difftastic = {
-        enable = true;
-        options.background = "dark";
-      };
+      settings = {
+        user = {
+	  name = "bivsk";
+	  email = "bivsk@tutanota.com";
+          signingKey = "/run/agenix/ssh-github";
+	};
 
-      extraConfig = {
         init.defaultBranch = "master";
 
         core.sshCommand = "ssh -i /run/agenix/ssh-github";
@@ -21,7 +20,6 @@
         tag.gpgSign = true;
 
         gpg.format = "ssh";
-        user.signingKey = "/run/agenix/ssh-github";
 
         commit.verbose = true;
 
@@ -51,6 +49,12 @@
         # https://bernsteinbear.com/git
         alias.recent = "! git branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\" | head -10";
       };
+    };
+
+    programs.difftastic = {
+      enable = true;
+      git.enable = true;
+      options.background = "dark";
     };
 
     programs.gh = {
