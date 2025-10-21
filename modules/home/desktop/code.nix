@@ -13,6 +13,8 @@
       home.packages = [
         pythonPkg
         pkgs.uv
+	pkgs.ghc
+	pkgs.haskellPackages.cabal-install
       ];
     };
 }
