@@ -7,10 +7,10 @@
 
       settings = {
         user = {
-	  name = "bivsk";
-	  email = "bivsk@tutanota.com";
+          name = "bivsk";
+          email = "bivsk@tutanota.com";
           signingKey = "/run/agenix/ssh-github";
-	};
+        };
 
         init.defaultBranch = "master";
 

@@ -3,13 +3,13 @@
     nixarr = {
       nixarr = {
         jellyfin = {
-	  enable = true;
-	  openFirewall = true;
-	};
-	jellyseerr = {
-	  enable = true;
-	  openFirewall = true;
-	};
+          enable = true;
+          openFirewall = true;
+        };
+        jellyseerr = {
+          enable = true;
+          openFirewall = true;
+        };
       };
     };
 
