@@ -28,21 +28,6 @@
         prowlarr.enable = true;
         radarr.enable = true;
         readarr.enable = true;
-        sonarr = {
-          enable = true;
-          openFirewall = true;
-        };
-
-        jellyfin = {
-          enable = true;
-          openFirewall = true;
-        };
-
-        jellyseerr = {
-          enable = true;
-          openFirewall = true;
-        };
-
         transmission = {
           enable = true;
           flood.enable = true;
