@@ -45,6 +45,8 @@ in
         enable = true;
         recommendedProxySettings = true;
         virtualHosts."cache.bivsk.com" = {
+	  enableACME = true;
+	  forceSSL = true;
           locations."/".proxyPass = "http://10.0.0.2:${builtins.toString port}";
         };
       };
