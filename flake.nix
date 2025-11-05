@@ -12,11 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    attic = {
-      url = "github:zhaofengli/attic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     crash = {
       url = "github:RGBCube/crash";
       inputs.nixpkgs.follows = "nixpkgs";
