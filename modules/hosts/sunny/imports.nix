@@ -19,6 +19,7 @@
 
     # services
     atticd
+    hercules-ci-agent
     nixarr
   ];
 }

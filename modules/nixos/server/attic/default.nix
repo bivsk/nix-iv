@@ -5,14 +5,11 @@
       port = 10220;
     in
     {
-      imports = [
-        inputs.attic.nixosModules.atticd
-      ];
-
       secrets.atticd-env.rekeyFile = ./environment.age;
 
       services.atticd = {
         enable = true;
+	mode = "monolithic";
 
         environmentFile = config.secrets.atticd-env.path;
 
@@ -21,5 +18,15 @@
           jwt = { };
         };
       };
+
+      environment.persistence."/persist".directories = [
+        "/var/lib/private/atticd"
+      ];
+    };
+
+  flake.modules.nixos.core = 
+    { pkgs, ... }:
+    {
+      environment.systemPackages = [ pkgs.attic-client ];
     };
 }
