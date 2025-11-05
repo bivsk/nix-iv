@@ -6,7 +6,11 @@
     in
     {
       secrets.hercules-cluster-key.rekeyFile = ./cluster-token.age;
-      secrets.hercules-cache-json.rekeyFile = ./caches-json.age;
+      secrets.hercules-cache-json = {
+        rekeyFile = ./caches-json.age;
+        owner = "hercules-ci-agent";
+        group = "hercules-ci-agent";
+      };
 
       services.hercules-ci-agent = {
         enable = true;
