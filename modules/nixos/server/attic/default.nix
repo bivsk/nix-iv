@@ -1,9 +1,14 @@
+let
+  port = 10220;
+in
 {
   flake.modules.nixos.atticd =
-    { config, inputs, lib, ... }:
-    let
-      port = 10220;
-    in
+    {
+      config,
+      inputs,
+      lib,
+      ...
+    }:
     {
       secrets.atticd-env.rekeyFile = ./environment.age;
 
@@ -15,36 +20,34 @@
 
         settings = {
           listen = "[::]:${builtins.toString port}";
+	  api-endpoint = "https://cache.bivsk.com/";
+
           jwt = { };
         };
       };
 
-      # system.activationScripts."createPersistentStorageDirs".deps = [
-      #   "var-lib-private-permissions"
-      #   "users"
-      #   "groups"
-      # ];
-      # system.activationScripts = {
-      #   "var-lib-private-permissions" = {
-      #     deps = [ "specialfs" ];
-      #     text = ''
-      #       mkdir -p /persist/var/lib/private
-      #       chmod 0700 /persist/var/lib/private
-      #     '';
-      #   };
-      # };
-	     environment.persistence."/persist".directories = [
-	       {
-	         directory = "/var/lib/private";
-	         mode = "0700";
-	       }
-	  #      {
-	  #        directory = "/var/lib/private/atticd";
-	  # user = config.services.atticd.user;
-	  # group = config.services.atticd.group;
-	  #        mode = "0700";
-	  #      }
-	     ];
+      environment.persistence."/persist".directories = [
+        {
+          directory = "/var/lib/private";
+          mode = "0700";
+        }
+      ];
+
+      networking.firewall.allowedTCPPorts = [
+        port
+      ];
+    };
+
+  flake.modules.nixos.attic-nginx =
+    { config, ... }:
+    {
+      services.nginx = {
+        enable = true;
+        recommendedProxySettings = true;
+        virtualHosts."cache.bivsk.com" = {
+          locations."/".proxyPass = "http://10.0.0.2:${builtins.toString port}";
+        };
+      };
     };
 
   flake.modules.nixos.core =

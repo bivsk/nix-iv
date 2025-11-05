@@ -13,6 +13,7 @@
 
       # reverse proxies
       acme
+      attic-nginx
       nginx-jellyfin
       nginx-jellyseerr
       nginx-sonarr
