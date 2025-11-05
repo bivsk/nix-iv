@@ -18,6 +18,7 @@
     dev
 
     # services
+    atticd
     nixarr
   ];
 }
