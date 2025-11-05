@@ -6,11 +6,13 @@
     in
     {
       secrets.hercules-cluster-key.rekeyFile = ./cluster-token.age;
+      secrets.hercules-cache-json.rekeyFile = ./caches-json.age;
 
       services.hercules-ci-agent = {
         enable = true;
 
         settings = {
+	  binaryCachesPath = config.secrets.hercules-cache-json.path;
           clusterJoinTokenPath = config.secrets.hercules-cluster-key.path;
         };
       };
