@@ -1,7 +1,7 @@
 let
   substituters = [
     {
-      url = "http://localhost:10220";
+      url = "http://192.168.0.22:10220";
       publicKey = "nixos-default:6H8Sn30qcMvSIEzFWZpee5R0DE+X6mECbsjSzdiwdWI=";
       priority = 1;
     }
