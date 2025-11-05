@@ -1,4 +1,3 @@
-
 {
   flake.modules.nixos.hercules-ci-agent =
     { config, inputs, ... }:
@@ -12,7 +11,7 @@
         enable = true;
 
         settings = {
-	  clusterJoinTokenPath = config.secrets.hercules-cluster-key.path;
+          clusterJoinTokenPath = config.secrets.hercules-cluster-key.path;
         };
       };
 
