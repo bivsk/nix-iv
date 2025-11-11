@@ -36,6 +36,8 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
+    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

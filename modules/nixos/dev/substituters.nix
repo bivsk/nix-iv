@@ -1,10 +1,10 @@
 let
   substituters = [
-    {
-      url = "http://192.168.0.22:10220/nixos";
-      publicKey = "nixos-default:6H8Sn30qcMvSIEzFWZpee5R0DE+X6mECbsjSzdiwdWI=";
-      priority = 1;
-    }
+    # {
+    #   url = "https://cache.bivsk.com/nixos";
+    #   publicKey = "nixos-default:6H8Sn30qcMvSIEzFWZpee5R0DE+X6mECbsjSzdiwdWI=";
+    #   priority = 1;
+    # }
     {
       url = "https://cache.nixos.org";
       publicKey = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
