@@ -5,8 +5,8 @@
   hercules-ci.flake-update = {
     enable = true;
     when = {
-      hour = [ 22 ];
-      dayOfWeek = [ "Mon" ];
+      hour = [ 3 ];
+      dayOfWeek = [ "Mon" "Wed" "Sat" ];
     };
   };
 
