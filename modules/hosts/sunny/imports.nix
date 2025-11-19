@@ -21,5 +21,6 @@
     atticd
     hercules-ci-agent
     nixarr
+    garage
   ];
 }

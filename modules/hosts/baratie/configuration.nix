@@ -14,6 +14,7 @@
       # reverse proxies
       acme
       attic-nginx
+      garage-nginx
       nginx-jellyfin
       nginx-jellyseerr
       nginx-sonarr
