@@ -6,7 +6,11 @@
     enable = true;
     when = {
       hour = [ 3 ];
-      dayOfWeek = [ "Mon" "Wed" "Sat" ];
+      dayOfWeek = [
+        "Mon"
+        "Wed"
+        "Sat"
+      ];
     };
   };
 
