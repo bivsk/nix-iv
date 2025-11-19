@@ -14,7 +14,7 @@
           privateKeyFile = "/persist/etc/wireguard/wg-proxy";
           peers = [
             {
-              publicKey = "CW9NLMgEk06x77IwIftI+K+Ymn3FC24j9pl+9Eg6zBs=";
+              publicKey = "HJgD4XfMYdOIE1EESXTMyLUe98AgyZJdXx9NzJsqqAY=";
               endpoint = "168.235.89.39:${builtins.toString port}";
               allowedIPs = [ "10.0.0.1/32" ];
               persistentKeepalive = 25; # Keep connection alive through NAT

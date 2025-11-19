@@ -21,9 +21,5 @@
           clusterJoinTokenPath = config.secrets.hercules-cluster-key.path;
         };
       };
-
-      environment.persistence."/persist".directories = [
-        "/var/lib/hercules-ci-agent"
-      ];
     };
 }

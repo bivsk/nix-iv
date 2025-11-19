@@ -15,6 +15,5 @@
 
     desktop
     dev
-    impermanence
   ];
 }

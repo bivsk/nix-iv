@@ -46,13 +46,6 @@ in
 	  };
         };
       };
-
-      environment.persistence."/persist".directories = [
-        {
-          directory = "/var/lib/garage";
-          # mode = "0700";
-        }
-      ];
     };
 
   flake.modules.nixos.garage-nginx =

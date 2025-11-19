@@ -5,11 +5,10 @@
   };
 
   flake.modules.nixos."nixosConfigurations/baratie" = {
-    age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBUk4LEx7ecBkrfBvLv+0zkxSdsKBSmYI4P1K2A0rf3z";
+    age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMiOkmYkDX5XPu4j4SUDLj0Vke28FfQ31gzCq7+6UcFK";
 
     imports = with inputs.self.modules.nixos; [
       grub
-      impermanence
 
       # reverse proxies
       acme

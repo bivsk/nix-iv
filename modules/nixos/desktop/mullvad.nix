@@ -8,9 +8,5 @@
           package = pkgs.mullvad-vpn; # gui + cli
         };
       };
-
-      environment.persistence."/persist".directories = [
-        "/etc/mullvad-vpn"
-      ];
     };
 }

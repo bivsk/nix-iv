@@ -40,7 +40,6 @@
 
       programs.ssh = {
         enable = true;
-	package = pkgs.openssh_10_2; # Bug #456258
         enableDefaultConfig = false;
         matchBlocks = hosts // {
           "*" = {

@@ -9,7 +9,6 @@
 
     imports = with inputs.self.modules.nixos; [
       grub
-      impermanence
       vaultwarden
     ];
 

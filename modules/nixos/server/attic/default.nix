@@ -26,13 +26,6 @@ in
         };
       };
 
-      environment.persistence."/persist".directories = [
-        {
-          directory = "/var/lib/private";
-          mode = "0700";
-        }
-      ];
-
       networking.firewall.allowedTCPPorts = [
         port
       ];

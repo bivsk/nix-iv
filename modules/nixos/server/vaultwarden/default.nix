@@ -27,10 +27,6 @@ in
         environmentFile = config.secrets.vaultEnvironment.path;
       };
 
-      environment.persistence."/persist".directories = [
-        "/var/lib/vaultwarden"
-      ];
-
       # vaultwarden cli
       environment.systemPackages = [
         pkgs.vaultwarden
