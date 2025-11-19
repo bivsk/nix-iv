@@ -4,11 +4,6 @@
 
   hercules-ci.flake-update = {
     enable = true;
-    effect.settings = {
-      secretsMap = {
-        git = { type = "GitToken"; };
-      };
-    };
     when = {
       hour = [ 3 ];
       dayOfWeek = [
