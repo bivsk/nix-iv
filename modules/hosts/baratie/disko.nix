@@ -59,24 +59,16 @@
               "local/nix" = {
                 type = "zfs_fs";
                 mountpoint = "/nix";
-                options."com.sun:auto-snapshot" = "false";
               };
               "local/root" = {
                 type = "zfs_fs";
                 mountpoint = "/";
-                options."com.sun:auto-snapshot" = "false";
-                postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^zroot/local/root@blank$' || zfs snapshot zroot/local/root@blank";
               };
 
               # backed up datasets
               "safe" = {
                 type = "zfs_fs";
                 options.mountpoint = "none";
-              };
-              "safe/persist" = {
-                type = "zfs_fs";
-                mountpoint = "/persist";
-                options."com.sun:auto-snapshot" = "false";
               };
             };
           };
