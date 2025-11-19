@@ -23,7 +23,7 @@
       programs.htop = {
         enable = true;
         settings = {
-          highlight_base_name = 1;
+          show_program_path = 0;
           show_cpu_temperature = 1;
           column_meters_0 = "LeftCPUs2 GPU Memory Swap ZFSARC";
           column_meter_modes_0 = "1 1 1 1 2";
