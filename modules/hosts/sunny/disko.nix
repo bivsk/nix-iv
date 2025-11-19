@@ -94,7 +94,6 @@
               "local/root" = {
                 type = "zfs_fs";
                 mountpoint = "/";
-                postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^zroot/local/root@blank$' || zfs snapshot zroot/local/root@blank";
               };
 
               # backed up datasets
@@ -102,13 +101,9 @@
                 type = "zfs_fs";
                 options.mountpoint = "none";
               };
-              "safe/persist" = {
-                type = "zfs_fs";
-                mountpoint = "/persist";
-              };
               "safe/home" = {
                 type = "zfs_fs";
-                mountpoint = "/home";
+                options.mountpoint = "/home";
               };
             };
           };
@@ -125,11 +120,11 @@
             datasets = {
               "media" = {
                 type = "zfs_fs";
-                mountpoint = "/media";
+                options.mountpoint = "/media";
               };
               "media/nixarr" = {
                 type = "zfs_fs";
-                mountpoint = "/media/nixarr";
+                options.mountpoint = "/media/nixarr";
               };
             };
           };
