@@ -5,7 +5,7 @@
   };
 
   flake.modules.nixos."nixosConfigurations/yuda" = {
-    age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILNxpKYICqj5J6Lp4aBvrhvfG678+r/GBSfguu8fz2Pc";
+    age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKx/xkmY0UilnzY+vA+C3u09BoaCbrzH4VweNqcCmNDk";
 
     imports = with inputs.self.modules.nixos; [
       grub
