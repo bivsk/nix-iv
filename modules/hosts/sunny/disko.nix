@@ -31,8 +31,8 @@
       };
     in
     {
-      # boot.supportedFilesystems = [ "zfs" ];
       networking.hostId = "0ffc592e";
+      boot.zfs.extraPools = [ "tank" ];
       disko.devices = {
         # Create mirrored partitions on all disks
         disk =
