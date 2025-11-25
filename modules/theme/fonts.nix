@@ -22,7 +22,7 @@
         };
 
         emoji = {
-          package = pkgs.google-fonts;
+          package = pkgs.noto-fonts-color-emoji;
           name = "Noto Color Emoji";
         };
       };
