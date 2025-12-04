@@ -1,5 +1,6 @@
 { inputs, ... }:
 {
+  # TODO: remove all this for now
   nixosHosts.sunny = {
     unstable = true;
   };
