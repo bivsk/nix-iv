@@ -20,7 +20,7 @@ in
 
             unstable = lib.mkOption {
               type = types.bool;
-	      default = true;
+              default = true;
             };
 
             # deploy = {

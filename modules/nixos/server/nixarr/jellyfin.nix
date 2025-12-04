@@ -1,21 +1,20 @@
 {
-  flake.modules.nixos = 
-    {
-    nixarr = 
+  flake.modules.nixos = {
+    nixarr =
       { inputs, pkgs, ... }:
       {
-      nixarr = {
-        jellyfin = {
-          enable = true;
-	  # package = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.jellyfin;
-          openFirewall = true;
-        };
-        jellyseerr = {
-          enable = true;
-          openFirewall = true;
+        nixarr = {
+          jellyfin = {
+            enable = true;
+            # package = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.jellyfin;
+            openFirewall = true;
+          };
+          jellyseerr = {
+            enable = true;
+            openFirewall = true;
+          };
         };
       };
-    };
 
     nginx-jellyfin = {
       services.nginx = {
