@@ -1,9 +1,13 @@
 {
-  flake.modules.nixos = {
-    nixarr = {
+  flake.modules.nixos = 
+    {
+    nixarr = 
+      { inputs, pkgs, ... }:
+      {
       nixarr = {
         jellyfin = {
           enable = true;
+	  # package = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.jellyfin;
           openFirewall = true;
         };
         jellyseerr = {
@@ -17,6 +21,7 @@
       services.nginx = {
         enable = true;
         clientMaxBodySize = "20M";
+        recommendedProxySettings = true;
         virtualHosts."watch.bivsk.com" = {
           forceSSL = true;
           enableACME = true;
@@ -29,12 +34,12 @@
 
           locations."/" = {
             proxyPass = "http://10.0.0.2:8096";
-            recommendedProxySettings = true;
             extraConfig = ''
               	    proxy_buffering off;
               	  '';
           };
           locations."/socket" = {
+            proxyPass = "http://10.0.0.2:8096";
             proxyWebsockets = true;
           };
         };
