@@ -30,7 +30,6 @@
         readarr.enable = true;
         transmission = {
           enable = true;
-          flood.enable = true;
           vpn.enable = true;
           peerPort = 58420;
         };
