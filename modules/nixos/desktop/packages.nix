@@ -6,9 +6,7 @@
         # Multimedia
         pkgs.ffmpeg
         pkgs.ffmpegthumbnailer
-        pkgs.gthumb
         pkgs.imagemagick
-        pkgs.vlc
       ];
     };
 }
