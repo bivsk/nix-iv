@@ -1,6 +1,5 @@
 {
   flake.modules.nixos.nix = {
-    system.rebuild.enableNg = true;
     nix = {
       channel.enable = false;
 
