@@ -17,7 +17,10 @@
           KbdInteractiveAuthentication = true;
           PasswordAuthentication = true;
 
-          AcceptEnv = "SHELLS COLORTERM";
+          AcceptEnv = [
+            "SHELLS"
+            "COLORTERM"
+          ];
         };
       };
 
