@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.signal =
+  flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
       home.packages = [ pkgs.signal-desktop ];

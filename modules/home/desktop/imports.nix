@@ -8,7 +8,6 @@
     hyprland
     media
     office
-    social
     web-browsers
   ];
 }
