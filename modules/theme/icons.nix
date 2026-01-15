@@ -2,7 +2,7 @@
   flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
-      stylix.iconTheme = {
+      stylix.icons = {
         enable = true;
         package = pkgs.tela-icon-theme;
         light = "Tela";
