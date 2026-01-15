@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.emacs =
+  flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
       programs.emacs = {

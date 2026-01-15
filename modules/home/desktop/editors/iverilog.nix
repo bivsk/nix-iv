@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.iverilog =
+  flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
       home.packages = [ pkgs.iverilog ];
