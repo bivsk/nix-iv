@@ -15,10 +15,9 @@
         ;
     in
     {
-      programs.adb.enable = true;
-
-      environment.systemPackages = with pkgs; [
-        jmtpfs
+      environment.systemPackages = [
+        pkgs.jmtpfs
+        pkgs.android-tools
       ];
 
       users.extraGroups.adbusers.members =
