@@ -59,7 +59,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "git+file:///home/four/dev/nixpkgs";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11-small";
 
     stylix = {
