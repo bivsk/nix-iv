@@ -1,20 +1,31 @@
 {
   nixpkgs.allowedUnfreePackages = [ "trezor-suite" ];
   flake.modules.nixos.crypto =
-    { lib, pkgs, ... }:
+    {
+      inputs,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       hardware.ledger.enable = true;
       services.trezord.enable = true;
+
+      imports = [
+        inputs.p2pool-nix.nixosModules.default
+      ];
+
       home-manager.sharedModules = [
         {
-          home.packages = lib.attrValues {
-            inherit (pkgs)
-              # wallets
-              ledger-live-desktop
-              monero-gui
-              trezor-suite
-              ;
-          };
+          home.packages = [
+            # wallets
+            pkgs.ledger-live-desktop
+            pkgs.monero-gui
+            pkgs.trezor-suite
+
+            # tari suite
+            inputs.p2pool-nix.packages.${pkgs.system}.tari
+          ];
         }
       ];
     };

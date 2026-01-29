@@ -9,6 +9,16 @@
 
       boot.loader.timeout = 3;
 
+      services.tari = {
+        enable = true;
+        mining = {
+          enable = true;
+          threads = 36;
+          address = "1259VHQPS6MovoWhqJuxZASf7BMtiVgqvM8RKBRm3zisLGmZEnKnmDRVyGZQt66bRdgtjoSiZUALk174iHu41aCyEGw";
+        };
+        # settings.miner.proof_of_work_algo = "RandomXT";
+      };
+
       system = {
         autoUpgrade.enable = false;
         stateVersion = "25.05";
