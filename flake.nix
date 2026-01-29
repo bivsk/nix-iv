@@ -61,6 +61,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11-small";
 
+    p2poolix.url = "path:/home/four/dev/p2poolix";
+
     stylix = {
       url = "github:danth/stylix";
       inputs = {

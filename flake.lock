@@ -1000,6 +1000,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_9": {
+      "locked": {
+        "lastModified": 1769598131,
+        "narHash": "sha256-e7VO/kGLgRMbWtpBqdWl0uFg8Y2XWFMdz0uUJvlML8o=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "fa83fd837f3098e3e678e6cf017b2b36102c7211",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-25.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -1023,6 +1039,20 @@
         "owner": "nix-community",
         "repo": "NUR",
         "type": "github"
+      }
+    },
+    "p2poolix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_9"
+      },
+      "locked": {
+        "narHash": "sha256-Zr1Kj/F2Q/QeCCWdpdKwcEuKRQm7I6s+d75IvLiM/UQ=",
+        "path": "/home/four/dev/p2poolix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/four/dev/p2poolix",
+        "type": "path"
       }
     },
     "pre-commit-hooks": {
@@ -1068,6 +1098,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_8",
         "nixpkgs-stable": "nixpkgs-stable",
+        "p2poolix": "p2poolix",
         "stylix": "stylix",
         "treefmt-nix": "treefmt-nix_2"
       }
