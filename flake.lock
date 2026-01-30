@@ -880,11 +880,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1769580691,
-        "narHash": "sha256-WwaggGHjyYt6sRtHFyaLgemt80Lsksl9Pj0CTm5OVfU=",
+        "lastModified": 1769631699,
+        "narHash": "sha256-QpJeg0wJkgs7PjeqJFtra7ldcb9cwgnKLNuOmOuZn94=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c6d9bb8b737709895a799d931de48fa76b572dc8",
+        "rev": "6c49780aa1006613acde42c9224a3dba050f1ce9",
         "type": "github"
       },
       "original": {
@@ -1043,10 +1043,11 @@
     },
     "p2poolix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_9"
+        "nixpkgs": "nixpkgs_9",
+        "website-builder": "website-builder_2"
       },
       "locked": {
-        "narHash": "sha256-Zr1Kj/F2Q/QeCCWdpdKwcEuKRQm7I6s+d75IvLiM/UQ=",
+        "narHash": "sha256-ugDuVgdq4WK5UXp8VxLP8NMbYIKq56tmp1jiv7x2H2c=",
         "path": "/home/four/dev/p2poolix",
         "type": "path"
       },
@@ -1358,6 +1359,27 @@
       "inputs": {
         "nixpkgs": [
           "nixarr",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753958235,
+        "narHash": "sha256-Rd27XQJKv8Z4BCr3gdbaHFd0TmumiGxdjGRzsEf/mOg=",
+        "owner": "rasmus-kirk",
+        "repo": "website-builder",
+        "rev": "00a14b7ae7baef2197978ba7c3fe72dfca7bc475",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rasmus-kirk",
+        "repo": "website-builder",
+        "type": "github"
+      }
+    },
+    "website-builder_2": {
+      "inputs": {
+        "nixpkgs": [
+          "p2poolix",
           "nixpkgs"
         ]
       },
