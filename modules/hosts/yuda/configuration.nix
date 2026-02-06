@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   nixosHosts.yuda = {
-    unstable = false;
+    unstable = true;
   };
 
   flake.modules.nixos."nixosConfigurations/yuda" = {
