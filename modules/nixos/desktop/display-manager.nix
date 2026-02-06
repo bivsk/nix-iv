@@ -1,31 +1,28 @@
 {
   flake.modules.nixos.display-manager =
-    { pkgs, ... }:
+    { inputs, pkgs, ... }:
     {
-      services = {
-        displayManager = {
-          autoLogin = {
-            enable = true;
-            user = "four";
-          };
-          sddm = {
-            enable = true;
-            wayland.enable = true;
-            autoNumlock = true;
-            theme = "where_is_my_sddm_theme_qt5";
-          };
+      imports = [ inputs.silentSDDM.nixosModules.default ];
+
+      # services = {
+      #   displayManager = {
+      #     # autoLogin = {
+      #     #   enable = true;
+      #     #   user = "four";
+      #     # };
+      #     sddm = {
+      #       enable = true;
+      #       wayland.enable = true;
+      #       autoNumlock = true;
+      #     };
+      #   };
+      # };
+
+      programs = {
+        silentSDDM = {
+          enable = true;
+          theme = "default";
         };
       };
-
-      environment.systemPackages = [
-        (pkgs.where-is-my-sddm-theme.override {
-          variants = [ "qt5" ];
-          themeConfig.General = {
-            background = pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath;
-            backgroundMode = "fill";
-            cursorColor = "#ffffff";
-          };
-        })
-      ];
     };
 }
