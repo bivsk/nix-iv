@@ -61,6 +61,16 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11-small";
 
+    p2poolix = {
+      url = "github:bivsk/p2poolix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:danth/stylix";
       inputs = {

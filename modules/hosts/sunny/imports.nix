@@ -18,9 +18,10 @@
     dev
 
     # services
-    atticd
+    # atticd
     hercules-ci-agent
     nixarr
-    garage
+    p2poolix
+    # garage
   ];
 }
