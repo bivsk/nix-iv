@@ -14,7 +14,7 @@
           home.packages = [
             # wallets
             pkgs.ledger-live-desktop
-            pkgs.monero-gui
+            pkgs.monero-cli
             pkgs.trezor-suite
           ];
         }

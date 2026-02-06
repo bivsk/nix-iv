@@ -9,14 +9,15 @@
 
       boot.loader.timeout = 3;
 
-      services.tari = {
+      p2poolix = {
         enable = true;
-        mining = {
-          enable = true;
-          threads = 36;
-          address = "1259VHQPS6MovoWhqJuxZASf7BMtiVgqvM8RKBRm3zisLGmZEnKnmDRVyGZQt66bRdgtjoSiZUALk174iHu41aCyEGw";
+        p2pool.chain = "mini";
+        monero.address = "44MdFcbPopsTfSY5j89vVKFwGbgW61viq942yBgsspoKSdjtyoGbtkvWQAic4yft57DWbwo5sbcGc48ca17FXYdPDEMsLXg";
+        monero.rpc.address = "192.168.0.22";
+        monero.openFirewall = true;
+        xmrig.settings = {
+          cpu.priority = 1;
         };
-        # settings.miner.proof_of_work_algo = "RandomXT";
       };
 
       system = {
