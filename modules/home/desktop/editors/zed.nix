@@ -1,10 +1,10 @@
 {
   flake.modules.homeManager.desktop =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
     {
       home.packages = [
-        pkgs.nixd
         pkgs.nil
+        pkgs.nixd
       ];
       programs.zed-editor = {
         enable = true;
@@ -13,18 +13,27 @@
           "nix"
           "rust"
         ];
-        extraPackages = [
-          pkgs.nixd
-          pkgs.nil
-        ];
         userSettings = {
-          hour_format = "hour24";
           auto_update = false;
           vim_mode = true;
 
           lsp = {
-            nix = {
-              binary.path_lookup = true;
+            nil = {
+              path = lib.getExe pkgs.nil;
+            };
+            nixd = {
+              path = lib.getExe pkgs.nixd;
+            };
+          };
+
+          context_servers = {
+            nixos = {
+              command = "nix";
+              args = [
+                "run"
+                "github:utensils/mcp-nixos"
+                "--"
+              ];
             };
           };
         };
