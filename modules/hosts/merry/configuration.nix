@@ -12,6 +12,10 @@
 
     boot.loader.timeout = 0;
 
+    programs.silentSDDM.settings = {
+      "General".scale = "2.0";
+    };
+
     system = {
       autoUpgrade.enable = false;
       stateVersion = "25.05";
