@@ -1,3 +1,3 @@
 {
-  flake.modules.nixos.desktop.programs.niri.enable = true;
+  flake.modules.nixos.desktop.programs.niri.enable = false;
 }
