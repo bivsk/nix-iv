@@ -9,7 +9,8 @@
       method = "fast-forward";
     };
     autoMergeMethod = "rebase";
-    pullRequestTitle = "chore: update flake.lock";
+    flakes.".".commitSummary = "chore: update `flake.lock`";
+    pullRequestTitle = "chore: update `flake.lock`";
     when = {
       hour = [ 9 ]; # UTC
       dayOfWeek = [
