@@ -6,7 +6,6 @@
 
       users.extraGroups.libvirtd.members = [ "four" ];
 
-      # TODO: gui only
       programs.virt-manager.enable = true;
     };
 }
