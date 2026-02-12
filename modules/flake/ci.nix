@@ -4,11 +4,17 @@
 
   hercules-ci.flake-update = {
     enable = true;
+    baseMerge = {
+      enable = true;
+      method = "fast-forward";
+    };
+    autoMergeMethod = "merge";
+    pullRequestTitle = "chore: update flake.lock";
     when = {
-      hour = [ 3 ];
+      hour = [ 9 ]; # UTC
       dayOfWeek = [
-        "Mon"
-        "Wed"
+        "Tue"
+        "Thu"
         "Sat"
       ];
     };
