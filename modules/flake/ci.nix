@@ -8,7 +8,7 @@
       enable = true;
       method = "fast-forward";
     };
-    autoMergeMethod = "merge";
+    autoMergeMethod = "rebase";
     pullRequestTitle = "chore: update flake.lock";
     when = {
       hour = [ 9 ]; # UTC
