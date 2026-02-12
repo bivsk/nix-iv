@@ -1032,11 +1032,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770012988,
-        "narHash": "sha256-xBDJ4udHQ3NQXrKQiaMBMsUktwqtDgco/2vrBn0lqg4=",
+        "lastModified": 1770881356,
+        "narHash": "sha256-pDjZgBXIHRCwv6VRFyGFmrBRdFzLby6DyCb1kJpfJYs=",
         "owner": "bivsk",
         "repo": "p2poolix",
-        "rev": "74193f634f5fe498ec8ad06b8cab1f04793dbba9",
+        "rev": "70278feeac93627f1b801955ed1e8332811609c9",
         "type": "github"
       },
       "original": {
