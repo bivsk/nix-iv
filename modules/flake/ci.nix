@@ -6,8 +6,8 @@
     enable = true;
 
     baseMerge.enable = true;
-    flakes.".".commitSummary = "chore: update `flake.lock`";
-    pullRequestTitle = "chore: update `flake.lock`";
+    flakes.".".commitSummary = "chore: update flake.lock";
+    pullRequestTitle = "chore: update flake.lock";
     autoMergeMethod = "squash";
 
     when = {
