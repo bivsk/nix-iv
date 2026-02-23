@@ -16,12 +16,10 @@
     {
       home = {
         sessionVariables.SHELLS = getExe pkgs.nushell;
-
         shell.enableNushellIntegration = true;
 
         shellAliases = {
-          # TODO: move nushell exclusive aliases out of `home.shellAliases`
-          # cp = "cp --recursive --progress --verbose";
+          cp = "cp --recursive --progress --verbose";
           mk = "mkdir";
           rm = "rm --recursive --verbose";
 
@@ -57,6 +55,10 @@
       programs.nushell = {
         enable = true;
         configFile.text = readFile ./config.nu;
+	plugins = with pkgs.nushellPlugins; [
+	  gstat
+	  polars
+	];
       };
     };
 }
