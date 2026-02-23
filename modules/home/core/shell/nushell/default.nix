@@ -55,10 +55,10 @@
       programs.nushell = {
         enable = true;
         configFile.text = readFile ./config.nu;
-	plugins = with pkgs.nushellPlugins; [
-	  gstat
-	  polars
-	];
+        plugins = with pkgs.nushellPlugins; [
+          gstat
+          polars
+        ];
       };
     };
 }
