@@ -13,7 +13,7 @@
 
       environment.systemPackages = [
         # tari suite
-        inputs.p2poolix.packages.${pkgs.system}.tari
+        inputs.p2poolix.packages.${pkgs.stdenv.hostPlatform.system}.tari
       ];
     };
 }

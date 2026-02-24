@@ -23,5 +23,7 @@
     nixarr
     p2poolix
     # garage
+
+    openclaw
   ];
 }

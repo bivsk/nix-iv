@@ -4,6 +4,7 @@
     brave
     chromium
     firefox
+    helium
     qutebrowser
     tor-browser
   ];
