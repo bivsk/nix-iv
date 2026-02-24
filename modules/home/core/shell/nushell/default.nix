@@ -19,7 +19,7 @@
         shell.enableNushellIntegration = true;
 
         shellAliases = {
-          cp = "cp --recursive --progress --verbose";
+          cp = "cp --recursive --verbose";
           mk = "mkdir";
           rm = "rm --recursive --verbose";
 
